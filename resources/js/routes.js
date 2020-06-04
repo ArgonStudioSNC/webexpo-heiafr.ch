@@ -25,8 +25,16 @@ export default new VueRouter({
     routes: [
         {
             path: '',
-            name: 'main-page',
-            component: Vue.component( 'webxpo', require( './pages/webxpo.vue' ) ).default,
+            name: 'webxpo',
+            redirect: {name: 'webxpo-2020'},
+            component: Vue.component( 'webxpo', require( './pages/Webxpo.vue' ) ).default,
+            children: [
+                {
+                    path: '2020/:degree?',
+                    name: 'webxpo-2020',
+                    component: Vue.component( 'webxpo2020', require( './pages/Webxpo2020.vue' ) ).default,
+                },
+            ],
         },
     ]
 });
