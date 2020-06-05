@@ -1,11 +1,20 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at', 'updated_at',
+    ];
+
     /**
      * Get the project  associated with the student.
      */
@@ -13,6 +22,6 @@ class Student extends Model
     {
         return $this->hasOne(Project::class);
     }
-    
+
     //
 }

@@ -17,3 +17,27 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::namespace('API')->prefix('v1')->group(function(){
+    /*
+    |-------------------------------------------------------------------------------
+    | Get All Filters
+    |-------------------------------------------------------------------------------
+    | URL:            /api/v1/projects/{year}
+    | Controller:     API\ProjectController@index
+    | Method:         GET
+    | Description:    Gets all of the projects of the given year
+    */
+    Route::get('/projects/{year}', 'ProjectController@index');
+
+    /*
+    |-------------------------------------------------------------------------------
+    | Get All Filters
+    |-------------------------------------------------------------------------------
+    | URL:            /api/v1/filters
+    | Controller:     API\FilterController@index
+    | Method:         GET
+    | Description:    Gets all of the filters in the application
+    */
+    Route::get('/filters', 'FilterController@index');
+});
