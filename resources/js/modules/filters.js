@@ -2,15 +2,18 @@
 |-------------------------------------------------------------------------------
 | VUEX modules/filters.js
 |-------------------------------------------------------------------------------
-| The Vuex data store for the filtering of projets
+| The Vuex data store for the filtering of projects
 */
+import STATE from "../mixins/loadingStates";
+import FilterAPI from '../api/filter.js';
 
 export const filters = {
     /*
     Defines the state being monitored for the module.
     */
     state: {
-        degree: 'bachelor',
+        filters: [],
+        filtersLoadStatus: STATE.INIT,
     },
 
     /*
@@ -18,17 +21,19 @@ export const filters = {
     */
     actions: {
         /*
-        Sets the degree to Bachelor
+        Loads the filters from the API
         */
-        setBachelor( { commit } ){
-            commit( 'setDegree', 'bachelor');
-        },
-
-        /*
-        Sets the degree to Master
-        */
-        setBachelor( { commit } ){
-            commit( 'setDegree', 'master');
+        loadFilters( { commit } ){
+            commit( 'setFiltersLoadStatus', STATE.LOADING );
+            FilterAPI.all()
+            .then( function( response ){
+                commit( 'setFilters', response.data);
+                commit( 'setFiltersLoadStatus', STATE.LOADED );
+            })
+            .catch( function(){
+                commit( 'setFilters', [] );
+                commit( 'setFiltersLoadStatus', STATE.ERROR );
+            });
         },
     },
 
@@ -37,10 +42,17 @@ export const filters = {
     */
     mutations: {
         /*
-        Sets the degree filter
+        Sets the filters load status
         */
-        setDegree( state, val){
-            state.degree = val;
+        setFiltersLoadStatus( state, status ){
+            state.filtersLoadStatus = status;
+        },
+
+        /*
+        Sets the filters
+        */
+        setFilters( state, filters){
+            state.filters = filters;
         },
     },
 
@@ -49,10 +61,17 @@ export const filters = {
     */
     getters: {
         /*
-        Returns the degree
+        Returns the filters load status.
         */
-        getDegree( state ){
-            return state.degree;
+        getFiltersLoadStatus( state ){
+            return state.filtersLoadStatus;
+        },
+
+        /*
+        Returns the filters.
+        */
+        getFilters( state ){
+            return state.filters;
         },
     },
 }

@@ -53,6 +53,10 @@
 
 <script>
 export default {
+    created () {
+        this.$store.dispatch( 'loadFilters' );
+    },
+
     computed: {
         masterSelected() {
             return this.$route.params.degree === 'master';

@@ -47,5 +47,9 @@ export default {
         FilterMenuComponent,
         ProjectGalleryComponent,
     },
+
+    created () {
+        this.$store.dispatch( 'loadProjects', this.$attrs.year);
+    },
 }
 </script>

@@ -33,6 +33,7 @@ export default new VueRouter({
                     path: '2020/:degree?',
                     name: 'webxpo-2020',
                     component: Vue.component( 'webxpo2020', require( './pages/Webxpo2020.vue' ) ).default,
+                    props: {year: 2020},
                 },
             ],
         },

@@ -24,12 +24,14 @@ Vue.use( Vuex )
     Imports all of the modules used in the application to build the data store.
 */
 import { filters } from './modules/filters.js'
+import { projects } from './modules/projects.js'
 
 /*
   Exports our data store.
 */
 export default new Vuex.Store({
     modules: {
-        filters
+        filters,
+        projects
     }
 });

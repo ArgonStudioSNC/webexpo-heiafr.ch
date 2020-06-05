@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Http\Resources\Project as ProjectResource;
-use App\Model\Project;
+use App\Models\Project;
 
 class ProjectController extends Controller
 {
