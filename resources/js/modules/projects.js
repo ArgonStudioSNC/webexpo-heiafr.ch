@@ -4,7 +4,7 @@
 |-------------------------------------------------------------------------------
 | The Vuex data store for the projecting of projects
 */
-import STATE from "../mixins/loadingStates";
+import STATE from "../mixins/loadingState";
 import ProjectAPI from '../api/project.js';
 
 export const projects = {
@@ -31,7 +31,7 @@ export const projects = {
             .then( function( response ){
                 commit( 'setYear', year );
                 commit( 'setProjects', response.data);
-                commit( 'setProjectsLoadStatus', STATE.LOADED );
+                commit( 'setProjectsLoadStatus', STATE.SUCCESS );
             })
             .catch( function(){
                 commit( 'setProjects', [] );

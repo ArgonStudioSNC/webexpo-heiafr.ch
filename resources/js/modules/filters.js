@@ -4,7 +4,7 @@
 |-------------------------------------------------------------------------------
 | The Vuex data store for the filtering of projects
 */
-import STATE from "../mixins/loadingStates";
+import STATE from "../mixins/loadingState";
 import FilterAPI from '../api/filter.js';
 
 export const filters = {
@@ -28,7 +28,7 @@ export const filters = {
             FilterAPI.all()
             .then( function( response ){
                 commit( 'setFilters', response.data);
-                commit( 'setFiltersLoadStatus', STATE.LOADED );
+                commit( 'setFiltersLoadStatus', STATE.SUCCESS );
             })
             .catch( function(){
                 commit( 'setFilters', [] );

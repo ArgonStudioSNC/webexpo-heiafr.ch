@@ -46,12 +46,12 @@
     <div id="project-gallery" class="project-gallery">
         <div class="grid-container">
             <div class="grid-x grid-margin-x grid-margin-y medium-up-2 large-up-3">
-                <div class="cell project-card" v-for="n in 10">
+                <div class="cell project-card" v-for="project in filtredProjects" :key="project.id">
                     <div class="project-vignette">
-                        <div><img src="/storage/media/projects/TM_DosSantos_D_vignette.jpg"></div>
+                        <div><img :src="thumbnailPath(project, 600)"></div>
                     </div>
                     <h4 style="font-weight:bold;" class="project-label">
-                        <div class="blend">Dos Santos<br>Diogo</div>
+                        <div class="blend">{{ project.student.last_name }}<br>{{ project.student.first_name }}</div>
                     </h4>
                 </div>
             </div>
@@ -62,10 +62,19 @@
 
 <script>
 import ProjectRevealComponent from './Reveal';
+import { ProjectMixins } from '../../mixins/Project';
 
 export default {
     components: {
         ProjectRevealComponent,
+    },
+
+    mixins: [ProjectMixins],
+
+    computed: {
+        projects() {
+            return this.$store.getters.getProjects.data;
+        }
     },
 }
 </script>

@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Model\Project;
-use App\Model\Student;
+use App\Models\Project;
+use App\Models\Student;
 
 class DemoProjectSeeder extends Seeder
 {

@@ -27,7 +27,7 @@
 <template>
     <div id="filter-menu" class="filter-menu">
         <div class="grid-container" data-sticky-container>
-            <div class="sticky text-right blend" data-sticky data-top-anchor="filter-menu" data-margin-top="1.25">
+            <div class="sticky text-right blend" data-sticky data-top-anchor="filter-menu" data-margin-top="1.25" data-check-every="0">
                 <h1>Travaux</h1>
                 <div class="grid-x align-right">
                     <div class="cell shrink">

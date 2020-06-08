@@ -2,15 +2,15 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model\Project;
-use App\Model\Student;
+use App\Models\Project;
+use App\Models\Student;
 use Faker\Generator as Faker;
 
 $factory->define(Project::class, function (Faker $faker) {
 
-    $sites = App\Model\Site::all()->pluck('id')->toArray();
-    $workshop = App\Model\Workshop::all()->pluck('id')->toArray();
-    $professor = App\Model\Professor::all()->pluck('id')->toArray();
+    $sites = App\Models\Site::all()->pluck('id')->toArray();
+    $workshop = App\Models\Workshop::all()->pluck('id')->toArray();
+    $professor = App\Models\Professor::all()->pluck('id')->toArray();
 
     return [
         'degree' => $faker->randomElement(['bachelor' ,'master']),
@@ -30,7 +30,7 @@ $factory->define(Project::class, function (Faker $faker) {
 
 $factory->define(Student::class, function (Faker $faker) {
     return [
-        'uuid' => 'diogo.dossantos' . $faker->unique()->randomNumber($nbDigits = 2),
+        'uuid' => 'dossantos-diogo' . $faker->unique()->randomNumber($nbDigits = 2),
         'first_name' => 'Diogo',
         'last_name' => 'Dos Santos',
         'created_at' => now(),
