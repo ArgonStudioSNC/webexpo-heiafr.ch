@@ -29,10 +29,12 @@ $factory->define(Project::class, function (Faker $faker) {
 });
 
 $factory->define(Student::class, function (Faker $faker) {
+    $first_name = $faker->firstName;
+    $last_name = $faker->lastName;
     return [
-        'uuid' => 'dossantos-diogo' . $faker->unique()->randomNumber($nbDigits = 2),
-        'first_name' => 'Diogo',
-        'last_name' => 'Dos Santos',
+        'uuid' => $last_name.'-'.$first_name,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
         'created_at' => now(),
         'updated_at' => now(),
     ];

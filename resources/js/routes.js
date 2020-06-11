@@ -30,10 +30,13 @@ export default new VueRouter({
             component: Vue.component( 'webxpo', require( './pages/Webxpo.vue' ) ).default,
             children: [
                 {
-                    path: '2020/:degree?',
+                    path: '2020/',
                     name: 'webxpo-2020',
+                    redirect: '2020/bachelor',
+                },
+                {
+                    path: '2020/:degree?',
                     component: Vue.component( 'webxpo2020', require( './pages/Webxpo2020.vue' ) ).default,
-                    props: {year: 2020},
                 },
             ],
         },

@@ -1,5 +1,6 @@
 <style lang="scss">
 @import '~@/abstracts/settings';
+@import '~@/abstracts/mixins';
 
 .project-gallery {
     text-align: right;
@@ -40,41 +41,105 @@
     }
 }
 
+.heiafr-close-button {
+    position: fixed;
+    top: 4rem;
+    right: 20px;
+    width: 100%;
+
+    button {
+        cursor: pointer;
+        svg {
+            height: 60px;
+            width: 60px;
+        }
+    }
+
+    .times {
+        fill: $primary-color;
+    }
+}
+
 </style>
 
 <template>
     <div id="project-gallery" class="project-gallery">
         <div class="grid-container">
             <div class="grid-x grid-margin-x grid-margin-y medium-up-2 large-up-3">
-                <div class="cell project-card" v-for="project in filtredProjects" :key="project.id">
+                <a class="cell project-card" v-for="project in projects" :key="project.id" data-toggle="projectModal" @click="selectedProject = project">
                     <div class="project-vignette">
-                        <div><img :src="thumbnailPath(project, 600)"></div>
+                        <div><img :src="projectSrc(project, 'vignette/'+project.vignette_file, 'x600')" alt="vignette du projet"></div>
                     </div>
                     <h4 style="font-weight:bold;" class="project-label">
                         <div class="blend">{{ project.student.last_name }}<br>{{ project.student.first_name }}</div>
                     </h4>
+                </a>
+            </div>
+        </div>
+        <div class="full reveal" id="projectModal" ref="reveal" data-reveal>
+            <ProjectDisplayComponent :project="selectedProject"></ProjectDisplayComponent>
+            <div class="heiafr-close-button blend">
+                <div class="grid-container">
+                    <div class="grid-x align-right">
+                        <div class="cell shrink">
+                            <button data-close aria-label="Fermer le projet" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.32 61.32">
+                                    <g><path class="times" d="M0,4.3,4.3,0,30.66,26.36,57,0l4.3,4.3L35,30.66,61.32,57,57,61.32,30.66,35,4.3,61.32,0,57,26.36,30.66Z"/></g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <ProjectRevealComponent></ProjectRevealComponent>
     </div>
 </template>
 
 <script>
-import ProjectRevealComponent from './Reveal';
-import { ProjectMixins } from '../../mixins/Project';
+import ProjectDisplayComponent from './Display';
+import { ProjectMixins } from '../../mixins/project';
 
 export default {
     components: {
-        ProjectRevealComponent,
+        ProjectDisplayComponent,
     },
 
     mixins: [ProjectMixins],
 
+    data() {
+        return {
+            selectedProject: null,
+        }
+    },
+
+    mounted() {
+        $(this.$refs.reveal).on('open.zf.reveal', x => {
+            //
+        });
+
+        $(this.$refs.reveal).on('closed.zf.reveal', x => {
+            this.selectedProject = null;
+        });
+    },
+
     computed: {
         projects() {
-            return this.$store.getters.getProjects.data;
-        }
+            if (this.$route.params.degree === "bachelor") return this.bachelorProjects;
+            else if (this.$route.params.degree === "master") return this.masterProjects;
+            else return null;
+        },
+    },
+
+    methods: {
+        projectSrc(project, resource, size=null) {
+            var pathNodeJS = require('path');
+            var path = ['/storage/projects', project.year, project.degree, project.student.uuid, resource].join('/');
+            if (size) {
+                var ext = pathNodeJS.extname(path);
+                path = [pathNodeJS.dirname(path), size, pathNodeJS.basename(path, ext) + size + ext].join('/');
+            }
+            return path;
+        },
     },
 }
 </script>

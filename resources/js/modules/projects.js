@@ -14,7 +14,7 @@ export const projects = {
     state: {
         year: null,
         projects: [],
-        projectsLoadStatus: STATE.INIT,
+        projectsLoadStatus: STATE.INIT
     },
 
     /*
@@ -25,11 +25,10 @@ export const projects = {
         Loads the projects from the API
         */
         loadProjects( { commit }, year ){
-            commit( 'setYear', null );
+            commit( 'setYear', year );
             commit( 'setProjectsLoadStatus', STATE.LOADING );
             ProjectAPI.all(year)
             .then( function( response ){
-                commit( 'setYear', year );
                 commit( 'setProjects', response.data);
                 commit( 'setProjectsLoadStatus', STATE.SUCCESS );
             })

@@ -1,0 +1,13 @@
+{
+    "filters": {
+        "workshops": "ateliers",
+        "professors": "professeur-e-s",
+        "sites": "sites"
+    },
+
+    "projects": {
+        "student": "etudiant",
+        "professor": "professeur",
+        "experts": "expert-e-s"
+    }
+}

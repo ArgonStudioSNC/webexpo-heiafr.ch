@@ -29,7 +29,7 @@ class ProjectController extends Controller
     | Description:    Gets all of the projects of the given year
     */
     public function index($year){
-        return ProjectResource::collection(Project::where('year', $year)->get());
+        return ProjectResource::collection(Project::where('year', $year)->get()->sortBy('student.last_name'));
     }
     //
 }

@@ -67,7 +67,7 @@
 
 $global-font-size: 100%;
 $global-width: rem-calc(1920);
-$global-lineheight: 1.5;
+$global-lineheight: 1.4;
 $foundation-palette: (
   primary: #C51A1B,
   secondary: #D9C200,
@@ -363,7 +363,7 @@ $closebutton-z-index: 10;
 $closebutton-default-size: medium;
 $closebutton-offset-horizontal: (
   small: 0.66rem,
-  medium: 1rem,
+  medium: 12rem,
 );
 $closebutton-offset-vertical: (
   small: 0.33em,
@@ -374,8 +374,8 @@ $closebutton-size: (
   medium: 2em,
 );
 $closebutton-lineheight: 1;
-$closebutton-color: $dark-gray;
-$closebutton-color-hover: $black;
+$closebutton-color: $primary-color;
+$closebutton-color-hover: $primary-color;
 
 // 16. Drilldown
 // -------------
@@ -753,10 +753,10 @@ $responsive-embed-ratios: (
 // 47. Reveal
 // ----------
 
-$reveal-background: $white;
+$reveal-background: $body-background;
 $reveal-width: 600px;
 $reveal-max-width: $global-width;
-$reveal-padding: $global-padding;
+$reveal-padding: 2rem 0;
 $reveal-border: 1px solid $medium-gray;
 $reveal-radius: $global-radius;
 $reveal-zindex: 1005;

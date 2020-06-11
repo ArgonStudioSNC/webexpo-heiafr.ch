@@ -12,7 +12,7 @@
             left: 0;
             right: 0;
             top: 0.087em;
-            bottom: 0.073em;
+            bottom: 0.062em;
             background-color: $secondary-color;
         }
     }
@@ -47,9 +47,15 @@ export default {
         FilterMenuComponent,
         ProjectGalleryComponent,
     },
+    props: {
+        degree: {
+            type: String,
+            default: 'bachelor'
+        }
+    },
 
     created () {
-        this.$store.dispatch( 'loadProjects', this.$attrs.year);
+        this.$store.dispatch( 'loadProjects', 2020);
     },
 }
 </script>
