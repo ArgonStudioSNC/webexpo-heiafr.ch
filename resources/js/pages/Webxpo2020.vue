@@ -8,7 +8,7 @@
         &::before{
             content: '';
             position: absolute;
-            z-index: -1;
+            isolation: isolate;
             left: 0;
             right: 0;
             top: 0.087em;
@@ -20,6 +20,11 @@
 
 #gallery {
     min-height: calc(100vh + 1px);
+}
+
+.test {
+    font-size: 150px;
+    background-color: green;
 }
 </style>
 

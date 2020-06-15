@@ -2,6 +2,9 @@
 @import '~@/abstracts/settings';
 @import "/storage/fonts/HelveticaNeueLTStd/_HelveticaNeueLTStd.css";
 
+.webxpo {
+    background-color: $body-background;
+}
 .webxpo-header {
     img {
         margin: 1.25em;
@@ -13,7 +16,9 @@
 .blend {
     mix-blend-mode: multiply;
 }
-
+button:focus {
+    outline: none;
+}
 </style>
 
 <template>

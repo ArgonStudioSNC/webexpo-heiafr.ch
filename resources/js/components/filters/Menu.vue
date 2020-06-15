@@ -5,7 +5,7 @@
 .filter-menu {
     position: relative;
 
-    a {
+    .filter-header {
         opacity: 0.5;
         cursor: pointer;
         @include transition(opacity 0.1s ease-out);
@@ -25,23 +25,22 @@
 
     .filter-dropdown-container {
         position:absolute;
-        z-index: 100;
         top:100%;
         left: 0;
         right:0;
     }
 
-    .overlay {
-        opacity: 0.8;
+    .overlay-background {
+        isolation: isolate;
         position: fixed;
         z-index: 10;
+        opacity: 0.8;
         top: 0;
         left: 0;
         height: 100%;
         width: 100%;
         background-color: $body-background;
     }
-
     .overlay-content {
         position: relative;
         z-index: 15;
@@ -62,17 +61,19 @@
 
 <template>
     <div id="filter-menu" class="filter-menu" ref="filter-menu">
-        <div class="overlay fade-out" :class="{hidden: !dropdownOpen}" @click="toggleDropdown(false)"></div>
-        <div class="overlay-content grid-container blend text-right">
+        <div class="overlay-background fade-out" :class="{hidden: !dropdownOpen}" @click="toggleDropdown(false)"></div>
+        <div class="overlay-content grid-container text-right blend">
             <div data-sticky-container>
                 <div class="sticky" data-sticky data-top-anchor="filter-menu" data-margin-top="1.25" data-check-every="0">
                     <h1>Travaux</h1>
                     <div class="grid-x align-right">
                         <div class="cell shrink" style="position:relative;">
-                            <router-link :class="{selected: degree === 'bachelor'}" :to= "{path: '/' + $store.getters.getYear + '/bachelor'}" @click.native="scrollToFilters(300)">
-                                <h1>Bachelor</h1>
-                                <button type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor')"><h3 style="font-weight: bold;">Filtres</h3></button>
-                            </router-link>
+                            <div class="filter-header" :class="{selected: degree === 'bachelor'}">
+                                <router-link :to="{path: '/' + $store.getters.getYear + '/bachelor'}" @click.native="scrollToFilters(300)">
+                                    <h1>Bachelor</h1>
+                                    <button type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor')"><h3 style="font-weight: bold;">Filtres</h3></button>
+                                </router-link>
+                            </div>
                             <div class="filter-dropdown-container fade-out" :class="{hidden: !(dropdownOpen && degree === 'bachelor')}">
                                 <FilterDropDownComponent degree='bachelor'></FilterDropDownComponent>
                             </div>
@@ -81,10 +82,12 @@
                             <div><h1>&nbsp;I&nbsp;</h1></div>
                         </div>
                         <div class="cell shrink" style="position:relative;">
-                            <router-link :class="{selected: degree === 'master'}" :to= "{path: '/' + $store.getters.getYear + '/master'}" @click.native="scrollToFilters(300)">
-                                <h1>Master</h1>
-                                <button type="button" @click="scrollToFilters(300, toggleDropdown, 'master')"><h3 style="font-weight: bold;">Filtres</h3></button>
-                            </router-link>
+                            <div class="filter-header" :class="{selected: degree === 'master'}">
+                                <router-link :to= "{path: '/' + $store.getters.getYear + '/master'}" @click.native="scrollToFilters(300)">
+                                    <h1>Master</h1>
+                                    <button type="button" @click="scrollToFilters(300, toggleDropdown, 'master')"><h3 style="font-weight: bold;">Filtres</h3></button>
+                                </router-link>
+                            </div>
                             <div class="filter-dropdown-container fade-out" :class="{hidden: !(dropdownOpen && degree === 'master')}">
                                 <FilterDropDownComponent degree='master'></FilterDropDownComponent>
                             </div>
@@ -129,7 +132,7 @@ export default {
             if (this.dropdownOpen) {
                 switch (value) {
                     case false:
-                    case !this.degree:
+                    case this.degree:
                         close();
                         break;
                     default:

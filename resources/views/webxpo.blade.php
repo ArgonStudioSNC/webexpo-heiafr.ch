@@ -18,6 +18,7 @@
     <!-- Styles -->
     <link href="{{ mix('storage/css/app.css') }}" rel="stylesheet" type="text/css">
 </head>
+
 <body style="display: none;">
     <main>
         <div id="app">
