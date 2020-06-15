@@ -74,7 +74,7 @@
                                 <button type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor')"><h3 style="font-weight: bold;">Filtres</h3></button>
                             </router-link>
                             <div class="filter-dropdown-container fade-out" :class="{hidden: !(dropdownOpen && degree === 'bachelor')}">
-                                <FilterDropDownComponent :filters="bachelorFilters"></FilterDropDownComponent>
+                                <FilterDropDownComponent degree='bachelor'></FilterDropDownComponent>
                             </div>
                         </div>
                         <div class="cell shrink">
@@ -86,7 +86,7 @@
                                 <button type="button" @click="scrollToFilters(300, toggleDropdown, 'master')"><h3 style="font-weight: bold;">Filtres</h3></button>
                             </router-link>
                             <div class="filter-dropdown-container fade-out" :class="{hidden: !(dropdownOpen && degree === 'master')}">
-                                <FilterDropDownComponent :filters="masterFilters"></FilterDropDownComponent>
+                                <FilterDropDownComponent degree='master'></FilterDropDownComponent>
                             </div>
                         </div>
                     </div>
@@ -98,16 +98,12 @@
 
 <script>
 import FilterDropDownComponent from './DropDown';
-import { ProjectMixins } from '../../mixins/project';
-
 import vueSmoothScroll from 'vue2-smooth-scroll';
 
 export default {
     components: {
         FilterDropDownComponent,
     },
-
-    mixins: [ProjectMixins],
 
     data() {
         return {
@@ -125,40 +121,15 @@ export default {
             if (!this.$route.params.degree) return DEFAULT;
             return this.$route.params.degree;
         },
-
-        bachelorFilters() {
-            var filters = {};
-            filters['workshops'] = this.uniqueFilter(this.bachelorProjects, 'workshop');
-            filters['sites'] = this.uniqueFilter(this.bachelorProjects, 'site');
-            return filters;
-        },
-
-        masterFilters() {
-            var filters = {};
-            filters['professors'] = this.uniqueFilter(this.masterProjects, 'professor');
-            filters['sites'] = this.uniqueFilter(this.masterProjects, 'site');
-            return filters;
-        },
     },
 
     methods: {
-        uniqueFilter(projects, filter) {
-            if (!projects) return [];
-            return _.uniqBy(projects
-            .map(p => {
-                return p[filter];
-            }), 'id')
-            .sort((a, b) =>{
-                return a.id - b.id;
-            });
-        },
-
         toggleDropdown(value) {
             let _this = this;
             if (this.dropdownOpen) {
                 switch (value) {
                     case false:
-                    case this.degree:
+                    case !this.degree:
                         close();
                         break;
                     default:
@@ -181,7 +152,9 @@ export default {
         eventHandler(e) {
             switch(e.type) {
                 case 'scroll':
-                    this.toggleDropdown(false);
+                    if (!window.location.hash || $(window.location.hash).offset() &&  $(window.location.hash).offset().top != $(window).scrollTop()) {
+                        this.toggleDropdown(false);
+                    }
                     break;
                 case 'keydown':
                     if (e.keyCode=="27") this.toggleDropdown(false);

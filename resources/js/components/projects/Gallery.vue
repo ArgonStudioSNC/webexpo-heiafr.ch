@@ -124,9 +124,12 @@ export default {
 
     computed: {
         projects() {
-            if (this.$route.params.degree === "bachelor") return this.bachelorProjects;
-            else if (this.$route.params.degree === "master") return this.masterProjects;
-            else return null;
+            var degree = this.$route.params.degree;
+            if (degree !== 'bachelor' && degree !== 'master') return null;
+
+            let filters = this.$store.getters.getActiveFilters[degree]
+
+            return this.filterProjects(this.getProjects(degree), filters);
         },
     },
 

@@ -33,7 +33,7 @@
         </header>
         <div style="height:2rem;"></div>
         <router-view></router-view>
-        <footer></footer>
+        <footer style="height: 4rem;"></footer>
     </div>
 </template>
 

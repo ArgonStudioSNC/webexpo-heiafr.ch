@@ -18,6 +18,9 @@
     }
 }
 
+#gallery {
+    min-height: calc(100vh + 1px);
+}
 </style>
 
 <template>
@@ -30,11 +33,10 @@
             <h1 class="grid-container blend">Exposition<br>en ligne</h1>
         </div>
         <div style="height: 8.75rem;"></div>
-        <div id ="gallery" style="padding-top: 1.25em;">
+        <div id="gallery" style="padding-top: 1.25em;">
             <FilterMenuComponent></FilterMenuComponent>
             <ProjectGalleryComponent></ProjectGalleryComponent>
         </div>
-        <div style="height: 8.75rem;"></div>
     </div>
 </template>
 

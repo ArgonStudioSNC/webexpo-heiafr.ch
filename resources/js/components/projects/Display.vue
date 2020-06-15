@@ -72,8 +72,10 @@
                     {{ project.lead }}<br><br>
                     <b>{{ $t('projects.student') }}</b><br>
                     {{ project.student.first_name }}&nbsp;{{ project.student.last_name }}<br><br>
-                    <b>{{ $t('projects.professor') }}</b><br>
-                    {{ project.professor.name }}<br><br>
+                    <div v-if="project.professor">
+                        <b>{{ $t('projects.professor') }}</b><br>
+                        {{ project.professor.name }}<br><br>
+                    </div>
                     <b>{{ $t('projects.experts') }}</b><br>
                     <div v-for="expert in project.experts">
                         {{ expert }}

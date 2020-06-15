@@ -6,6 +6,7 @@
 */
 import STATE from "../mixins/loadingState";
 import FilterAPI from '../api/filter.js';
+import Vue from 'vue'
 
 export const filters = {
     /*
@@ -14,6 +15,11 @@ export const filters = {
     state: {
         filters: [],
         filtersLoadStatus: STATE.INIT,
+
+        activeFilters: {
+            bachelor: {},
+            master: {},
+        },
     },
 
     /*
@@ -54,6 +60,10 @@ export const filters = {
         setFilters( state, filters){
             state.filters = filters;
         },
+
+        setActiveFilter ( state, { degree, key, value } ){
+            Vue.set(state.activeFilters[degree], key, value)
+        },
     },
 
     /*
@@ -72,6 +82,10 @@ export const filters = {
         */
         getFilters( state ){
             return state.filters;
+        },
+
+        getActiveFilters( state ){
+            return state.activeFilters;
         },
     },
 }

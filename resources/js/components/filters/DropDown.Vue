@@ -1,35 +1,71 @@
 <style lang="scss">
 @import '~@/abstracts/settings';
 
-.filter-dropdown {
-    text-align: right;
-
-    .filter-category {
-        margin-top: 5rem;
-        padding-bottom: 3rem;
-    }
+.filter-category {
+    margin-top: 5rem;
+    padding-bottom: 3rem;
 }
 
 </style>
 
 <template>
     <div class="filter-dropdown">
-        <div class="filter-category" v-for="(cat, key) in filters" v-if="cat" track-by="key">
-            <h3 style="font-weight: bold;">{{ $t('filters.' + key) }}</h3>
-            <div class="grid-x align-right" v-for="el in cat">
-                <div class="cell shrink"><h3>{{ el.name }}</h3></div>
-                <div class="cell shrink"><h3>__</h3></div>
+        <div class="filter-category grid-y" v-for="(cat, key) in filters" v-if="cat" track-by="key">
+            <div class="cell">
+                <h3 style="font-weight: bold;">{{ $t('filters.' + key) }}</h3>
+            </div>
+            <div class="cell" v-for="el in cat">
+                <FilterButtonComponent :degree="degree" :category="key" :filter="el"></FilterButtonComponent>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import FilterButtonComponent from './Button';
+import { ProjectMixins } from '../../mixins/project';
+
 export default {
+    components: {
+        FilterButtonComponent,
+    },
+
+    mixins: [ProjectMixins],
+
     props: {
-        filters: {
-            type: Object,
+        degree: {
+            type: String,
             required: true,
+        },
+    },
+
+    computed: {
+        filters() {
+            var filters = {};
+            var projects = this.getProjects(this.degree);
+
+            if (this.degree === 'bachelor') {
+                filters['workshop'] = this.uniqueFilter(projects, 'workshop');
+                filters['site'] = this.uniqueFilter(projects, 'site');
+            }
+            else if (this.degree === 'master') {
+                filters['professor'] = this.uniqueFilter(projects, 'professor');
+                filters['site'] = this.uniqueFilter(projects, 'site');
+            }
+            return filters;
+        },
+    },
+
+    methods: {
+        uniqueFilter(projects, filter) {
+            if (!projects) return [];
+            return _.uniqBy(projects
+            .map(p => {
+                return p[filter];
+            }), 'id')
+            .sort((a, b) =>{
+                return a.id - b.id;
+            });
         },
     },
 }
