@@ -11,12 +11,12 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ mix('storage/js/manifest.js') }}"></script>
-    <script src="{{ mix('storage/js/vendor.js') }}" defer></script>
-    <script src="{{ mix('storage/js/app.js') }}" defer></script>
+    <script src="{{ mix('/js/manifest.js') }}"></script>
+    <script src="{{ mix('/js/vendor.js') }}" defer></script>
+    <script src="{{ mix('/js/app.js') }}" defer></script>
 
     <!-- Styles -->
-    <link href="{{ mix('storage/css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css">
 </head>
 
 <body style="display: none;">

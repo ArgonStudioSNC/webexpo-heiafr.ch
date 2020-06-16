@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
- mix.js('resources/js/app.js', 'public/storage/js')
+ mix.js('resources/js/app.js', 'public/js')
     .webpackConfig({
      module: {
          rules: [
@@ -34,7 +34,7 @@ const mix = require('laravel-mix');
      }
  })
  .extract(['vue']).sourceMaps()
- .sass('resources/sass/app.scss', 'public/storage/css')
+ .sass('resources/sass/app.scss', 'public/css')
 
  if (mix.inProduction()) {
      mix.version();

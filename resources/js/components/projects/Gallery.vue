@@ -41,30 +41,29 @@
     }
 }
 
-.heiafr-close-button {
+.fixed-close-button {
     position: fixed;
-    right: 20px;
-    top: 2rem;
-    @include breakpoint(medium) {
-        top: 4rem;
-    }
+    top: 0;
+    right: 0;
+    left: 0;
+}
 
-    button {
-        cursor: pointer;
-        svg {
-            height: auto;
-            width: 40px;
-            @include breakpoint(medium) {
-                width: 60px;
-            }
-        }
-        @include breakpoint(medium) {
-            top: 4rem;
-        }
+.my-close-button {
+    height: auto;
+    cursor: pointer;
+    margin-right: 2rem;
+    margin-top: 4rem;
+    width: 40px;
+    @include breakpoint(medium) {
+        width: 60px;
+    }
+    svg {
+        height: 100%;
+        width: 100%;
     }
 
     .times {
-        fill: $primary-color;
+        fill: $primary-color;;
     }
 }
 
@@ -86,11 +85,11 @@
         </div>
         <div class="full reveal" id="projectModal" ref="reveal" data-reveal>
             <ProjectDisplayComponent :project="selectedProject"></ProjectDisplayComponent>
-            <div class="heiafr-close-button blend">
+            <div class="fixed-close-button blend">
                 <div class="grid-container">
                     <div class="grid-x align-right">
                         <div class="cell shrink">
-                            <button data-close aria-label="Fermer le projet" type="button">
+                            <button class="my-close-button" data-close aria-label="Fermer le projet" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.32 61.32">
                                     <g><path class="times" d="M0,4.3,4.3,0,30.66,26.36,57,0l4.3,4.3L35,30.66,61.32,57,57,61.32,30.66,35,4.3,61.32,0,57,26.36,30.66Z"/></g>
                                 </svg>
