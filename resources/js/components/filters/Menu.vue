@@ -26,8 +26,8 @@
     .filter-dropdown-container {
         position:absolute;
         top:100%;
-        left: 0;
         right:0;
+        left:-100%;
     }
 
     .overlay-background {
@@ -64,7 +64,7 @@
         <div class="overlay-background fade-out" :class="{hidden: !dropdownOpen}" @click="toggleDropdown(false)"></div>
         <div class="overlay-content grid-container text-right blend">
             <div data-sticky-container>
-                <div class="sticky" data-sticky data-top-anchor="filter-menu" data-margin-top="1.25" data-check-every="0">
+                <div class="sticky" data-resize data-sticky data-top-anchor="filter-menu" data-margin-top="1.25" data-check-every="0">
                     <h1>Travaux</h1>
                     <div class="grid-x align-right">
                         <div class="cell shrink" style="position:relative;">

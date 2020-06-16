@@ -1,8 +1,17 @@
 <style lang="scss">
 @import '~@/abstracts/settings';
-@import "/storage/fonts/HelveticaNeueLTStd/_HelveticaNeueLTStd.css";
 
 .webxpo-title {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    @include breakpoint(large) {
+        margin-top: 3rem;
+        margin-bottom: 6rem;
+    }
+    @include breakpoint(xlarge) {
+        margin-top: 4rem;
+        margin-bottom: 8rem;
+    }
     .bg-color {
         position: relative;
         &::before{
@@ -21,11 +30,6 @@
 #gallery {
     min-height: calc(100vh + 1px);
 }
-
-.test {
-    font-size: 150px;
-    background-color: green;
-}
 </style>
 
 <template>
@@ -37,7 +41,6 @@
             </h1>
             <h1 class="grid-container blend">Exposition<br>en ligne</h1>
         </div>
-        <div style="height: 8.75rem;"></div>
         <div id="gallery" style="padding-top: 1.25em;">
             <FilterMenuComponent></FilterMenuComponent>
             <ProjectGalleryComponent></ProjectGalleryComponent>

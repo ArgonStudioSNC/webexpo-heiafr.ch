@@ -40,8 +40,12 @@
             margin-right: auto;
             margin-left: auto;
             &>div {
-                padding-top: 8rem;
-                padding-bottom: 16rem;
+                padding-top: 2rem;
+                padding-bottom: 4rem;
+                @include breakpoint(xlarge) {
+                    padding-top: 8rem;
+                    padding-bottom: 16rem;
+                }
             }
         }
         &-boards{
@@ -49,8 +53,12 @@
             margin-right: auto;
             margin-left: auto;
             &>div {
-                padding-top: 8rem;
-                padding-bottom: 8rem;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+                @include breakpoint(xlarge) {
+                    padding-top: 8rem;
+                    padding-bottom: 8rem;
+                }
             }
         }
     }
@@ -89,6 +97,11 @@
                 <div class="cell project-text blend">
                     <b>{{ project.text }}</b>
                 </div>
+            </div>
+        </div>
+        <div class="grid-container" :class="{'full': mq === 'small'}">
+            <div class="grid-y align-center">
+
                 <div class="cell project-images blend">
                     <div v-for="image in project.images_files">
                         <img :src="projectSrc(project, 'images/'+image, 'x1900')" alt="Image d'illustration">
@@ -111,6 +124,19 @@ export default {
             type: Object,
             default: null
         }
+    },
+
+    data() {
+        return {
+            mq: 'small',
+        }
+    },
+
+    mounted() {
+        this.mq = Foundation.MediaQuery.current;
+        $(window).on('changed.zf.mediaquery', (event, newSize, oldSize) =>{
+            this.mq = newSize;
+        });
     },
 
     methods: {

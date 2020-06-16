@@ -43,15 +43,23 @@
 
 .heiafr-close-button {
     position: fixed;
-    top: 4rem;
     right: 20px;
-    width: 100%;
+    top: 2rem;
+    @include breakpoint(medium) {
+        top: 4rem;
+    }
 
     button {
         cursor: pointer;
         svg {
-            height: 60px;
-            width: 60px;
+            height: auto;
+            width: 40px;
+            @include breakpoint(medium) {
+                width: 60px;
+            }
+        }
+        @include breakpoint(medium) {
+            top: 4rem;
         }
     }
 
@@ -64,8 +72,8 @@
 
 <template>
     <div id="project-gallery" class="project-gallery">
-        <div class="grid-container">
-            <div class="grid-x grid-margin-x grid-margin-y medium-up-2 large-up-3">
+        <div class="grid-container" :class="{'full': mq === 'small'}">
+            <div class="grid-x grid-margin-x grid-margin-y medium-up-2 xlarge-up-3">
                 <a class="cell project-card" v-for="project in projects" :key="project.id" data-toggle="projectModal" @click="selectedProject = project">
                     <div class="project-vignette">
                         <div><img :src="projectSrc(project, 'vignette/'+project.vignette_file, 'x600')" alt="vignette du projet"></div>
@@ -109,6 +117,7 @@ export default {
     data() {
         return {
             selectedProject: null,
+            mq: 'small',
         }
     },
 
@@ -119,6 +128,11 @@ export default {
 
         $(this.$refs.reveal).on('closed.zf.reveal', x => {
             this.selectedProject = null;
+        });
+
+        this.mq = Foundation.MediaQuery.current;
+        $(window).on('changed.zf.mediaquery', (event, newSize, oldSize) =>{
+            this.mq = newSize;
         });
     },
 
