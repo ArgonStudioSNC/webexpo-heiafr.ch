@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 <div class="cell project-pdf blend">
-                    <a :href="projectSrc(project, 'book'+project.book_file)" download>
+                    <a :href="projectSrc(project, 'book/'+project.book_file)" download>
                         <font-awesome-icon :icon="['far', 'file-pdf']" size="3x"/>
                     </a>
                 </div>
