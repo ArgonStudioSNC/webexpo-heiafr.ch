@@ -72,7 +72,9 @@
             <div class="grid-y align-center">
                 <div class="cell">
                     <div class="student-portrait blend">
-                        <div><img :src="studentSrc(project.student)" alt="Photo de l'étudiant"></div>
+                        <div>
+                            <img :src="studentSrc(project.student)" alt="Photo de l'étudiant">
+                        </div>
                     </div>
                 </div>
                 <div class="cell project-meta blend">
@@ -104,12 +106,21 @@
 
                 <div class="cell project-images blend">
                     <div v-for="image in project.images_files">
-                        <img :src="projectSrc(project, 'images/'+image, 'x1900')" alt="Image d'illustration">
+                        <picture>
+                             <source media="(min-width:1200px)" :srcset="projectSrc(project, 'images/'+image, 'x2400')">
+                             <source media="(min-width:600px)" :srcset="projectSrc(project, 'images/'+image, 'x1200')">
+                             <source media="(min-width:0px)" :srcset="projectSrc(project, 'images/'+image, 'x600')">
+                             <img :src="projectSrc(project, 'images/'+image, 'x2400')" alt="Image d'illustration">
+                        </picture>
                     </div>
                 </div>
                 <div class="cell project-boards">
                     <div v-for="board in project.boards_files">
-                        <img :src="projectSrc(project, 'boards/'+board, 'x1900')" alt="Planche de dessin">
+                        <picture>
+                             <source media="(min-width:600px)" :srcset="projectSrc(project, 'boards/'+board, 'x1200')">
+                             <source media="(min-width:0px)" :srcset="projectSrc(project, 'boards/'+board, 'x600')">
+                             <img :src="projectSrc(project, 'boards/'+board, 'x1200')" alt="Planche de dessin">
+                        </picture>
                     </div>
                 </div>
             </div>

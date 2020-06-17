@@ -20,8 +20,8 @@
             isolation: isolate;
             left: 0;
             right: 0;
-            top: 0.087em;
-            bottom: 0.062em;
+            top: 0.12em;
+            bottom: 0.0133334em;
             background-color: $secondary-color;
         }
     }

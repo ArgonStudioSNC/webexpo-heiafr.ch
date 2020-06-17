@@ -51,8 +51,8 @@
 .my-close-button {
     height: auto;
     cursor: pointer;
-    margin-right: 2rem;
-    margin-top: 4rem;
+    margin-right: 1rem;
+    margin-top: 3rem;
     width: 40px;
     @include breakpoint(medium) {
         width: 60px;
@@ -75,7 +75,9 @@
             <div class="grid-x grid-margin-x grid-margin-y medium-up-2 xlarge-up-3">
                 <a class="cell project-card" v-for="project in projects" :key="project.id" data-toggle="projectModal" @click="selectedProject = project">
                     <div class="project-vignette">
-                        <div><img :src="projectSrc(project, 'vignette/'+project.vignette_file, 'x600')" alt="vignette du projet"></div>
+                        <div>
+                            <img :src="projectSrc(project, 'vignette/'+project.vignette_file, 'x600')"alt="Vignette du projet">
+                        </div>
                     </div>
                     <h4 style="font-weight:bold;" class="project-label">
                         <div class="blend">{{ project.student.last_name }}<br>{{ project.student.first_name }}</div>

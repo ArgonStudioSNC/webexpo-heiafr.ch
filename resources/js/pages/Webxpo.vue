@@ -1,6 +1,6 @@
 <style lang="scss">
 @import '~@/abstracts/settings';
-@import "/storage/fonts/HelveticaNeueLTStd/_HelveticaNeueLTStd.css";
+@import "/storage/fonts/TeXGyreHeros/_TeXGyreHeros.css";
 
 .webxpo {
     background-color: $body-background;
@@ -45,9 +45,9 @@
 .blend {
     mix-blend-mode: multiply;
 }
-button:focus {
-    outline: none;
-}
+
+:focus {outline:none!important;}
+
 </style>
 
 <template>
