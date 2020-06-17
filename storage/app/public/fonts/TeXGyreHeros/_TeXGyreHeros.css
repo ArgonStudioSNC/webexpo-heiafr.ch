@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'TeX Gyre Heros';
+    src: url('TeXGyreHeros-Regular.eot');
+    src: url('TeXGyreHeros-Regular.eot?#iefix') format('embedded-opentype'),
+         url('TeXGyreHeros-Regular.woff2') format('woff2'),
+         url('TeXGyreHeros-Regular.woff') format('woff'),
+         url('TeXGyreHeros-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TeX Gyre Heros';
+    src: url('TeXGyreHeros-Bold.eot');
+    src: url('TeXGyreHeros-Bold.eot?#iefix') format('embedded-opentype'),
+         url('TeXGyreHeros-Bold.woff2') format('woff2'),
+         url('TeXGyreHeros-Bold.woff') format('woff'),
+         url('TeXGyreHeros-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
