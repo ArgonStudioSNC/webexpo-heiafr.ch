@@ -15,9 +15,6 @@ class Filters2020Seeder extends Seeder
             ['slug' => 'fribourg','name' => 'Fribourg',],
             ['slug' => 'thun','name' => 'Thun',],
             ['slug' => 'bern','name' => 'Berne',],
-            ['slug' => 'swiss','name' => 'Suisse',],
-            ['slug' => 'europe','name' => 'Europe',],
-            ['slug' => 'world','name' => 'reste du monde',],
         ]);
 
         DB::table('professors')->insert([

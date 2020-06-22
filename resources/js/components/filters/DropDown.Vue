@@ -22,7 +22,7 @@
             <div class="cell">
                 <h3 style="font-weight: bold;">{{ $t('filters.' + key) }}</h3>
             </div>
-            <div class="cell" v-for="el in cat">
+            <div class="cell" v-for="el in cat" :key='el.name' track-by="el.name">
                 <FilterButtonComponent :degree="degree" :category="key" :filter="el"></FilterButtonComponent>
             </div>
         </div>
@@ -58,7 +58,6 @@ export default {
             }
             else if (this.degree === 'master') {
                 filters['professor'] = this.uniqueFilter(projects, 'professor');
-                filters['site'] = this.uniqueFilter(projects, 'site');
             }
             return filters;
         },
@@ -67,14 +66,12 @@ export default {
     methods: {
         uniqueFilter(projects, filter) {
             if (!projects) return [];
-            return _.uniqBy(projects
-            .map(p => {
-                return p[filter];
-            }), 'id')
-            .sort((a, b) =>{
-                return a.id - b.id;
-            });
-        },
-    },
+            return _.sortBy(
+                _.uniqBy(projects
+                    .map(p => {
+                        return p[filter];
+                    }), 'id'), ['slug']);
+                },
+            },
 }
 </script>

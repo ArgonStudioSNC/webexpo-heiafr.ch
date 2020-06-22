@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UserSeeder::class);
         $this->call(Filters2020Seeder::class);
+        $this->call(Filters2020BSeeder::class);
     }
 }
