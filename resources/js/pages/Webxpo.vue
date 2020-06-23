@@ -12,13 +12,13 @@
         margin-top: 1em;
     }
     .cell {
-        height: 2.2em;
+        height: 1.8em;
         display: flex;
         align-items: center;
         @include breakpoint(medium) {
             height: 3em;
         }
-        @include breakpoint(xlarge) {
+        @include breakpoint(xxlarge) {
             height: 3.5em;
         }
         .img-container {
@@ -48,6 +48,42 @@
 
 :focus {outline:none!important;}
 
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 70px;
+  height: 100px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 10px;
+  width: 10px;
+  background: $primary-color;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 10px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 30px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 50px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 5px;
+    height: 90px;
+  }
+  50%, 100% {
+    top: 30px;
+    height: 40px;
+  }
+}
 </style>
 
 <template>

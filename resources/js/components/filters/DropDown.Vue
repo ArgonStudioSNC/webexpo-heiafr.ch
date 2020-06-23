@@ -2,15 +2,14 @@
 @import '~@/abstracts/settings';
 
 .filter-category {
-    margin-top: 2rem;
-    padding-bottom: 1rem;
+    margin-top: 0.3rem;
+    padding-bottom: 0.1rem;
     @include breakpoint(large) {
-        margin-top: 3rem;
-        padding-bottom: 2rem;
+        margin-top: 2rem;
+        padding-bottom: 1rem;
     }
     @include breakpoint(xlarge) {
-        margin-top: 5rem;
-        padding-bottom: 3rem;
+        margin-top: 3rem;
     }
 }
 

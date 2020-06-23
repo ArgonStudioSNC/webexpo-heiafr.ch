@@ -41,7 +41,7 @@
             </h1>
             <h1 class="grid-container blend">Exposition<br>en ligne</h1>
         </div>
-        <div id="gallery" style="padding-top: 1.25em;">
+        <div id="gallery" style="padding-top: 1.2rem;">
             <FilterMenuComponent></FilterMenuComponent>
             <ProjectGalleryComponent></ProjectGalleryComponent>
         </div>

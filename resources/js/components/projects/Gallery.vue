@@ -40,7 +40,6 @@
         }
     }
 }
-
 .fixed-close-button {
     position: fixed;
     top: 0;
@@ -63,17 +62,16 @@
     }
 
     .times {
-        fill: $primary-color;;
+        fill: $primary-color;
     }
 }
-
 </style>
 
 <template>
     <div id="project-gallery" class="project-gallery">
         <div class="grid-container" :class="{'full': mq === 'small'}">
             <div class="grid-x grid-margin-x grid-margin-y medium-up-2 xlarge-up-3">
-                <a class="cell project-card" v-for="project in projects" :key="project.id" data-toggle="projectModal" @click="selectedProject = project">
+                <a class="cell project-card" v-for="project in projects" :key="project.id" data-open="projectReveal" @click="selectedProject = project">
                     <div class="project-vignette">
                         <div>
                             <img :src="projectSrc(project, 'vignette/'+project.vignette_file, 'x600')"alt="Vignette du projet">
@@ -85,18 +83,16 @@
                 </a>
             </div>
         </div>
-        <div class="full reveal" id="projectModal" ref="reveal" data-reveal>
+        <div class="full reveal" data-close-on-esc="false" data-multiple-opened="true" id="projectReveal" ref="projectReveal" data-reveal>
             <ProjectDisplayComponent :project="selectedProject"></ProjectDisplayComponent>
-            <div class="fixed-close-button blend">
-                <div class="grid-container">
-                    <div class="grid-x align-right">
-                        <div class="cell shrink">
-                            <button class="my-close-button" data-close aria-label="Fermer le projet" type="button">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.32 61.32">
-                                    <g><path class="times" d="M0,4.3,4.3,0,30.66,26.36,57,0l4.3,4.3L35,30.66,61.32,57,57,61.32,30.66,35,4.3,61.32,0,57,26.36,30.66Z"/></g>
-                                </svg>
-                            </button>
-                        </div>
+            <div class="grid-container fixed-close-button blend">
+                <div class="grid-x align-right">
+                    <div class="cell shrink">
+                        <button class="my-close-button" data-close="projectReveal" aria-label="Fermer le projet" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.32 61.32">
+                                <g><path class="times" d="M0,4.3,4.3,0,30.66,26.36,57,0l4.3,4.3L35,30.66,61.32,57,57,61.32,30.66,35,4.3,61.32,0,57,26.36,30.66Z"/></g>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -123,11 +119,7 @@ export default {
     },
 
     mounted() {
-        $(this.$refs.reveal).on('open.zf.reveal', x => {
-            //
-        });
-
-        $(this.$refs.reveal).on('closed.zf.reveal', x => {
+        $(this.$refs.projectReveal).on('closed.zf.reveal', x => {
             this.selectedProject = null;
         });
 
@@ -142,9 +134,8 @@ export default {
             var degree = this.$route.params.degree;
             if (degree !== 'bachelor' && degree !== 'master') return null;
 
-            let filters = this.$store.getters.getActiveFilters[degree]
-
-            return this.filterProjects(this.getProjects(degree), filters);
+            let filters = this.$store.getters.getActiveFilters[degree];
+            return _.isEmpty(filters) ? this.getProjects(degree) : this.filterProjects(this.getProjects(degree), filters);
         },
     },
 

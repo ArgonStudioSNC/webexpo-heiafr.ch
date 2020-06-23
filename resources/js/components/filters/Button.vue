@@ -54,22 +54,19 @@ export default {
 
     computed: {
         active() {
-            let activeFilter = this.$store.getters.getActiveFilters[this.degree][this.category];
-
-            if (!activeFilter) {
-                return false;
-            }
-            return activeFilter.id === this.filter.id;
+            let activeFilters = this.$store.getters.getActiveFilters[this.degree][this.category];
+            if (!activeFilters) return false;
+            return activeFilters.some(e => e.id === this.filter.id);
         },
     },
 
     methods: {
         setFilter() {
-            location.hash = '#gallery';
-            this.$store.commit('setActiveFilter', {
+            //location.hash = '#gallery';
+            this.$store.commit(this.active ? 'deactivateFilter' : 'activateFilter', {
                 degree: this.$route.params.degree,
                 key: this.category,
-                value: this.active ? null : this.filter,
+                value: this.filter,
             });
         },
     },

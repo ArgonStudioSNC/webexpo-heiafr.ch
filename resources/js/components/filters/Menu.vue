@@ -64,7 +64,7 @@
         <div class="overlay-background fade-out" :class="{hidden: !dropdownOpen}" @click="toggleDropdown(false)"></div>
         <div class="overlay-content grid-container text-right blend">
             <div data-sticky-container>
-                <div class="sticky" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="1.25" data-check-every="0">
+                <div class="sticky" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="1.2" data-check-every="0">
                     <h1>Travaux</h1>
                     <div class="grid-x align-right">
                         <div class="cell shrink" style="position:relative;">
@@ -144,7 +144,7 @@ export default {
 
             function open() {
                 _this.dropdownOpen = true;
-                window.addEventListener('scroll', _this.eventHandler, {once: true});
+                //window.addEventListener('scroll', _this.eventHandler, {once: true});
                 window.addEventListener('keydown', _this.eventHandler, {once: true});
             }
             function close () {

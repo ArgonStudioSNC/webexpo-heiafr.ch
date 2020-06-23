@@ -61,8 +61,29 @@ export const filters = {
             state.filters = filters;
         },
 
-        setActiveFilter ( state, { degree, key, value } ){
-            Vue.set(state.activeFilters[degree], key, value)
+        activateFilter ( state, { degree, key, value } ){
+            var newFilters = [];
+            if (key in state.activeFilters[degree]){
+                newFilters = state.activeFilters[degree][key];
+            }
+            newFilters = newFilters.filter(function(item) {
+                return item.id !== value.id;
+            });
+            newFilters.push(value);
+
+            Vue.set(state.activeFilters[degree], key, newFilters)
+        },
+
+        deactivateFilter ( state, { degree, key, value } ){
+            var newFilters = [];
+            if (key in state.activeFilters[degree]){
+                newFilters = state.activeFilters[degree][key];
+            }
+            newFilters = newFilters.filter(function(item) {
+                return item.id !== value.id;
+            });
+
+            Vue.set(state.activeFilters[degree], key, newFilters)
         },
     },
 
