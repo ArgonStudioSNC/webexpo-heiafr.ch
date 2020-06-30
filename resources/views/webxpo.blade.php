@@ -26,6 +26,20 @@
         </div>
     </main>
 
-    <script></script>
+    <script type="text/javascript">
+        var MTUserId='b41c71fc-d9a9-4866-8bb1-02032336c5ef';
+        var MTFontIds = new Array();
+
+        MTFontIds.push("5664103"); // Neue Helvetica® W05 65 Medium
+        MTFontIds.push("5664149"); // Neue Helvetica® W01 75 Bold
+        (function() {
+            var mtTracking = document.createElement('script');
+            mtTracking.type='text/javascript';
+            mtTracking.async='true';
+            mtTracking.src='storage/fonts/mtiFontTrackingCode.js';
+
+            (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(mtTracking);
+        })();
+    </script>
 </body>
 </html>

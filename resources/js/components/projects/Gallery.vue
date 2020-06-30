@@ -24,8 +24,8 @@
         .project-label {
             position: relative;
             z-index: 1;
-            margin-top: -0.14em;
-            margin-bottom: -0.09em;
+            margin-top: -0.15em;
+            margin-bottom: -0.125em;
 
             &::before{
                 content: '';
@@ -33,8 +33,8 @@
                 z-index: -1;
                 left: 0;
                 right: 0;
-                top: 0.14em;
-                bottom: 0.09em;
+                top: 0.15em;
+                bottom: 0.125em;
                 background-color: $secondary-color;
             }
         }

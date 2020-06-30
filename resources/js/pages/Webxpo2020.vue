@@ -1,28 +1,24 @@
 <style lang="scss">
 @import '~@/abstracts/settings';
-
-.webxpo-title {
-    margin-top: 2rem;
-    margin-bottom: 4rem;
-    @include breakpoint(large) {
-        margin-top: 3rem;
-        margin-bottom: 6rem;
-    }
-    @include breakpoint(xlarge) {
-        margin-top: 4rem;
-        margin-bottom: 8rem;
-    }
-    .bg-color {
-        position: relative;
-        &::before{
-            content: '';
-            position: absolute;
-            isolation: isolate;
-            left: 0;
-            right: 0;
-            top: 0.12em;
-            bottom: 0.0133334em;
-            background-color: $secondary-color;
+.webxpo-2020 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    .webxpo-title {
+        min-height: 100vh;
+        .bg-color {
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                isolation: isolate;
+                left: 0;
+                right: 0;
+                top: 0.083em;
+                bottom: 0.067em;
+                background-color: $secondary-color;
+            }
         }
     }
 }
@@ -34,12 +30,12 @@
 
 <template>
     <div class="webxpo-2020">
-        <div class="webxpo-title text-right">
-            <h1 class="grid-container blend">HEIA-FR<br>architecture</h1>
-            <h1 class="bg-color">
+        <div class="webxpo-title grid-y align-center text-right">
+            <h1 class="cell grid-container blend">HEIA-FR<br>architecture</h1>
+            <h1 class="cell bg-color">
                 <div class="grid-container blend"><a href="#gallery" v-smooth-scroll="{ duration: 300}">Travaux<br>Bachelor&nbsp;&amp;<br>Master 19I20</a></div>
             </h1>
-            <h1 class="grid-container blend">Exposition<br>en ligne</h1>
+            <h1 class="cell grid-container blend">Exposition<br>en ligne</h1>
         </div>
         <div id="gallery" style="padding-top: 1.2rem;">
             <FilterMenuComponent></FilterMenuComponent>
@@ -57,6 +53,7 @@ export default {
         FilterMenuComponent,
         ProjectGalleryComponent,
     },
+
     props: {
         degree: {
             type: String,
