@@ -2,29 +2,23 @@
 @import '~@/abstracts/settings';
 
 .filter-category {
-    margin-top: 0.3rem;
-    padding-bottom: 0.1rem;
-    @include breakpoint(large) {
-        margin-top: 2rem;
-        padding-bottom: 1rem;
-    }
-    @include breakpoint(xlarge) {
-        margin-top: 3rem;
-    }
+    margin-top: 1.3em;
+    padding-bottom: 0.2em;
 }
-
 </style>
 
 <template>
     <div class="filter-dropdown">
-        <div class="filter-category grid-y" v-for="(cat, key) in filters" v-if="cat" track-by="key">
-            <div class="cell">
-                <h3 style="font-weight: bold;">{{ $t('filters.' + key) }}</h3>
+        <h3>
+            <div class="filter-category grid-y" v-for="(cat, key) in filters" v-if="cat" track-by="key">
+                <div class="cell">
+                    <div style="font-weight: bold;">{{ $t('filters.' + key) }}</div>
+                </div>
+                <div class="cell" v-for="el in cat" :key='el.name' track-by="el.name">
+                    <FilterButtonComponent :degree="degree" :category="key" :filter="el"></FilterButtonComponent>
+                </div>
             </div>
-            <div class="cell" v-for="el in cat" :key='el.name' track-by="el.name">
-                <FilterButtonComponent :degree="degree" :category="key" :filter="el"></FilterButtonComponent>
-            </div>
-        </div>
+        </h3>
     </div>
 </template>
 

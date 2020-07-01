@@ -59,6 +59,14 @@
         }
     }
 }
+
+.my-close-button.little {
+    width: 40px !important;
+    @include breakpoint(medium) {
+        margin-right: 3em;
+    }
+}
+
 </style>
 
 <template>
@@ -124,8 +132,8 @@
             <ImageViewerComponent :url="imageUrl"></ImageViewerComponent>
             <div class="fixed-close-button blend">
                 <div class="grid-x align-right">
-                    <div class="cell shrink">
-                        <button class="my-close-button" data-close="viewerReveal" aria-label="Fermer le viewer" type="button" style="margin-right:3rem;">
+                    <div class="cell shrink"
+                        <button class="my-close-button little" data-close="viewerReveal" aria-label="Fermer le viewer" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.32 61.32">
                                 <g><path class="times" d="M0,4.3,4.3,0,30.66,26.36,57,0l4.3,4.3L35,30.66,61.32,57,57,61.32,30.66,35,4.3,61.32,0,57,26.36,30.66Z"/></g>
                             </svg>

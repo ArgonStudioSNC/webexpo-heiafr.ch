@@ -11,20 +11,13 @@
     background-color: $body-background;
     position: relative;
     z-index: 10;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    @include breakpoint(large) {
-        padding-top: 1em;
-        padding-bottom: 1em;
-    }
+    padding-top: 1em;
+    padding-bottom: 1em;
     .cell {
-        height: 1.8em;
+        height: 2.7em;
         display: flex;
         align-items: center;
         @include breakpoint(medium) {
-            height: 3em;
-        }
-        @include breakpoint(xxlarge) {
             height: 3.5em;
         }
         .img-container {
@@ -48,31 +41,45 @@
     }
 }
 
+@function headers-font-size($width-ratio, $mq) {
+    $pad : map-get($grid-container-padding, $mq);
+    @return calc((#{$width-ratio} / 100) * min(calc(#{$global-width} - #{$pad}), calc(100vw - #{$pad})));
+}
+
 h1 {
-    font-size: min(9vw, 12vh);
+    //12
+    font-size : clamp(27px, #{headers-font-size(9.1, "small")}, 12vh);
     @include breakpoint(medium) {
-        font-size: min(8vw, 12vh);
+        font-size : clamp(27px, #{headers-font-size(9.1, "medium")}, 12vh);
+    }
+    @include breakpoint(large) {
+        font-size : clamp(40px, #{headers-font-size(9.1, "large")}, 12vh);
     }
     @include breakpoint(xlarge) {
-        font-size: min(7vw, 12vh);
+        font-size : clamp(50px, #{headers-font-size(9.1, "xlarge")}, 12vh);
     }
     @include breakpoint(xxlarge) {
-        font-size: min(6vw, 12vh);
+        font-size : clamp(60px, #{headers-font-size(9.1, "xxlarge")}, 12vh);
     }
 }
 
 h3 {
-    font-size: min(2.55vw, 3.4vh);
+    //3.6
+    font-size : clamp(12px, #{headers-font-size(3, "small")}, 3.6vh);
     @include breakpoint(medium) {
-        font-size: min(2.2666vw, 3.4vh);
+        font-size : clamp(12px, #{headers-font-size(3, "medium")}, 3.6vh);
+    }
+    @include breakpoint(large) {
+        font-size : clamp(12px, #{headers-font-size(3, "large")}, 3.6vh);
     }
     @include breakpoint(xlarge) {
-        font-size: min(2vw, 3.4vh);
+        font-size : clamp(15px, #{headers-font-size(3, "xlarge")}, 3.6vh);
     }
     @include breakpoint(xxlarge) {
-        font-size: min(1.7vw, 3.4vh);
+        font-size : clamp(18px, #{headers-font-size(3, "xxlarge")}, 3.6vh);
     }
 }
+
 </style>
 
 <template>

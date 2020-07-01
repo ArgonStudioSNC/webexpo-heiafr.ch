@@ -10,9 +10,9 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "@fortawesome/fontawesome-svg-core": "^1.2.28",
-        "@fortawesome/free-regular-svg-icons": "^5.13.0",
-        "@fortawesome/free-solid-svg-icons": "^5.13.0",
+        "@fortawesome/fontawesome-svg-core": "^1.2.29",
+        "@fortawesome/free-regular-svg-icons": "^5.13.1",
+        "@fortawesome/free-solid-svg-icons": "^5.13.1",
         "@fortawesome/vue-fontawesome": "^0.1.10",
         "axios": "^0.19",
         "cross-env": "^7.0",
@@ -24,14 +24,14 @@
         "lodash": "^4.17.13",
         "node-sass": "^4.14.1",
         "resolve-url-loader": "^3.1.0",
-        "sass": "^1.26.8",
+        "sass": "^1.26.9",
         "sass-loader": "^8.0.0",
         "vue": "^2.5.17",
         "vue-i18n": "^8.18.2",
         "vue-router": "^3.3.4",
         "vue-template-compiler": "^2.6.11",
-        "vue2-smooth-scroll": "^1.4.1",
-        "vuex": "^3.3.0",
+        "vue2-smooth-scroll": "^1.4.2",
+        "vuex": "^3.5.1",
         "what-input": "^5.2.10"
     }
 }

@@ -1,12 +1,12 @@
 <style lang="scss">
 @import '~@/abstracts/settings';
 .webxpo-2020 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     .webxpo-title {
-        min-height: 100vh;
+        min-height: calc(100vh - 3.7em);
+        @include breakpoint(medium) {
+            min-height: calc(100vh - 4.5em);
+        }
+        padding-bottom: 2em;
         .bg-color {
             position: relative;
             &::before{
