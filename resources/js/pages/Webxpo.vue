@@ -80,6 +80,21 @@ h3 {
     }
 }
 
+.footer {
+    //background-color: $secondary-color;
+    .copyright {
+        font-size: 12px;
+        line-height: normal;
+        text-align: center;
+        span {
+            opacity: 0.6;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
 </style>
 
 <template>
@@ -112,12 +127,26 @@ h3 {
             </div>
         </header>
         <router-view></router-view>
-        <footer style="height: 4rem;"></footer>
+        <footer class="footer">
+            <div class="grid-container blend">
+                <div class="grid-y grid-margin-y" style="min-height: 3rem;">
+                    <div class="cell auto"></div>
+                    <div class="cell shrink">
+                        <div class="copyright"><span>&copy {{date}} | Proudly made by</span>&nbsp;<a href='https://argonstudio.ch/' target='_blank' title="Argon Studio snc">Argon</a></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </template>
 
 <script>
 export default {
+    computed: {
+        date() {
+            return new Date().getFullYear();
+        }
+    }
 
 }
 </script>

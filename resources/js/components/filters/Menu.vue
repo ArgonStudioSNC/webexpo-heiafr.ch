@@ -27,7 +27,6 @@
         position:absolute;
         top:100%;
         right:0;
-        left:-100%;
     }
 
     .overlay-background {

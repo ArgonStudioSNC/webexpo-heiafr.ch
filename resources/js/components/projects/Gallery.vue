@@ -5,6 +5,7 @@
 .project-gallery {
     text-align: right;
     margin-top: 4rem;
+    padding-bottom: 4rem;
 
     .project-card {
         .project-vignette {

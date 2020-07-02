@@ -36,7 +36,7 @@
             var mtTracking = document.createElement('script');
             mtTracking.type='text/javascript';
             mtTracking.async='true';
-            mtTracking.src='storage/fonts/mtiFontTrackingCode.js';
+            mtTracking.src='/storage/fonts/mtiFontTrackingCode.js';
 
             (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(mtTracking);
         })();
