@@ -128,7 +128,7 @@
                 </div>
             </div>
         </div>
-        <div class="full reveal" data-close-on-esc="true" data-multiple-opened="true" id="viewerReveal" ref="viewerReveal" data-reveal>
+        <div class="full reveal" data-close-on-esc="true" data-multiple-opened="true" id="viewerReveal" ref="viewerReveal" data-reveal data-v-offset="0">
             <ImageViewerComponent :url="imageUrl"></ImageViewerComponent>
             <div class="fixed-close-button blend">
                 <div class="grid-x align-right">

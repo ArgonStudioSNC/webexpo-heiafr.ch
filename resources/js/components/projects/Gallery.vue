@@ -83,7 +83,7 @@
                 </a>
             </div>
         </div>
-        <div class="full reveal" data-close-on-esc="false" data-multiple-opened="true" id="projectReveal" ref="projectReveal" data-reveal>
+        <div class="full reveal" data-close-on-esc="false" data-multiple-opened="true" id="projectReveal" ref="projectReveal" data-reveal data-v-offset="0">
             <ProjectDisplayComponent :project="selectedProject"></ProjectDisplayComponent>
             <div class="grid-container fixed-close-button blend">
                 <div class="grid-x align-right">
