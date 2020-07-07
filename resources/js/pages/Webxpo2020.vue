@@ -1,5 +1,6 @@
 <style lang="scss">
 @import '~@/abstracts/settings';
+@import '~@/abstracts/mixins';
 .webxpo-2020 {
     .webxpo-title {
         min-height: calc(100vh - 3.7em);
@@ -26,6 +27,37 @@
 #gallery {
     min-height: calc(100vh + 1px);
 }
+
+.video-intro {
+    $padding: 1.3em;
+    width: calc(min(640px, 100vw) + 2 * #{$padding});
+    height: calc(min(360px, 56.25vw) + 2 * #{$padding});
+    position: fixed;
+    z-index: 100;
+    left: 2em;
+    bottom: 3em;
+
+    .background {
+        height: 100%;
+        width: 100%;
+        background-color: $primary-color;
+    }
+    iframe {
+        height: 100%;
+        width: 100%;
+        padding: $padding;
+    }
+    .close-player {
+        cursor: pointer;
+        width: $padding;
+        height: auto;
+        fill: $primary-color;
+        position: absolute;
+        right: 0;
+        top: 0;
+        @include transform(translateY(-110%));
+    }
+}
 </style>
 
 <template>
@@ -40,6 +72,17 @@
         <div id="gallery" style="padding-top: 1.2rem;">
             <FilterMenuComponent></FilterMenuComponent>
             <ProjectGalleryComponent></ProjectGalleryComponent>
+        </div>
+        <div class="video-intro blend" v-show="showVideo">
+            <div class="background"></div>
+            <button class="close-player" @click="showVideo = false" aria-label="Fermer le lecteur vidéo" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.32 61.32">
+                    <g><path class="times" d="M0,4.3,4.3,0,30.66,26.36,57,0l4.3,4.3L35,30.66,61.32,57,57,61.32,30.66,35,4.3,61.32,0,57,26.36,30.66Z"/></g>
+                </svg>
+            </button>
+        </div>
+        <div class="video-intro" v-if="showVideo">
+            <iframe src="https://www.youtube-nocookie.com/embed/9mhCcoe5Czw" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 </template>
@@ -61,8 +104,30 @@ export default {
         }
     },
 
+    data() {
+        return {
+            showVideo: false,
+        }
+    },
+
     created () {
         this.$store.dispatch( 'loadProjects', 2020);
+
+        window.addEventListener('scroll', this.videoPopup);
+        this.videoPopup;
+    },
+
+    destroyed () {
+        window.removeEventListener('scroll', this.videoPopup);
+    },
+
+    methods: {
+        videoPopup() {
+            if (window.scrollY >= document.getElementById("gallery").offsetTop) {
+                this.showVideo = true;
+                window.removeEventListener('scroll', this.videoPopup);
+            }
+        },
     },
 }
 </script>

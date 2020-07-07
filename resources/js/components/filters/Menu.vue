@@ -70,7 +70,11 @@
                             <div class="filter-header" :class="{selected: degree === 'bachelor'}">
                                 <router-link :to="{path: '/' + $store.getters.getYear + '/bachelor'}" @click.native="scrollToFilters(300)">
                                     <h1>Bachelor</h1>
-                                    <button type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor')"><h3 style="font-weight: bold;">Filtres</h3></button>
+                                    <div class="grid-x align-right">
+                                        <button class="cell shrink" type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor')"><h3 style="font-weight: bold;">Donnee</h3></button>
+                                        <h3 class="cell shrink" style="font-weight: bold;">&nbsp;&nbsp;I&nbsp;&nbsp;</h3>
+                                        <button class="cell shrink" type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor')"><h3 style="font-weight: bold;">Filtres</h3></button>
+                                    </div>
                                 </router-link>
                             </div>
                             <div class="filter-dropdown-container fade-out" :class="{hidden: !(dropdownOpen && degree === 'bachelor')}">
