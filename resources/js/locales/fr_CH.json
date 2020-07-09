@@ -2,7 +2,9 @@
     "filters": {
         "workshop": "ateliers",
         "professor": "professeur-e-s",
-        "site": "sites"
+        "site": "sites",
+        "data-bachelor-2020": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra, nunc sit amet varius accumsan, mi justo consequat nibh, ultrices condimentum nunc felis a justo. Nam lacinia augue magna, varius auctor leo ultrices a. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut congue interdum libero eu aliquet. Integer sed erat tincidunt, dapibus justo a, porttitor justo. Maecenas at est in lorem sodales eleifend sed in lacus. Integer rhoncus justo vitae justo ullamcorper, quis tristique risus mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+        "data-master-2020": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam viverra, nunc sit amet varius accumsan, mi justo consequat nibh, ultrices condimentum nunc felis a justo. Nam lacinia augue magna, varius auctor leo ultrices a. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut congue interdum libero eu aliquet. Integer sed erat tincidunt, dapibus justo a, porttitor justo. Maecenas at est in lorem sodales eleifend sed in lacus. Integer rhoncus justo vitae justo ullamcorper, quis tristique risus mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
     },
 
     "projects": {

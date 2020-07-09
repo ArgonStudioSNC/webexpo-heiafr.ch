@@ -19,7 +19,7 @@
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css">
 </head>
 
-<body style="display: none;">
+<body style="visibility:hidden; overflow:hidden;">
     <main>
         <div id="app">
             <router-view></router-view>

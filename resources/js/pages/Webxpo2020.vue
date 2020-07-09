@@ -69,7 +69,7 @@
             </h1>
             <h1 class="cell grid-container blend">Exposition<br>en ligne</h1>
         </div>
-        <div id="gallery" style="padding-top: 1.2rem;">
+        <div id="gallery">
             <FilterMenuComponent></FilterMenuComponent>
             <ProjectGalleryComponent></ProjectGalleryComponent>
         </div>
@@ -124,7 +124,7 @@ export default {
     methods: {
         videoPopup() {
             if (window.scrollY >= document.getElementById("gallery").offsetTop) {
-                this.showVideo = true;
+                //this.showVideo = true;
                 window.removeEventListener('scroll', this.videoPopup);
             }
         },

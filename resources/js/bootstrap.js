@@ -8,7 +8,8 @@ try {
 
 $(function(){
     $(document).foundation();
-    $('body').css('display', 'block');
+    $('body').css('visibility', 'visible');
+    $('body').css('overflow', 'auto');
 });
 
 /**

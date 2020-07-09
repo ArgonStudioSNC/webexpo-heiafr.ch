@@ -16,6 +16,14 @@
         }
     }
 
+    .lighten {
+        opacity: 1;
+        @include transition(opacity 0.1s ease-out);
+        &-on {
+            opacity: 0.5;
+        }
+    }
+
     button {
         cursor: pointer !important;
         pointer-events: auto !important;
@@ -24,9 +32,9 @@
     }
 
     .filter-dropdown-container {
-        position:absolute;
-        top:100%;
-        right:0;
+        position: absolute;
+        top: 100%;
+        right: 0;
     }
 
     .overlay-background {
@@ -54,45 +62,74 @@
             @include transition(visibility 0s linear 0.3s, opacity 0.1s ease-out);
         }
     }
+
+    .data-text {
+        text-align: left;
+        padding-top: 1.3em;
+
+        overflow-y: scroll;
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
 }
 
 </style>
 
 <template>
     <div id="filter-menu" class="filter-menu" ref="filter-menu">
-        <div class="overlay-background fade-out" :class="{hidden: !dropdownOpen}" @click="toggleDropdown(false)"></div>
+        <div class="overlay-background fade-out" :class="{hidden: !tab}" @click="toggleDropdown(false)"></div>
         <div class="overlay-content grid-container text-right blend">
             <div data-sticky-container>
-                <div class="sticky" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="1.2" data-check-every="0">
+                <div class="sticky" ref="headerSection" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="0" data-check-every="0">
+                    <div style="height: 1.2em"></div>
                     <h1>Travaux</h1>
                     <div class="grid-x align-right">
                         <div class="cell shrink" style="position:relative;">
-                            <div class="filter-header" :class="{selected: degree === 'bachelor'}">
+                            <div class="filter-header" :class="{selected: pageDegree === 'bachelor'}">
                                 <router-link :to="{path: '/' + $store.getters.getYear + '/bachelor'}" @click.native="scrollToFilters(300)">
                                     <h1>Bachelor</h1>
                                     <div class="grid-x align-right">
-                                        <button class="cell shrink" type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor')"><h3 style="font-weight: bold;">Donnee</h3></button>
+                                        <button class="cell shrink lighten" :class="{'lighten-on': pageDegree==='bachelor' && tab && tab !== Tabs.Data}" type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor', Tabs.Data)">
+                                            <h3 style="font-weight: bold;">Donnee</h3>
+                                        </button>
                                         <h3 class="cell shrink" style="font-weight: bold;">&nbsp;&nbsp;I&nbsp;&nbsp;</h3>
-                                        <button class="cell shrink" type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor')"><h3 style="font-weight: bold;">Filtres</h3></button>
+                                        <button class="cell shrink lighten" :class="{'lighten-on': pageDegree==='bachelor' && tab && tab !== Tabs.Filters}" type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor', Tabs.Filters)">
+                                            <h3 style="font-weight: bold;">Filtres</h3>
+                                        </button>
                                     </div>
                                 </router-link>
                             </div>
-                            <div class="filter-dropdown-container fade-out" :class="{hidden: !(dropdownOpen && degree === 'bachelor')}">
-                                <FilterDropDownComponent degree='bachelor'></FilterDropDownComponent>
+                            <div class="filter-dropdown-container fade-out" :class="{hidden: !(pageDegree === 'bachelor')}">
+                                <FilterDropDownComponent degree='bachelor' v-show="tab === Tabs.Filters"></FilterDropDownComponent>
+                                <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data">{{ $t('filters.data-bachelor-'+$store.getters.getYear) }}</h3>
                             </div>
                         </div>
                         <div class="cell shrink">
                             <div><h1>&nbsp;I&nbsp;</h1></div>
                         </div>
                         <div class="cell shrink" style="position:relative;">
-                            <div class="filter-header" :class="{selected: degree === 'master'}">
+                            <div class="filter-header" :class="{selected: pageDegree === 'master'}">
                                 <router-link :to= "{path: '/' + $store.getters.getYear + '/master'}" @click.native="scrollToFilters(300)">
                                     <h1>Master</h1>
-                                    <button type="button" @click="scrollToFilters(300, toggleDropdown, 'master')"><h3 style="font-weight: bold;">Filtres</h3></button>
+                                    <div class="grid-x align-right">
+                                        <button class="cell shrink lighten" :class="{'lighten-on': pageDegree==='master' && tab && tab !== Tabs.Data}" type="button" @click="scrollToFilters(300, toggleDropdown, 'master', Tabs.Data)">
+                                            <h3 style="font-weight: bold;">Donnee</h3>
+                                        </button>
+                                        <h3 class="cell shrink" style="font-weight: bold;">&nbsp;&nbsp;I&nbsp;&nbsp;</h3>
+                                        <button class="cell shrink lighten" :class="{'lighten-on': pageDegree==='master' && tab && tab !== Tabs.Filters}" type="button" @click="scrollToFilters(300, toggleDropdown, 'master', Tabs.Filters)">
+                                            <h3 style="font-weight: bold;">Filtres</h3>
+                                        </button>
+                                    </div>
                                 </router-link>
                             </div>
-                            <div class="filter-dropdown-container fade-out" :class="{hidden: !(dropdownOpen && degree === 'master')}">
-                                <FilterDropDownComponent degree='master'></FilterDropDownComponent>
+                            <div class="filter-dropdown-container fade-out" :class="{hidden: !(pageDegree === 'master')}">
+                                <FilterDropDownComponent degree='master' v-show="tab === Tabs.Filters"></FilterDropDownComponent>
+                                <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data">{{ $t('filters.data-master-'+$store.getters.getYear) }}</h3>
                             </div>
                         </div>
                     </div>
@@ -106,6 +143,8 @@
 import FilterDropDownComponent from './DropDown';
 import vueSmoothScroll from 'vue2-smooth-scroll';
 
+const Tabs= Object.freeze({Data: 1, Filters: 2});
+
 export default {
     components: {
         FilterDropDownComponent,
@@ -113,7 +152,10 @@ export default {
 
     data() {
         return {
-            dropdownOpen: false,
+            Tabs,
+            degree: null,
+            tab: null,
+            headerSectionHeight: 0,
         }
     },
 
@@ -121,8 +163,12 @@ export default {
         this.$store.dispatch( 'loadFilters' );
     },
 
+    mounted() {
+        this.headerSectionHeight = this.$refs.headerSection.offsetHeight;
+    },
+
     computed: {
-        degree() {
+        pageDegree() {
             var DEFAULT = 'bachelor';
             if (!this.$route.params.degree) return DEFAULT;
             return this.$route.params.degree;
@@ -130,27 +176,20 @@ export default {
     },
 
     methods: {
-        toggleDropdown(value) {
+        toggleDropdown(degree, tab = null) {
             let _this = this;
-            if (this.dropdownOpen) {
-                switch (value) {
-                    case false:
-                    case this.degree:
-                        close();
-                        break;
-                    default:
-                        open();
-                }
-            } else {
-                if (value !== false) open();
-            }
 
-            function open() {
-                _this.dropdownOpen = true;
+            if (!degree || !tab) close();
+            else if (degree === this.degree && tab === this.tab) {
+                close(); //select an opened tab = close it
+            } else {
+                this.degree = degree; this.tab = tab;
                 //window.addEventListener('scroll', _this.eventHandler, {once: true});
                 window.addEventListener('keydown', _this.eventHandler, {once: true});
             }
+
             function close () {
+                _this.degree = null; _this.tab = null;
                 _this.dropdownOpen = false;
             }
         },
@@ -171,17 +210,18 @@ export default {
 
         scrollToFilters(t, callback = null) {
             var offset = document.getElementById('gallery').offsetTop;
-            var degree = arguments[2];
+            var degree = arguments[2] ? arguments[2] : null;
+            var tab = arguments[3] ? arguments[3] : null;
             if (window.scrollY < offset) {
                 if (typeof callback == 'function') {
                     $('html, body').animate({scrollTop: offset}, t)
                     .promise().then(function() {
-                        callback(degree);
+                        callback(degree, tab);
                     });
                 } else {
                     $('html, body').animate({scrollTop: offset}, t);
                 }
-            } else if (typeof callback == 'function') callback(degree);
+            } else if (typeof callback == 'function') callback(degree, tab);
         },
     },
 }

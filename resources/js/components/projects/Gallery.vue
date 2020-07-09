@@ -42,6 +42,7 @@
     }
 }
 .fixed-close-button {
+    pointer-events: none;
     position: fixed;
     top: 0;
     right: 0;
@@ -49,6 +50,7 @@
 }
 
 .my-close-button {
+    pointer-events: auto;
     height: auto;
     cursor: pointer;
     margin-right: 1rem;
