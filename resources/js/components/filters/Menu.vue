@@ -94,17 +94,17 @@
                                 <router-link :to="{path: '/' + $store.getters.getYear + '/bachelor'}" @click.native="scrollToFilters(300)">
                                     <h1>Bachelor</h1>
                                     <div class="grid-x align-right">
-                                        <button class="cell shrink lighten" :class="{'lighten-on': pageDegree==='bachelor' && tab && tab !== Tabs.Data}" type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor', Tabs.Data)">
+                                        <button class="cell shrink lighten" :class="{'lighten-on': degree==='bachelor' && tab && tab !== Tabs.Data}" type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor', Tabs.Data)">
                                             <h3 style="font-weight: bold;">Donnee</h3>
                                         </button>
                                         <h3 class="cell shrink" style="font-weight: bold;">&nbsp;&nbsp;I&nbsp;&nbsp;</h3>
-                                        <button class="cell shrink lighten" :class="{'lighten-on': pageDegree==='bachelor' && tab && tab !== Tabs.Filters}" type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor', Tabs.Filters)">
+                                        <button class="cell shrink lighten" :class="{'lighten-on': degree==='bachelor' && tab && tab !== Tabs.Filters}" type="button" @click="scrollToFilters(300, toggleDropdown, 'bachelor', Tabs.Filters)">
                                             <h3 style="font-weight: bold;">Filtres</h3>
                                         </button>
                                     </div>
                                 </router-link>
                             </div>
-                            <div class="filter-dropdown-container fade-out" :class="{hidden: !(pageDegree === 'bachelor')}">
+                            <div class="filter-dropdown-container fade-out" :class="{hidden: !(degree === 'bachelor')}">
                                 <FilterDropDownComponent degree='bachelor' v-show="tab === Tabs.Filters"></FilterDropDownComponent>
                                 <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data">{{ $t('filters.data-bachelor-'+$store.getters.getYear) }}</h3>
                             </div>
@@ -117,17 +117,17 @@
                                 <router-link :to= "{path: '/' + $store.getters.getYear + '/master'}" @click.native="scrollToFilters(300)">
                                     <h1>Master</h1>
                                     <div class="grid-x align-right">
-                                        <button class="cell shrink lighten" :class="{'lighten-on': pageDegree==='master' && tab && tab !== Tabs.Data}" type="button" @click="scrollToFilters(300, toggleDropdown, 'master', Tabs.Data)">
+                                        <button class="cell shrink lighten" :class="{'lighten-on': degree==='master' && tab && tab !== Tabs.Data}" type="button" @click="scrollToFilters(300, toggleDropdown, 'master', Tabs.Data)">
                                             <h3 style="font-weight: bold;">Donnee</h3>
                                         </button>
                                         <h3 class="cell shrink" style="font-weight: bold;">&nbsp;&nbsp;I&nbsp;&nbsp;</h3>
-                                        <button class="cell shrink lighten" :class="{'lighten-on': pageDegree==='master' && tab && tab !== Tabs.Filters}" type="button" @click="scrollToFilters(300, toggleDropdown, 'master', Tabs.Filters)">
+                                        <button class="cell shrink lighten" :class="{'lighten-on': degree==='master' && tab && tab !== Tabs.Filters}" type="button" @click="scrollToFilters(300, toggleDropdown, 'master', Tabs.Filters)">
                                             <h3 style="font-weight: bold;">Filtres</h3>
                                         </button>
                                     </div>
                                 </router-link>
                             </div>
-                            <div class="filter-dropdown-container fade-out" :class="{hidden: !(pageDegree === 'master')}">
+                            <div class="filter-dropdown-container fade-out" :class="{hidden: !(degree === 'master')}">
                                 <FilterDropDownComponent degree='master' v-show="tab === Tabs.Filters"></FilterDropDownComponent>
                                 <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data">{{ $t('filters.data-master-'+$store.getters.getYear) }}</h3>
                             </div>
@@ -171,6 +171,7 @@ export default {
         pageDegree() {
             var DEFAULT = 'bachelor';
             if (!this.$route.params.degree) return DEFAULT;
+            this.degree = this.$route.params.degree;
             return this.$route.params.degree;
         },
     },
@@ -179,18 +180,18 @@ export default {
         toggleDropdown(degree, tab = null) {
             let _this = this;
 
-            if (!degree || !tab) close();
+            if (degree == false) close();
             else if (degree === this.degree && tab === this.tab) {
                 close(); //select an opened tab = close it
             } else {
                 this.degree = degree; this.tab = tab;
+
                 //window.addEventListener('scroll', _this.eventHandler, {once: true});
                 window.addEventListener('keydown', _this.eventHandler, {once: true});
             }
 
             function close () {
-                _this.degree = null; _this.tab = null;
-                _this.dropdownOpen = false;
+                _this.tab = null;
             }
         },
 

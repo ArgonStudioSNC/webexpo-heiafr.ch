@@ -17,6 +17,6 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        return view('webxpo');
+        return view('webexpo');
     }
 }
