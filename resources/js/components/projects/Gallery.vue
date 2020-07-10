@@ -11,14 +11,18 @@
         .project-vignette {
             width: 100%;
             position: relative;
-            margin-bottom: 61.19%;
+            padding-bottom: 61.19%;
             >div {
-                object-fit: cover;
                 position: absolute;
                 top: 0;
                 bottom: 0;
                 left: 0;
                 right: 0;
+                img {
+                    height: calc(100% + 1px);
+                    width: 100%;
+                    object-fit: cover;
+                }
             }
         }
 
@@ -81,7 +85,7 @@
                         </div>
                     </div>
                     <h4 style="font-weight:bold;" class="project-label">
-                        <div class="blend">{{ project.student.last_name }}<br>{{ project.student.first_name }}</div>
+                        <div class="blend">{{ normalize(project.student.last_name) }}<br>{{ normalize(project.student.first_name) }}</div>
                     </h4>
                 </a>
             </div>
@@ -151,6 +155,10 @@ export default {
                 path = [pathNodeJS.dirname(path), size, pathNodeJS.basename(path, ext) + size + ext].join('/');
             }
             return path;
+        },
+
+        normalize(string){
+            return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         },
     },
 }

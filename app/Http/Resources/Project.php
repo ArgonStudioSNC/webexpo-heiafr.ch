@@ -24,6 +24,11 @@ class Project extends JsonResource
          $boards    = array_map('basename', Storage::disk('public')->files($base_projects_url.'/boards'));
          $book      = array_map('basename', Storage::disk('public')->files($base_projects_url.'/book'));
 
+         $vignette = $this::cleanArray($vignette, array('jpeg', 'jpg', 'gif', 'png'));
+         $images = $this::cleanArray($images, array('jpeg', 'jpg', 'gif', 'png'));
+         $boards = $this::cleanArray($boards, array('jpeg', 'jpg', 'gif', 'png'));
+         $book = $this::cleanArray($book, array('pdf'));
+
          return [
              'id' => $this->id,
              'degree' => $this->degree,
@@ -42,5 +47,17 @@ class Project extends JsonResource
              'boards_files'   => !empty($boards) ? $boards : null,
              'book_file'     => !empty($book) ? $book[0] : null,
          ];
+     }
+
+     public function cleanArray($files, $extensions) {
+         $cleanArray = [];
+         foreach($files as $file) {
+             list($name, $extension) = explode(".", $file);
+
+             if (in_array($extension, $extensions)) {
+                 $cleanArray[] = $file;
+             }
+         }
+         return $cleanArray;
      }
  }
