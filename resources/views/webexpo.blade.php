@@ -30,7 +30,7 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 
-<body style="visibility:hidden; overflow:hidden;">
+<body style="visibility:hidden; overflow-y:hidden;">
     <main>
         <div id="app">
             <router-view></router-view>

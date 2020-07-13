@@ -9,7 +9,7 @@ try {
 $(function(){
     $(document).foundation();
     $('body').css('visibility', 'visible');
-    $('body').css('overflow', 'auto');
+    $('body').css('overflow-y', 'auto');
 });
 
 /**
@@ -25,9 +25,6 @@ import Vue from 'vue'
 import router from './routes.js'
 import store from './store.js'
 import i18n from './i18n.js'
-
-import vueSmoothScroll from 'vue2-smooth-scroll'
-Vue.use(vueSmoothScroll)
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFilePdf } from '@fortawesome/free-regular-svg-icons'

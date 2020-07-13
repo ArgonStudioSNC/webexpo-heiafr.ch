@@ -65,7 +65,7 @@
         <div class="webexpo-title grid-y align-center text-right">
             <h1 class="cell grid-container blend">HEIA-FR<br>architecture</h1>
             <h1 class="cell bg-color">
-                <div class="grid-container blend"><a href="#gallery" v-smooth-scroll="{ duration: 300, updateHistory: false}">Travaux<br>Bachelor&nbsp;&amp;<br>Master 19I20</a></div>
+                <div class="grid-container blend"><a href="#gallery" data-smooth-scroll data-animation-duration='300' data-animation-easing='swing'>Travaux<br>Bachelor&nbsp;&amp;<br>Master 19I20</a></div>
             </h1>
             <h1 class="cell grid-container blend">Exposition<br>en ligne</h1>
         </div>

@@ -10,6 +10,10 @@
     text-transform: uppercase;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .blend {
     mix-blend-mode: multiply;
 }

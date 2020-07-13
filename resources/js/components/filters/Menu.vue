@@ -141,7 +141,6 @@
 
 <script>
 import FilterDropDownComponent from './DropDown';
-import vueSmoothScroll from 'vue2-smooth-scroll';
 
 const Tabs= Object.freeze({Data: 1, Filters: 2});
 

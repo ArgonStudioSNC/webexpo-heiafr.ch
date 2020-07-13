@@ -65,7 +65,7 @@ h1 {
 
 h3 {
     //3.6
-    font-size : clamp(12px, #{headers-font-size(3, "small")}, 3.6vh);
+    font-size : clamp(11px, #{headers-font-size(3, "small")}, 3.6vh);
     @include breakpoint(medium) {
         font-size : clamp(12px, #{headers-font-size(3, "medium")}, 3.6vh);
     }
