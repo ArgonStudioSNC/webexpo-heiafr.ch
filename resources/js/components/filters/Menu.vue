@@ -85,8 +85,7 @@
         <div class="overlay-background fade-out" :class="{hidden: !tab}" @click="toggleDropdown(false)"></div>
         <div class="overlay-content grid-container text-right blend">
             <div data-sticky-container>
-                <div class="sticky" ref="headerSection" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="0" data-check-every="0">
-                    <div style="height: 1.2em"></div>
+                <div class="sticky" ref="headerSection" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="1.6" data-check-every="0">
                     <h1>Travaux</h1>
                     <div class="grid-x align-right">
                         <div class="cell shrink" style="position:relative;">

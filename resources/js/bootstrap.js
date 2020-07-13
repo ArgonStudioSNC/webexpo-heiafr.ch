@@ -26,6 +26,9 @@ import router from './routes.js'
 import store from './store.js'
 import i18n from './i18n.js'
 
+import VueYoutube from 'vue-youtube'
+Vue.use(VueYoutube)
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFilePdf } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'

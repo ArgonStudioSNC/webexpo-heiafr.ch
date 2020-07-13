@@ -30,6 +30,7 @@
         "vue-i18n": "^8.18.2",
         "vue-router": "^3.3.4",
         "vue-template-compiler": "^2.6.11",
+        "vue-youtube": "^1.4.0",
         "vuex": "^3.5.1",
         "what-input": "^5.2.10"
     }
