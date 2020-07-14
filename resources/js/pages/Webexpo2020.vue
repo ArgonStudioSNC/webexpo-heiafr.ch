@@ -29,28 +29,43 @@
 }
 
 .player-container {
-    $padding: 1.3em;
+    $padding: 1.2em;
 
     position: fixed;
     z-index: 100;
     left: 0;
     bottom: 0;
+
+    width: 100%;
+    padding-top: 56.25%;
     @include breakpoint(medium) {
-        width: calc(min(640px, 64vw) + 2 * #{$padding});
-        height: calc(min(360px, 36vw) + 2 * #{$padding});
-        left: 2em;
-        bottom: 3em;
+        width: min(640px, 60%);
+        padding-top: calc(min(640px, 60%) * 0.5625);
+        left: 3.2em;
+        bottom: 4.2em;
     }
+
+    &>div {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+
     .player-background {
-        height: 100%;
-        width: 100%;
+        position: absolute;
         background-color: $primary-color;
+        display: none;
+        @include breakpoint(medium) {
+            display: block;
+            top: -$padding;
+            bottom: -$padding;
+            right: -$padding;
+            left: -$padding;
+        }
     }
     iframe {
-        padding: 0;
-        @include breakpoint(medium) {
-            padding: $padding;
-        }
         width: 100%;
         height: 100%;
     }
@@ -60,9 +75,14 @@
         height: auto;
         fill: $primary-color;
         position: absolute;
-        right: 0;
+        @include transform(translateY(-105%));
+        right: 0.5rem;
         top: 0;
-        @include transform(translateY(-110%));
+        @include breakpoint(medium) {
+            right: -$padding;
+            top: -$padding;
+        }
+
     }
 }
 </style>
@@ -89,7 +109,7 @@
             </button>
         </div>
         <div class="player-container" v-show="playerShow && playerReady">
-            <youtube :video-id="videoId" :player-vars="playerVars" resize nocookie ref="youtube" @ready="playerReady = true"></youtube>
+            <div><youtube :video-id="videoId" :player-vars="playerVars" nocookie ref="youtube" @ready="playerReady = true"></youtube></div>
         </div>
     </div>
 </template>
