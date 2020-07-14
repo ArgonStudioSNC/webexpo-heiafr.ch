@@ -12,6 +12,9 @@
     }
 
     .project-card {
+        @include breakpoint(small only) {
+            margin-bottom: 1rem;
+        }
         .project-vignette {
             width: 100%;
             position: relative;
