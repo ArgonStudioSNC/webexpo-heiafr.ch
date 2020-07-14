@@ -85,7 +85,8 @@
         <div class="overlay-background fade-out" :class="{hidden: !tab}" @click="toggleDropdown(false)"></div>
         <div class="overlay-content grid-container text-right blend">
             <div data-sticky-container>
-                <div class="sticky" ref="headerSection" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="1.6" data-check-every="0">
+                <div class="sticky" ref="headerSection" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="0" data-check-every="0">
+                    <div style="height: 1.6rem"></div>
                     <h1>Travaux</h1>
                     <div class="grid-x align-right">
                         <div class="cell shrink" style="position:relative;">
@@ -162,7 +163,12 @@ export default {
     },
 
     mounted() {
-        this.headerSectionHeight = this.$refs.headerSection.offsetHeight;
+        this.setHeaderSectionHeight();
+        window.addEventListener('resize', this.setHeaderSectionHeight);
+    },
+
+    destroyed() {
+        window.removeEventListener('resize', this.setHeaderSectionHeight);
     },
 
     computed: {
@@ -221,6 +227,10 @@ export default {
                     $('html, body').animate({scrollTop: offset}, t);
                 }
             } else if (typeof callback == 'function') callback(degree, tab);
+        },
+
+        setHeaderSectionHeight() {
+            this.headerSectionHeight = this.$refs.headerSection.offsetHeight;
         },
     },
 }
