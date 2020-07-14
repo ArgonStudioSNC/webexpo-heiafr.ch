@@ -6,6 +6,7 @@
     position: relative;
 
     .filter-header {
+        margin-bottom: 1rem;
         opacity: 0.5;
         cursor: pointer;
         @include transition(opacity 0.1s ease-out);
@@ -49,8 +50,12 @@
         background-color: $body-background;
     }
     .overlay-content {
-        position: relative;
-        z-index: 15;
+        .sticky {
+            z-index: 15;
+        }
+        .is-stuck {
+            z-index: 15;
+        }
     }
 
     .fade-out {
@@ -65,7 +70,7 @@
 
     .data-text {
         text-align: left;
-        padding-top: 1.3em;
+        padding-top: 1.2em;
 
         overflow-y: scroll;
         /* Hide scrollbar for IE, Edge and Firefox */
@@ -83,9 +88,9 @@
 <template>
     <div id="filter-menu" class="filter-menu" ref="filter-menu">
         <div class="overlay-background fade-out" :class="{hidden: !tab}" @click="toggleDropdown(false)"></div>
-        <div class="overlay-content grid-container text-right blend">
+        <div class="overlay-content grid-container text-right">
             <div data-sticky-container>
-                <div class="sticky" ref="headerSection" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="0" data-check-every="0">
+                <div class="sticky blend" ref="headerSection" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="0" data-check-every="0">
                     <div style="height: 1.6rem"></div>
                     <h1>Travaux</h1>
                     <div class="grid-x align-right">

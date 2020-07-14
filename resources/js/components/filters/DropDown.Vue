@@ -2,7 +2,7 @@
 @import '~@/abstracts/settings';
 
 .filter-category {
-    margin-top: 1.3em;
+    margin-top: 1.2em;
     padding-bottom: 0.2em;
 }
 </style>

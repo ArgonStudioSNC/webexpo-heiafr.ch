@@ -82,6 +82,7 @@ h3 {
 
 .footer {
     //background-color: $secondary-color;
+    margin-bottom: 1rem;
     .copyright {
         font-size: 12px;
         line-height: normal;
@@ -129,7 +130,7 @@ h3 {
         <router-view></router-view>
         <footer class="footer">
             <div class="grid-container blend">
-                <div class="grid-y grid-margin-y" style="min-height: 3rem;">
+                <div class="grid-y" style="min-height: 3rem;">
                     <div class="cell auto"></div>
                     <div class="cell shrink">
                         <div class="copyright"><span>&copy {{date}} | Proudly made by</span>&nbsp;<a href='https://argonstudio.ch/' target='_blank' title="Argon Studio snc">Argon</a></div>
