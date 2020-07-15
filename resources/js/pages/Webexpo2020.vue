@@ -29,7 +29,7 @@
 }
 
 .player-container {
-    $padding: 1.2em;
+    $padding: 1.3em;
 
     position: fixed;
     z-index: 100;
@@ -39,8 +39,8 @@
     width: 100%;
     padding-top: 56.25%;
     @include breakpoint(medium) {
-        width: min(640px, 60%);
-        padding-top: calc(min(640px, 60%) * 0.5625);
+        width: clamp(200px, 50%, 640px);
+        padding-top: calc(clamp(200px, 50%, 640px) * 0.5625);
         left: 3.2em;
         bottom: 4.2em;
     }
@@ -159,13 +159,8 @@ export default {
         videoPopup() {
             if (window.scrollY >= document.getElementById("gallery").offsetTop - 50) {
                 window.removeEventListener('scroll', this.videoPopup);
-                this.playVideo();
+                this.playerShow = true;
             }
-        },
-
-        async playVideo() {
-            await this.player.playVideo();
-            this.playerShow = true;
         },
 
         closePlayer() {

@@ -75,8 +75,8 @@
             <div class="grid-container">
                 <div class="grid-y align-center">
                     <div class="cell">
-                        <div class="student-portrait blend">
-                            <img :src="studentSrc(project.student)" alt="Photo de l'étudiant">
+                        <div class="student-portrait">
+                            <img class="blend" :src="studentSrc(project.student)" alt="Photo de l'étudiant">
                         </div>
                     </div>
                     <div class="cell project-meta blend">
