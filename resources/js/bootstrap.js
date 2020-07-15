@@ -8,8 +8,6 @@ try {
 
 $(function(){
     $(document).foundation();
-    $('body').css('visibility', 'visible');
-    $('body').css('overflow-y', 'auto');
 });
 
 /**

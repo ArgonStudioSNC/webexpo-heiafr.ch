@@ -147,6 +147,17 @@ export default {
         date() {
             return new Date().getFullYear();
         }
-    }
+    },
+
+    mounted() {
+        this.showBody();
+    },
+
+    methods: {
+        showBody() {
+            $('body').css('visibility', 'visible');
+            $('body').css('overflow-y', 'auto');
+        },
+    },
 }
 </script>
