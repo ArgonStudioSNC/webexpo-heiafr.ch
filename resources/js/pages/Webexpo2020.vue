@@ -39,14 +39,18 @@
     width: 100%;
     padding-top: 56.25%;
     @include breakpoint(medium) {
-        left: 3.2em;
-        bottom: 4.2em;
+        left: 2em;
+        bottom: 2em;
         width: 360px;
         padding-top: calc(360px * 0.5625);
     }
     @include breakpoint(large) {
-        width: 560px;
-        padding-top: calc(560px * 0.5625);
+        width: 520px;
+        padding-top: calc(520px * 0.5625);
+    }
+    @include breakpoint(xlarge) {
+        left: 3.2em;
+        bottom: 4.2em;
     }
     @include breakpoint(xxlarge) {
         width: 640px;
