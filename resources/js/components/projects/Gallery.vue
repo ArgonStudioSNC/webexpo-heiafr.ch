@@ -6,9 +6,9 @@
     text-align: right;
     margin-top: 4rem;
 
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
     @include breakpoint(large) {
-        padding-bottom: 4rem;
+        padding-bottom: 8rem;
     }
 
     .project-card {

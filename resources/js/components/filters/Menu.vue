@@ -6,7 +6,10 @@
     position: relative;
 
     .filter-header {
-        margin-bottom: 1rem;
+        margin-bottom: 0.25rem;
+        @include breakpoint(large) {
+            margin-bottom: 1rem;
+        }
         opacity: 0.5;
         cursor: pointer;
         @include transition(opacity 0.1s ease-out);

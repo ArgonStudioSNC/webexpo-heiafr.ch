@@ -46,52 +46,65 @@
     @return calc((#{$width-ratio} / 100) * min(calc(#{$global-width} - #{$pad}), calc(100vw - #{$pad})));
 }
 
-h1 {
-    //12
-    font-size : clamp(25px, #{headers-font-size(9.1, "small")}, 12vh);
-    @include breakpoint(medium) {
-        font-size : clamp(25px, #{headers-font-size(9.1, "medium")}, 12vh);
+// responsive font size for modern browsers
+@supports (width: min(10px, 5vw)) {
+    h1 {
+        font-size : max(27px, min(#{headers-font-size(9.1, "small")}, 12vh));
+        @include breakpoint(medium) {
+            font-size : max(27px, min(#{headers-font-size(9.1, "medium")}, 12vh));
+        }
+        @include breakpoint(large) {
+            font-size : max(40px, min(#{headers-font-size(9.1, "large")}, 12vh));
+        }
+        @include breakpoint(xlarge) {
+            font-size : max(50px, min(#{headers-font-size(9.1, "xlarge")}, 12vh));
+        }
+        @include breakpoint(xxlarge) {
+            font-size : max(60px, min(#{headers-font-size(9.1, "xxlarge")}, 12vh));
+        }
     }
-    @include breakpoint(large) {
-        font-size : clamp(40px, #{headers-font-size(9.1, "large")}, 12vh);
-    }
-    @include breakpoint(xlarge) {
-        font-size : clamp(50px, #{headers-font-size(9.1, "xlarge")}, 12vh);
-    }
-    @include breakpoint(xxlarge) {
-        font-size : clamp(60px, #{headers-font-size(9.1, "xxlarge")}, 12vh);
-    }
-}
 
-h3 {
-    //3.6
-    font-size : clamp(11px, #{headers-font-size(3, "small")}, 3.6vh);
-    @include breakpoint(medium) {
-        font-size : clamp(12px, #{headers-font-size(3, "medium")}, 3.6vh);
-    }
-    @include breakpoint(large) {
-        font-size : clamp(12px, #{headers-font-size(3, "large")}, 3.6vh);
-    }
-    @include breakpoint(xlarge) {
-        font-size : clamp(15px, #{headers-font-size(3, "xlarge")}, 3.6vh);
-    }
-    @include breakpoint(xxlarge) {
-        font-size : clamp(18px, #{headers-font-size(3, "xxlarge")}, 3.6vh);
+    h3 {
+        font-size : max(11px, min(#{headers-font-size(3, "small")}, 3.6vh));
+        @include breakpoint(medium) {
+            font-size : max(12px, min(#{headers-font-size(3, "medium")}, 3.6vh));
+        }
+        @include breakpoint(large) {
+            font-size : max(12px, min(#{headers-font-size(3, "large")}, 3.6vh));
+        }
+        @include breakpoint(xlarge) {
+            font-size : max(15px, min(#{headers-font-size(3, "xlarge")}, 3.6vh));
+        }
+        @include breakpoint(xxlarge) {
+            font-size : max(18px, min(#{headers-font-size(3, "xxlarge")}, 3.6vh));
+        }
     }
 }
 
 .footer {
-    //background-color: $secondary-color;
-    margin-bottom: 1rem;
+    background-color: $secondary-color;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    line-height: normal;
+    text-align: center;
+    font-size: 12px;
+    @include breakpoint(medium) {
+        font-size: 14px;
+    }
+    @include breakpoint(large) {
+        font-size: 16px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+    .links {
+        margin-bottom: 1.5em;
+    }
     .copyright {
         font-size: 12px;
-        line-height: normal;
-        text-align: center;
         span {
             opacity: 0.6;
-        }
-        a:hover {
-            text-decoration: underline;
         }
     }
 }
@@ -130,8 +143,16 @@ h3 {
         <router-view></router-view>
         <footer class="footer">
             <div class="grid-container blend">
-                <div class="grid-y" style="min-height: 3rem;">
-                    <div class="cell auto"></div>
+                <div class="grid-y">
+                    <div class="cell">
+                        <div class="links">
+                            liens vers :
+                            <div><a href="https://www.heia-fr.ch/fr/formation/bachelor/architecture/" target="_blank">le site de la filière d'architecture bachelor de la HEIA-FR</a></div>
+                            <div><a href="http://www.jointmaster.ch/" target="_blank">le site internet du joint master of architecture</a></div>
+                            <div><a href="https://www.heia-fr.ch/" target="_blank">le site internet de la HEIA-FR</a></div>
+                            <div><a href="https://www.hes-so.ch/" target="_blank">le site internet de la HES-SO</a></div>
+                        </div>
+                    </div>
                     <div class="cell shrink">
                         <div class="copyright"><span>&copy {{date}} | Proudly made by</span>&nbsp;<a href='https://argonstudio.ch/' target='_blank' title="Argon Studio snc">Argon</a></div>
                     </div>

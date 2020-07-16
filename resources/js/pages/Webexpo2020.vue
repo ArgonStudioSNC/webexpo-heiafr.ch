@@ -29,7 +29,7 @@
 }
 
 .player-container {
-    $padding: 1.3em;
+    $padding: 1.2em;
 
     position: fixed;
     z-index: 100;
@@ -39,10 +39,18 @@
     width: 100%;
     padding-top: 56.25%;
     @include breakpoint(medium) {
-        width: clamp(200px, 50%, 640px);
-        padding-top: calc(clamp(200px, 50%, 640px) * 0.5625);
         left: 3.2em;
         bottom: 4.2em;
+        width: 360px;
+        padding-top: calc(360px * 0.5625);
+    }
+    @include breakpoint(large) {
+        width: 560px;
+        padding-top: calc(560px * 0.5625);
+    }
+    @include breakpoint(xxlarge) {
+        width: 640px;
+        padding-top: calc(640px * 0.5625);
     }
 
     &>div {
