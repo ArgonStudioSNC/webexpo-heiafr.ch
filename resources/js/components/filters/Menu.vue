@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="filter-dropdown-container fade-out" :class="{hidden: !(degree === 'bachelor')}">
                                     <FilterDropDownComponent degree='bachelor' v-show="tab === Tabs.Filters"></FilterDropDownComponent>
-                                    <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data">{{ $t('filters.data-bachelor-'+$store.getters.getYear) }}</h3>
+                                    <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data"><span v-html="$t('filters.data-bachelor-'+$store.getters.getYear)"></span></h3>
                                 </div>
                             </div>
                             <div class="cell shrink">
@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="filter-dropdown-container fade-out" :class="{hidden: !(degree === 'master')}">
                                     <FilterDropDownComponent degree='master' v-show="tab === Tabs.Filters"></FilterDropDownComponent>
-                                    <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data">{{ $t('filters.data-master-'+$store.getters.getYear) }}</h3>
+                                    <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data"><span v-html="$t('filters.data-master-'+$store.getters.getYear)"></span></h3>
                                 </div>
                             </div>
                         </div>

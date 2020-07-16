@@ -48,9 +48,9 @@
 
 h1 {
     //12
-    font-size : clamp(27px, #{headers-font-size(9.1, "small")}, 12vh);
+    font-size : clamp(25px, #{headers-font-size(9.1, "small")}, 12vh);
     @include breakpoint(medium) {
-        font-size : clamp(27px, #{headers-font-size(9.1, "medium")}, 12vh);
+        font-size : clamp(25px, #{headers-font-size(9.1, "medium")}, 12vh);
     }
     @include breakpoint(large) {
         font-size : clamp(40px, #{headers-font-size(9.1, "large")}, 12vh);
