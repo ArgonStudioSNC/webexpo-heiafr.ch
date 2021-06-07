@@ -1,6 +1,6 @@
 <style lang="scss">
-@import '~@/abstracts/settings';
-@import '~@/abstracts/mixins';
+@import '@sass/abstracts/settings';
+@import '@sass/abstracts/mixins';
 .webexpo-2020 {
     .webexpo-title {
         min-height: calc(100vh - 3.7em);

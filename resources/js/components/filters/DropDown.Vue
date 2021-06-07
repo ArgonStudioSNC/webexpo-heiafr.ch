@@ -1,5 +1,5 @@
 <style lang="scss">
-@import '~@/abstracts/settings';
+@import '@sass/abstracts/settings';
 
 .filter-category {
     margin-top: 1.2em;

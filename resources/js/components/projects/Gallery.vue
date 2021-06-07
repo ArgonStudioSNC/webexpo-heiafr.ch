@@ -1,6 +1,6 @@
 <style lang="scss">
-@import '~@/abstracts/settings';
-@import '~@/abstracts/mixins';
+@import '@sass/abstracts/settings';
+@import '@sass/abstracts/mixins';
 
 .project-gallery {
     text-align: right;

@@ -1,5 +1,5 @@
 <style lang="scss">
-@import '~@/abstracts/settings';
+@import '@sass/abstracts/settings';
 @import "/storage/fonts/TeXGyreHeros/_TeXGyreHeros.css";
 @import "/storage/fonts/HelveticaNeue/_HelveticaNeue.css";
 

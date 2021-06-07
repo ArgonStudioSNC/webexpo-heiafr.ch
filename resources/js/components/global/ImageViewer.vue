@@ -1,5 +1,5 @@
 <style lang="scss">
-@import '~@/abstracts/settings';
+@import '@sass/abstracts/settings';
 
 .image-viewer {
     width: 100%;
