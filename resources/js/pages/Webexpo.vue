@@ -1,7 +1,4 @@
 <style lang="scss">
-@import '@sass/abstracts/settings';
-@import "/storage/fonts/TeXGyreHeros/_TeXGyreHeros.css";
-@import "/storage/fonts/HelveticaNeue/_HelveticaNeue.css";
 
 .webexpo {
     background-color: $body-background;
@@ -29,7 +26,7 @@
                 height: 100%;
             }
             &.jma {
-                height: 70%;
+                height: 60%;
             }
             &.hes-so {
                 height: 50%;
@@ -37,46 +34,6 @@
                     height: 100%;
                 }
             }
-        }
-    }
-}
-
-@function headers-font-size($width-ratio, $mq) {
-    $pad : map-get($grid-container-padding, $mq);
-    @return calc((#{$width-ratio} / 100) * min(calc(#{$global-width} - #{$pad}), calc(100vw - #{$pad})));
-}
-
-// responsive font size for modern browsers
-@supports (width: min(10px, 5vw)) {
-    h1 {
-        font-size : max(27px, min(#{headers-font-size(9.1, "small")}, 12vh));
-        @include breakpoint(medium) {
-            font-size : max(27px, min(#{headers-font-size(9.1, "medium")}, 12vh));
-        }
-        @include breakpoint(large) {
-            font-size : max(40px, min(#{headers-font-size(9.1, "large")}, 12vh));
-        }
-        @include breakpoint(xlarge) {
-            font-size : max(50px, min(#{headers-font-size(9.1, "xlarge")}, 12vh));
-        }
-        @include breakpoint(xxlarge) {
-            font-size : max(60px, min(#{headers-font-size(9.1, "xxlarge")}, 12vh));
-        }
-    }
-
-    h3 {
-        font-size : max(11px, min(#{headers-font-size(3, "small")}, 3.6vh));
-        @include breakpoint(medium) {
-            font-size : max(12px, min(#{headers-font-size(3, "medium")}, 3.6vh));
-        }
-        @include breakpoint(large) {
-            font-size : max(12px, min(#{headers-font-size(3, "large")}, 3.6vh));
-        }
-        @include breakpoint(xlarge) {
-            font-size : max(15px, min(#{headers-font-size(3, "xlarge")}, 3.6vh));
-        }
-        @include breakpoint(xxlarge) {
-            font-size : max(18px, min(#{headers-font-size(3, "xxlarge")}, 3.6vh));
         }
     }
 }
@@ -126,7 +83,7 @@
                     <div class="cell shrink">
                         <div class="img-container jma">
                             <a href="http://www.jointmaster.ch/" target="_blank">
-                                <img src="/storage/media/logo/JMA.svg" alt="joint master of architecture">
+                                <img src="/storage/media/logo/JMA-Logo_standard.svg" alt="joint master of architecture">
                             </a>
                         </div>
                     </div>

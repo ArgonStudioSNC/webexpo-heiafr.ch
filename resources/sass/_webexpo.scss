@@ -1,0 +1,90 @@
+#app {
+    text-transform: uppercase;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.blend {
+    mix-blend-mode: multiply;
+}
+
+:focus {outline:none!important;}
+
+// responsive font size for modern browsers
+@function headers-font-size($width-ratio, $mq) {
+    $pad : map-get($grid-container-padding, $mq);
+    @return calc((#{$width-ratio} / 100) * min(calc(#{$global-width} - #{$pad}), calc(100vw - #{$pad})));
+}
+@supports (width: min(10px, 5vw)) {
+    h1 {
+        font-size : max(27px, min(#{headers-font-size(9.1, "small")}, 12vh));
+        @include breakpoint(medium) {
+            font-size : max(27px, min(#{headers-font-size(9.1, "medium")}, 12vh));
+        }
+        @include breakpoint(large) {
+            font-size : max(40px, min(#{headers-font-size(9.1, "large")}, 12vh));
+        }
+        @include breakpoint(xlarge) {
+            font-size : max(50px, min(#{headers-font-size(9.1, "xlarge")}, 12vh));
+        }
+        @include breakpoint(xxlarge) {
+            font-size : max(60px, min(#{headers-font-size(9.1, "xxlarge")}, 12vh));
+        }
+    }
+
+    h3 {
+        font-size : max(11px, min(#{headers-font-size(3, "small")}, 3.6vh));
+        @include breakpoint(medium) {
+            font-size : max(12px, min(#{headers-font-size(3, "medium")}, 3.6vh));
+        }
+        @include breakpoint(large) {
+            font-size : max(12px, min(#{headers-font-size(3, "large")}, 3.6vh));
+        }
+        @include breakpoint(xlarge) {
+            font-size : max(15px, min(#{headers-font-size(3, "xlarge")}, 3.6vh));
+        }
+        @include breakpoint(xxlarge) {
+            font-size : max(18px, min(#{headers-font-size(3, "xxlarge")}, 3.6vh));
+        }
+    }
+}
+
+.theme-2021 {
+    color: get-color(blue21);
+    a {
+        color: get-color(blue21);
+    }
+    .footer {
+        background-color: get-color(red21);
+    }
+    .image-viewer .lds-facebook div {
+        background: get-color(blue21);
+    }
+    .my-close-button .times {
+        fill: get-color(blue21);
+    }
+    .filter-button .filter-button-checkbox .times {
+        fill: get-color(blue21);
+    }
+
+    .project-gallery {
+        .project-card {
+            &:hover {
+                .project-vignette {
+                    opacity: 0.08;
+                }
+                .project-label-over {
+                    opacity: 1;
+                }
+            }
+            .project-vignette {
+                padding-bottom: 69.25%;
+            }
+            .project-label-under {
+                display: none;
+            }
+        }
+    }
+}

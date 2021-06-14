@@ -1,6 +1,5 @@
 <style lang="scss">
-@import '@sass/abstracts/settings';
-@import '@sass/abstracts/mixins';
+@import '~@sass/_mixins';
 
 .filter-menu {
     position: relative;

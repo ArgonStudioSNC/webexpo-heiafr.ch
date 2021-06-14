@@ -1,58 +1,16 @@
-// Fonts
-@import 'abstracts/meyers-reset';
-@import 'abstracts/mixins';
-@import 'abstracts/settings';
+// FONTS
+@import '/storage/fonts/TeXGyreHeros/_TeXGyreHeros.css';
+@import '/storage/fonts/HelveticaNeue/_HelveticaNeue.css';
 
-// Foundation sites
-@import 'node_modules/foundation-sites/assets/foundation.scss';
+// CSS NORMALIZE
+@import 'node_modules/normalize.css/normalize';
 
-#app {
-    text-transform: uppercase;
-}
+// MIXINS
+@import 'mixins';
 
-body {
-    overflow-x: hidden;
-}
+// FONDATION SITES
+@import 'settings';
+@import 'node_modules/foundation-sites/assets/foundation';
 
-.blend {
-    mix-blend-mode: multiply;
-}
-
-:focus {outline:none!important;}
-
-.lds-facebook {
-    display: inline-block;
-    position: relative;
-    width: 70px;
-    height: 100px;
-}
-.lds-facebook div {
-    display: inline-block;
-    position: absolute;
-    left: 10px;
-    width: 10px;
-    background: $primary-color;
-    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
-}
-.lds-facebook div:nth-child(1) {
-    left: 10px;
-    animation-delay: -0.24s;
-}
-.lds-facebook div:nth-child(2) {
-    left: 30px;
-    animation-delay: -0.12s;
-}
-.lds-facebook div:nth-child(3) {
-    left: 50px;
-    animation-delay: 0;
-}
-@keyframes lds-facebook {
-    0% {
-        top: 5px;
-        height: 90px;
-    }
-    50%, 100% {
-        top: 30px;
-        height: 40px;
-    }
-}
+// STYLESHEETS
+@import 'webexpo';

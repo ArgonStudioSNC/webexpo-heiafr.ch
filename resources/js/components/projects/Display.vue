@@ -1,5 +1,4 @@
 <style lang="scss">
-@import '@sass/abstracts/settings';
 
 .project-display {
     text-transform: uppercase;

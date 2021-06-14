@@ -1,10 +1,15 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Project;
 use App\Models\Student;
+use App\Models\Site;
+use App\Models\Professor;
+use App\Models\Workshop;
 
-class MasterProjects2020Seeder extends Seeder
+class MasterProjects2021Seeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +22,7 @@ class MasterProjects2020Seeder extends Seeder
 
         // Cleaning DB
         $this->command->line('Cleaning the database from old projects...');
-        $projects = Project::where('year', 2020)->where('degree', 'master')->get();
+        $projects = Project::where('year', 2021)->where('degree', 'master')->get();
         foreach ($projects as $project) {
             $student = $project->student()->first();
             $project->delete();
@@ -27,7 +32,7 @@ class MasterProjects2020Seeder extends Seeder
 
         // Loading .csv
         $this->command->line('Loading the csv file...');
-        $csv_path = storage_path('app/seed/master2020.csv');
+        $csv_path = storage_path('app/seed/master2021.csv');
 
         // Reading file
         $file = fopen($csv_path,"r");
@@ -53,19 +58,22 @@ class MasterProjects2020Seeder extends Seeder
         $this->command->line('Filling the database with data...');
 
         foreach ($all_data as $entry) {
-            $student = Student::create([
-                'uuid' => $this->formatUserUUID($entry[0], $entry[1]),
-                'first_name' => $entry[1],
-                'last_name' => $entry[0],
-            ]);
-
-            $site = App\Models\Site::firstWhere('slug', $entry[7]);
-            $professor = App\Models\Professor::firstWhere('slug', $entry[8]);
-            $workshop = App\Models\Workshop::firstWhere('slug', $entry[9]);
+            $uuid = $this->formatUserUUID($entry[0], $entry[1]);
+            $student = Student::where('uuid', $uuid)->first();
+            if (!$student) {
+                $student = Student::create([
+                    'uuid' => $uuid,
+                    'first_name' => $entry[1],
+                    'last_name' => $entry[0],
+                ]);
+            }
+            $site = Site::firstWhere('slug', $entry[7]);
+            $professor = Professor::firstWhere('slug', $entry[8]);
+            $workshop = Workshop::firstWhere('slug', $entry[9]);
 
             $project = Project::create([
                 'degree' => $entry[2],
-                'year' => '2020',
+                'year' => '2021',
                 'student_id' => $student->id,
                 'site_id' => $site ? $site->id : null,
                 'professor_id' => $professor ? $professor->id : null,

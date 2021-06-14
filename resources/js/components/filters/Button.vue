@@ -1,5 +1,4 @@
 <style lang="scss">
-@import '@sass/abstracts/settings';
 
 .filter-button {
     .filter-button-checkbox {

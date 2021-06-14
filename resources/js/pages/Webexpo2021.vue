@@ -18,7 +18,7 @@
                 right: 0;
                 top: 0.083em;
                 bottom: 0.067em;
-                background-color: $secondary-color;
+                background-color: get-color(red21);
             }
         }
     }
@@ -36,7 +36,7 @@
         <div class="webexpo-title grid-y align-center text-right">
             <h1 class="cell grid-container blend">HEIA-FR<br>architecture</h1>
             <h1 class="cell bg-color">
-                <div class="grid-container blend"><a href="#gallery" data-smooth-scroll data-animation-duration='300' data-animation-easing='swing' data-offset="-25.6">Travaux<br>Bachelor&nbsp;&amp;<br>Master 19I20</a></div>
+                <div class="grid-container blend"><a href="#gallery" data-smooth-scroll data-animation-duration='300' data-animation-easing='swing' data-offset="-25.6">Travaux<br>Bachelor&nbsp;&amp;<br>Master 20I21</a></div>
             </h1>
             <h1 class="cell grid-container blend">Exposition<br>en ligne</h1>
         </div>
@@ -45,14 +45,12 @@
             <ProjectGalleryComponent></ProjectGalleryComponent>
         </div>
         <FooterComponent></FooterComponent>
-        <YoutubePopupComponent></YoutubePopupComponent>
     </div>
 </template>
 
 <script>
 import HeaderComponent from '@js/components/global/Header';
 import FooterComponent from '@js/components/global/Footer';
-import YoutubePopupComponent from '@js/components/global/YoutubePopup';
 import FilterMenuComponent from '@js/components/filters/Menu';
 import ProjectGalleryComponent from '@js/components/projects/Gallery';
 
@@ -60,7 +58,6 @@ export default {
     components: {
         HeaderComponent,
         FooterComponent,
-        YoutubePopupComponent,
         FilterMenuComponent,
         ProjectGalleryComponent,
     },
@@ -73,7 +70,8 @@ export default {
     },
 
     created() {
-        this.$store.dispatch( 'loadProjects', 2020);
+        this.$store.dispatch( 'loadProjects', 2021);
+        $('body').addClass('theme-2021');
     },
 
     mounted() {

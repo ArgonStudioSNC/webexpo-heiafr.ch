@@ -1,5 +1,4 @@
 <style lang="scss">
-@import '@sass/abstracts/settings';
 
 .filter-category {
     margin-top: 1.2em;

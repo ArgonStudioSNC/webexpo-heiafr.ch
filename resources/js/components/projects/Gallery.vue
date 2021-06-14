@@ -1,6 +1,5 @@
 <style lang="scss">
-@import '@sass/abstracts/settings';
-@import '@sass/abstracts/mixins';
+@import '~@sass/_mixins';
 
 .project-gallery {
     text-align: right;
@@ -12,6 +11,7 @@
     }
 
     .project-card {
+        position: relative;
         @include breakpoint(small only) {
             margin-bottom: 1rem;
         }
@@ -19,6 +19,8 @@
             width: 100%;
             position: relative;
             padding-bottom: 61.19%;
+            opacity: 1;
+            @include transition(opacity 0.1s ease-out);
             >div {
                 position: absolute;
                 top: 0;
@@ -26,19 +28,18 @@
                 left: 0;
                 right: 0;
                 img {
-                    height: calc(100% + 1px);
+                    height: calc(100%);
                     width: 100%;
                     object-fit: cover;
                 }
             }
         }
 
-        .project-label {
+        .project-label-under {
             position: relative;
             z-index: 1;
             margin-top: -0.15em;
             margin-bottom: -0.125em;
-
             &::before{
                 content: '';
                 position: absolute;
@@ -49,6 +50,21 @@
                 bottom: 0.125em;
                 background-color: $secondary-color;
             }
+        }
+
+        .project-label-over {
+            display: flex;
+            text-transform: none;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            opacity: 0;
+            @include transition(opacity 0.1s ease-out);
         }
     }
 }
@@ -91,9 +107,14 @@
                             <img :src="projectSrc(project, 'vignette/'+project.vignette_file, 'x600')"alt="Vignette du projet">
                         </div>
                     </div>
-                    <h4 style="font-weight:bold;" class="project-label">
-                        <div class="blend">{{ normalize(project.student.last_name) }}<br>{{ normalize(project.student.first_name) }}</div>
-                    </h4>
+                    <div class="project-label">
+                        <h4 style="font-weight:bold;" class="project-label-under">
+                            <div class="blend">{{ normalize(project.student.last_name) }}<br>{{ normalize(project.student.first_name) }}</div>
+                        </h4>
+                        <h3 style="font-weight:bold;" class="project-label-over blend">
+                            {{ normalize(project.student.last_name) }}<br>{{ normalize(project.student.first_name) }}
+                        </h3>
+                    </div>
                 </a>
             </div>
         </div>

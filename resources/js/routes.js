@@ -24,21 +24,20 @@ export default new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '',
-            name: 'webexpo',
-            redirect: {name: 'webexpo-2020'},
-            component: Vue.component( 'webexpo', require( './pages/Webexpo.vue' ) ).default,
-            children: [
-                {
-                    path: '2020/',
-                    name: 'webexpo-2020',
-                    redirect: '2020/bachelor',
-                },
-                {
-                    path: '2020/:degree?',
-                    component: Vue.component( 'webexpo2020', require( './pages/Webexpo2020.vue' ) ).default,
-                },
-            ],
+            path: '/',
+            redirect: '2020/bachelor',
+        },
+        {
+            path: '/:edition',
+            redirect: ':edition/bachelor',
+        },
+        {
+            path: '/2020/:degree',
+            component: Vue.component( 'webexpo2020', require( './pages/Webexpo2020.vue' ) ).default,
+        },
+        {
+            path: '/2021/:degree',
+            component: Vue.component( 'webexpo2021', require( './pages/Webexpo2021.vue' ) ).default,
         },
     ]
 });

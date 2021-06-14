@@ -60,7 +60,7 @@
 //  55. Top Bar
 //  56. Xy Grid
 
-@import '../../../node_modules/foundation-sites/scss/util/util';
+@import '../../node_modules/foundation-sites/scss/util/util';
 
 // 1. Global
 // ---------
@@ -74,6 +74,8 @@ $foundation-palette: (
   success: #3adb76,
   warning: #ffae00,
   alert: #cc4b37,
+  blue21: #2D4F96,
+  red21: #B91A1B,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
