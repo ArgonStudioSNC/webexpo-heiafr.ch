@@ -111,9 +111,9 @@
                         <h4 style="font-weight:bold;" class="project-label-under">
                             <div class="blend">{{ normalize(project.student.last_name) }}<br>{{ normalize(project.student.first_name) }}</div>
                         </h4>
-                        <h3 style="font-weight:bold;" class="project-label-over blend">
+                        <h5 style="font-weight:bold;" class="project-label-over blend">
                             {{ normalize(project.student.last_name) }}<br>{{ normalize(project.student.first_name) }}
-                        </h3>
+                        </h5>
                     </div>
                 </a>
             </div>
@@ -154,6 +154,10 @@ export default {
     },
 
     mounted() {
+        window.addEventListener('scroll', this.cardOpacityOnScroll, {
+            passive: true
+        });
+
         $(this.$refs.projectReveal).on('closed.zf.reveal', x => {
             this.selectedProject = null;
         });
@@ -164,11 +168,14 @@ export default {
         });
     },
 
+    destroyed() {
+        window.removeEventListener('scroll', this.cardOpacityOnScroll);
+    },
+
     computed: {
         projects() {
             var degree = this.$route.params.degree;
             if (degree !== 'bachelor' && degree !== 'master') return null;
-
             let filters = this.$store.getters.getActiveFilters[degree];
             return _.isEmpty(filters) ? this.getProjects(degree) : this.filterProjects(this.getProjects(degree), filters);
         },
@@ -188,6 +195,19 @@ export default {
         normalize(string){
             return string.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         },
+
+        cardOpacityOnScroll() {
+            var middle = window.innerHeight / 2;
+            $('.project-card').each(function(index, el) {
+                var cardY = el.getBoundingClientRect().y;
+                var cardHeight = el.getBoundingClientRect().height;
+                if(cardY < middle && cardY + cardHeight > middle) {
+                    $(el).addClass('mobile-hover');
+                } else {
+                    $(el).removeClass('mobile-hover');
+                }
+            });
+        }
     },
 }
 </script>

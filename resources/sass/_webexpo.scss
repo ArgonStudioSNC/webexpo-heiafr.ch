@@ -69,26 +69,34 @@ body {
         fill: get-color(blue21);
     }
 
-    .project-gallery .project-card .project-label-under::before {
-            background-color: get-color(red21);
+    .project-gallery .project-card {
+        .project-label-under {
+            display: none;
+        }
+        .project-vignette {
+            padding-bottom: 69.25%;
+        }
     }
-    @include breakpoint(medium up) {
-        .project-gallery {
-            .project-card {
-                &:hover {
-                    .project-vignette {
-                        opacity: 0.08;
-                    }
-                    .project-label-over {
-                        opacity: 1;
-                    }
-                }
+
+    .project-gallery .project-card {
+        @include breakpoint(small only) {
+            &.mobile-hover {
                 .project-vignette {
-                    padding-bottom: 69.25%;
+                    opacity: 0.08;
+                }
+                .project-label-over {
+                    opacity: 1;
                 }
             }
-            .project-label-under {
-                display: none;
+        }
+        @include breakpoint(medium up) {
+            &:hover {
+                .project-vignette {
+                    opacity: 0.08;
+                }
+                .project-label-over {
+                    opacity: 1;
+                }
             }
         }
     }
