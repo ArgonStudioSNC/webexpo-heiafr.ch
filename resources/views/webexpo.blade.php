@@ -7,7 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
+    <title>@yield('page-title', __('main.online-exposition').' - '.__('main.heiafr-fullname'))</title>
+    <meta name="description"
+    content="@yield('page-description', __('main.description-home'))">
 
     <!-- Styles -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css">
