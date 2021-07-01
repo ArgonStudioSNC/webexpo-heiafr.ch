@@ -39,5 +39,9 @@ export default new VueRouter({
             path: '/2021/:degree',
             component: Vue.component( 'webexpo2021', require( './pages/Webexpo2021.vue' ) ).default,
         },
+        {
+            path: '*',
+            component: Vue.component( 'not-found', require( './pages/404.vue' ) ).default,
+        },
     ]
 });
