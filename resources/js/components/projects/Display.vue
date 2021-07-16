@@ -67,6 +67,10 @@
     }
 }
 
+.my-download-button {
+    color: $primary-color;
+}
+
 </style>
 
 <template>
@@ -94,9 +98,9 @@
                         </div>
                     </div>
                     <div class="cell project-pdf blend">
-                        <a :href="projectSrc(project, 'book/'+project.book_file)" download>
+                        <button class="my-download-button" v-on:click="openBooks(project, project.books_files)">
                             <font-awesome-icon :icon="['far', 'file-pdf']" size="3x"/>
-                        </a>
+                        </button>
                     </div>
                     <div class="cell project-text blend">
                         <b>{{ project.text }}</b>
@@ -191,6 +195,15 @@ export default {
                 path = [pathNodeJS.dirname(path), size, pathNodeJS.basename(path, ext) + size + ext].join('/');
             }
             return path;
+        },
+
+        openBooks(project, resources) {
+            var a = document.createElement("a");
+            resources.forEach(pdfFile => {
+                a.href = this.projectSrc(project, 'book/'+pdfFile);
+                a.setAttribute("download", pdfFile);
+                a.click();
+            });
         },
     },
 }

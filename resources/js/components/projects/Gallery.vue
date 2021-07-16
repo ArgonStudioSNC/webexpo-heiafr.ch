@@ -79,7 +79,6 @@
 .my-close-button {
     pointer-events: auto;
     height: auto;
-    cursor: pointer;
     margin-right: 1.5rem;
     margin-top: 3rem;
     width: 40px;
@@ -95,6 +94,7 @@
         fill: $primary-color;
     }
 }
+
 </style>
 
 <template>

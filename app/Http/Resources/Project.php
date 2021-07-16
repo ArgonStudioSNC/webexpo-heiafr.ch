@@ -22,12 +22,12 @@ class Project extends JsonResource
          $vignette  = array_map('basename', Storage::disk('public')->files($base_projects_url.'/vignette'));
          $images    = array_map('basename', Storage::disk('public')->files($base_projects_url.'/images'));
          $boards    = array_map('basename', Storage::disk('public')->files($base_projects_url.'/boards'));
-         $book      = array_map('basename', Storage::disk('public')->files($base_projects_url.'/book'));
+         $books      = array_map('basename', Storage::disk('public')->files($base_projects_url.'/book'));
 
          $vignette = $this::cleanArray($vignette, array('jpeg', 'jpg', 'gif', 'png'));
          $images = $this::cleanArray($images, array('jpeg', 'jpg', 'gif', 'png'));
          $boards = $this::cleanArray($boards, array('jpeg', 'jpg', 'gif', 'png'));
-         $book = $this::cleanArray($book, array('pdf'));
+         $books = $this::cleanArray($books, array('pdf'));
 
          return [
              'id' => $this->id,
@@ -45,7 +45,7 @@ class Project extends JsonResource
              'vignette_file' => !empty($vignette) ? $vignette[0] : null,
              'images_files'   => !empty($images) ? $images : null,
              'boards_files'   => !empty($boards) ? $boards : null,
-             'book_file'     => !empty($book) ? $book[0] : null,
+             'books_files'     => !empty($books) ? $books : null,
          ];
      }
 

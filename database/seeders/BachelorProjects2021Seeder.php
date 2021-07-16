@@ -36,7 +36,7 @@ class BachelorProjects2021Seeder extends Seeder
         $file = fopen($csv_path,"r");
         $all_data = array();
         $i = 0;
-        while (($filedata = fgetcsv($file, 1000, ",")) !== FALSE) {
+        while (($filedata = fgetcsv($file, 1000, ";")) !== FALSE) {
             $num = count($filedata );
 
             // Skip first rows
