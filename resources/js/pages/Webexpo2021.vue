@@ -40,7 +40,7 @@
             </h1>
             <h1 class="cell grid-container blend">Exposition<br>en ligne</h1>
         </div>
-        <div id="gallery" v-if="false">
+        <div id="gallery">
             <FilterMenuComponent></FilterMenuComponent>
             <ProjectGalleryComponent></ProjectGalleryComponent>
         </div>
