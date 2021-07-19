@@ -80,7 +80,7 @@
                 <div class="grid-y align-center">
                     <div class="cell">
                         <div class="student-portrait blend">
-                            <img :src="studentSrc(project.student)" alt="Photo de l'étudiant">
+                            <img :src="studentSrc(project.student)" alt="Photo de l'étudiant·e" />
                         </div>
                     </div>
                     <div class="cell project-meta blend">
@@ -184,6 +184,9 @@ export default {
 
     methods: {
         studentSrc(student) {
+            if (!student.portrait_file) {
+                return '/storage/students/placeholder/portrait/placeholder.jpg';
+            }
             return ['/storage/students', student.uuid, 'portrait', student.portrait_file].join('/');
         },
 
