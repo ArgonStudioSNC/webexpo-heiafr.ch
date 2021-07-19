@@ -113,19 +113,17 @@
                     <div class="cell project-images blend">
                         <div v-for="image in project.images_files">
                             <picture>
-                                 <source media="(min-width:1200px)" :srcset="projectSrc(project, 'images/'+image, 'x2400')">
-                                 <source media="(min-width:600px)" :srcset="projectSrc(project, 'images/'+image, 'x1200')">
-                                 <source media="(min-width:0px)" :srcset="projectSrc(project, 'images/'+image, 'x600')">
-                                 <img :src="projectSrc(project, 'images/'+image, 'x2400')" alt="Image d'illustration" data-open="viewerReveal" @click="imageUrl = projectSrc(project, 'images/'+image)">
+                                 <source :srcset="projectSrc(project, 'images/'+image, '@1200')" media="(max-width:1200px)">
+                                 <source :srcset="projectSrc(project, 'images/'+image, '@600')" media="(max-width:600px)">
+                                 <img :src="projectSrc(project, 'images/'+image, '@2400')" alt="Image d'illustration" data-open="viewerReveal" @click="imageUrl = projectSrc(project, 'images/'+image)">
                             </picture>
                         </div>
                     </div>
                     <div class="cell project-boards">
                         <div v-for="board in project.boards_files">
                             <picture>
-                                 <source media="(min-width:600px)" :srcset="projectSrc(project, 'boards/'+board, 'x1200')">
-                                 <source media="(min-width:0px)" :srcset="projectSrc(project, 'boards/'+board, 'x600')">
-                                 <img :src="projectSrc(project, 'boards/'+board, 'x1200')" alt="Planche de dessin" data-open="viewerReveal" @click="imageUrl = projectSrc(project, 'boards/'+board)">
+                                 <source :srcset="projectSrc(project, 'boards/'+board, '@600')" media="(max-width:600px)">
+                                 <img :src="projectSrc(project, 'boards/'+board, '@1200')" alt="Planche de dessin" data-open="viewerReveal" @click="imageUrl = projectSrc(project, 'boards/'+board)">
                             </picture>
                         </div>
                     </div>
@@ -203,7 +201,7 @@ export default {
         openBooks(project, resources) {
             var a = document.createElement("a");
             resources.forEach(pdfFile => {
-                a.href = this.projectSrc(project, 'book/'+pdfFile);
+                a.href = this.projectSrc(project, 'books/'+pdfFile);
                 a.setAttribute("download", pdfFile);
                 a.click();
             });

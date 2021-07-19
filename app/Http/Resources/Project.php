@@ -22,7 +22,7 @@ class Project extends JsonResource
          $vignette  = array_map('basename', Storage::disk('public')->files($base_projects_url.'/vignette'));
          $images    = array_map('basename', Storage::disk('public')->files($base_projects_url.'/images'));
          $boards    = array_map('basename', Storage::disk('public')->files($base_projects_url.'/boards'));
-         $books      = array_map('basename', Storage::disk('public')->files($base_projects_url.'/book'));
+         $books      = array_map('basename', Storage::disk('public')->files($base_projects_url.'/books'));
 
          $vignette = $this::cleanArray($vignette, array('jpeg', 'jpg', 'gif', 'png'));
          $images = $this::cleanArray($images, array('jpeg', 'jpg', 'gif', 'png'));

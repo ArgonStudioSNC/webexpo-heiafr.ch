@@ -104,7 +104,7 @@
                 <a class="cell project-card" v-for="project in projects" :key="project.id" data-open="projectReveal" @click="selectedProject = project">
                     <div class="project-vignette">
                         <div>
-                            <img :src="projectSrc(project, 'vignette/'+project.vignette_file, 'x600')"alt="Vignette du projet">
+                            <img :src="projectSrc(project, 'vignette/'+project.vignette_file, '@600')"alt="Vignette du projet">
                         </div>
                     </div>
                     <div class="project-label">
