@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class Filters2020Seeder extends Seeder
+class Filters2022Seeder extends Seeder
 {
     /**
      * Seeds the database with the filters of the 2020 works.
@@ -15,24 +15,28 @@ class Filters2020Seeder extends Seeder
     public function run()
     {
         DB::table('sites')->upsert([
-            ['slug' => 'fribourg','name' => 'Fribourg',],
-            ['slug' => 'thun','name' => 'Thun',],
-            ['slug' => 'bern','name' => 'Berne',],
+            ['slug' => 'bale','name' => 'Bâle',],
+            ['slug' => 'aarau','name' => 'Aarau',],
         ], ['slug'], ['name']);
 
         DB::table('professors')->upsert([
             ['slug' => 'gotz-menzel','name' => 'Gotz Menzel',],
             ['slug' => 'frederic-frank','name' => 'Frédéric Frank',],
             ['slug' => 'florinel-radu','name' => 'Florinel Radu',],
-            ['slug' => 'eric-tilbury','name' => 'Éric Tilbury',],
+            ['slug' => 'jonathan-parrat','name' => 'Jonathan Parrat',],
             ['slug' => 'hani-buri','name' => 'Hani Buri',],
+            ['slug' => 'francois-esquivie','name' => 'François Esquivié',],
             ['slug' => 'stephanie-bender','name' => 'Stephanie Bender',],
+            ['slug' => 'patricia-guaita','name' => 'Patricia Guaita',],
+            ['slug' => 'tania-zein','name' => 'Tania Zein',],
+            ['slug' => 'raffael-baur','name' => 'Raffael Baur',],
         ], ['slug'], ['name']);
 
         DB::table('workshops')->upsert([
             ['slug' => 'lacroix-chessex','name' => 'Lacroix-Chessex',],
-            ['slug' => 'gloor-buchhofer','name' => 'Gloor-Buchhofer',],
+            ['slug' => 'gloor-petitpierre','name' => 'Gloor-Petitpierre',],
             ['slug' => 'boegli-kramp','name' => 'Boegli-Kramp',],
+            ['slug' => 'bertrand-mohring','name' => 'Bertrand-Möhring',],
         ], ['slug'], ['name']);
     }
 }
