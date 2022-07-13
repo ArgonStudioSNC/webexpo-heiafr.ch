@@ -50,28 +50,9 @@ body {
         }
     }
 }
-
-.theme-2021 {
-    color: get-color(blue21);
-    a {
-        color: get-color(blue21);
-    }
-    .footer {
-        background-color: get-color(red21);
-    }
-    .image-viewer .lds-facebook div {
-        background: get-color(blue21);
-    }
-    .my-download-button {
-        color: get-color(blue21);
-    }
-    .my-close-button .times {
-        fill: get-color(blue21);
-    }
-    .filter-button .filter-button-checkbox .times {
-        fill: get-color(blue21);
-    }
-
+// NEW CARD STYLE
+// ----------------
+.theme-2021, .theme-2022 {
     .project-gallery .project-card {
         .project-label-under {
             display: none;
@@ -80,7 +61,6 @@ body {
             padding-bottom: 69.25%;
         }
     }
-
     .project-gallery .project-card {
         @include breakpoint(small only) {
             &.mobile-hover {
@@ -102,5 +82,57 @@ body {
                 }
             }
         }
+    }
+}
+// THEME theme-2021
+// ----------------
+.theme-2021 {
+    color: get-color(blue21);
+    a {
+        color: get-color(blue21);
+    }
+    .footer {
+        background-color: get-color(red21);
+    }
+    .image-viewer .lds-facebook div {
+        background: get-color(blue21);
+    }
+    .my-download-button {
+        color: get-color(blue21);
+    }
+    .my-close-button .times {
+        fill: get-color(blue21);
+    }
+    .filter-button .filter-button-checkbox .times {
+        fill: get-color(blue21);
+    }
+    .webexpo .webexpo-title .bg-color::before {
+        background-color: get-color(red21);
+    }
+}
+// THEME theme-2022
+// ----------------
+.theme-2022 {
+    color: get-color(brown22);
+    a {
+        color: get-color(brown22);
+    }
+    .footer {
+        background-color: get-color(blue22);
+    }
+    .image-viewer .lds-facebook div {
+        background: get-color(brown22);
+    }
+    .my-download-button {
+        color: get-color(brown22);
+    }
+    .my-close-button .times {
+        fill: get-color(brown22);
+    }
+    .filter-button .filter-button-checkbox .times {
+        fill: get-color(brown22);
+    }
+    .webexpo .webexpo-title .bg-color::before {
+        background-color: get-color(blue22);
     }
 }

@@ -35,11 +35,11 @@
         <div class="webexpo-title grid-y align-center text-right">
             <h1 class="cell grid-container blend">HEIA-FR<br>architecture</h1>
             <h1 class="cell bg-color">
-                <div class="grid-container blend"><a href="#gallery" data-smooth-scroll data-animation-duration='300' data-animation-easing='swing' data-offset="-25.6">Travaux<br>Bachelor&nbsp;&amp;<br>Master 20I21</a></div>
+                <div class="grid-container blend"><a href="#gallery" data-smooth-scroll data-animation-duration='300' data-animation-easing='swing' data-offset="-25.6">Travaux<br>Bachelor&nbsp;&amp;<br>Master 21I22</a></div>
             </h1>
             <h1 class="cell grid-container blend">Exposition<br>en ligne</h1>
         </div>
-        <div id="gallery">
+        <div id="gallery" class="hide">
             <FilterMenuComponent></FilterMenuComponent>
             <ProjectGalleryComponent></ProjectGalleryComponent>
         </div>
@@ -69,8 +69,8 @@ export default {
     },
 
     created() {
-        this.$store.dispatch( 'loadProjects', 2021);
-        $('body').addClass('theme-2021');
+        this.$store.dispatch( 'loadProjects', 2022);
+        $('body').addClass('theme-2022');
     },
 
     mounted() {
