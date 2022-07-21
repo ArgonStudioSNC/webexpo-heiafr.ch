@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,7 @@ Route::namespace('API')->prefix('v1')->group(function () {
     | Method:         GET
     | Description:    Gets all of the projects of the given year
     */
-    Route::get('/projects/{year}', 'ProjectController@index');
+    Route::get('/projects/{year}', [API\ProjectController::class, 'index']);
 
     /*
     |-------------------------------------------------------------------------------
@@ -39,5 +40,5 @@ Route::namespace('API')->prefix('v1')->group(function () {
     | Method:         GET
     | Description:    Gets all of the filters in the application
     */
-    Route::get('/filters', 'FilterController@index');
+    Route::get('/filters', [API\FilterController::class, 'index']);
 });
