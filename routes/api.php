@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::namespace('API')->prefix('v1')->group(function(){
+Route::namespace('API')->prefix('v1')->group(function () {
     /*
     |-------------------------------------------------------------------------------
     | Get All Filters

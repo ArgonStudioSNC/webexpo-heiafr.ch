@@ -49,7 +49,8 @@ class ResizeImages extends Command
         return 0;
     }
 
-    private function resizeProjectsImages($path) {
+    private function resizeProjectsImages($path)
+    {
         $skip = $this->argument('skip');
         $this->info('resizeProjectsImages on folder '.$path.'...');
         $this->newLine();
@@ -57,21 +58,21 @@ class ResizeImages extends Command
             $this->info('we now resize student '.basename($studentDir));
             // BOARDS
             $this->info('we now resize BOARDS...');
-            if (!Storage::exists($studentDir.DIRECTORY_SEPARATOR.'boards')){
+            if (! Storage::exists($studentDir.DIRECTORY_SEPARATOR.'boards')) {
                 $this->error('no boards directory!');
             } else {
-                $this->resize($studentDir.DIRECTORY_SEPARATOR.'boards', [600,1200], true);
+                $this->resize($studentDir.DIRECTORY_SEPARATOR.'boards', [600, 1200], true);
             }
             // IMAGES
             $this->info('we now resize IMAGES...');
-            if (!Storage::exists($studentDir.DIRECTORY_SEPARATOR.'images')){
+            if (! Storage::exists($studentDir.DIRECTORY_SEPARATOR.'images')) {
                 $this->error('no images directory!');
             } else {
-                $this->resize($studentDir.DIRECTORY_SEPARATOR.'images', [600,1200,2400], true);
+                $this->resize($studentDir.DIRECTORY_SEPARATOR.'images', [600, 1200, 2400], true);
             }
             // VIGNETTE
             $this->info('we now resize VIGNETTE...');
-            if (!Storage::exists($studentDir.DIRECTORY_SEPARATOR.'vignette')){
+            if (! Storage::exists($studentDir.DIRECTORY_SEPARATOR.'vignette')) {
                 $this->error('no vignette directory!');
             } else {
                 $this->resize($studentDir.DIRECTORY_SEPARATOR.'vignette', [600], false);
@@ -81,12 +82,13 @@ class ResizeImages extends Command
         $this->newLine();
     }
 
-    private function resizeStudentsPortraits($path) {
+    private function resizeStudentsPortraits($path)
+    {
         $this->info('resizeStudentsPortraits on folder '.$path.'...');
         $this->newLine();
         foreach (Storage::directories($path) as $studentDir) {
             $dirPath = $studentDir.DIRECTORY_SEPARATOR.'portrait';
-            if (!Storage::exists($dirPath)){
+            if (! Storage::exists($dirPath)) {
                 $this->error('no portrait directory!');
             } else {
                 $this->info('we now resize student '.basename($studentDir));
@@ -99,7 +101,7 @@ class ResizeImages extends Command
                     // resizing
                     $image_resize = Image::make($image);
                     if ($image_resize->width() > 600) {
-                        $image_resize->resize(600, null, function ($constraint){
+                        $image_resize->resize(600, null, function ($constraint) {
                             $constraint->aspectRatio();
                             $constraint->upsize();
                         })
@@ -115,7 +117,8 @@ class ResizeImages extends Command
         $this->newLine();
     }
 
-    private function resize($path, $sizes, $lazy) {
+    private function resize($path, $sizes, $lazy)
+    {
         foreach ($sizes as $size) {
             $dirPath = $path.DIRECTORY_SEPARATOR.'@'.$size;
             Storage::makeDirectory($dirPath);
@@ -127,7 +130,7 @@ class ResizeImages extends Command
             $image = Storage::get($file);
             $filename = pathinfo($file, PATHINFO_FILENAME);
             $this->line($filename);
-            if(Storage::size($file) < 100) {
+            if (Storage::size($file) < 100) {
                 $this->line('ignoring placeholder file!');
                 break;
             }
@@ -136,8 +139,8 @@ class ResizeImages extends Command
             $image_resize->backup();
             arsort($sizes);
             foreach ($sizes as $size) {
-                if($image_resize->width() > $size) {
-                    $image_resize->resize($size, null, function ($constraint){
+                if ($image_resize->width() > $size) {
+                    $image_resize->resize($size, null, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     })
@@ -152,8 +155,8 @@ class ResizeImages extends Command
                 }
             }
             // file is bigger than 5MB
-            if(Storage::size($file) > 5242880) {
-                $image_resize->resize(4000, 4000, function ($constraint){
+            if (Storage::size($file) > 5242880) {
+                $image_resize->resize(4000, 4000, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })
