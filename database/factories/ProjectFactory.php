@@ -18,7 +18,7 @@ $factory->define(Project::class, function (Faker $faker) {
         'site_id' => $faker->randomElement($sites),
         'professor_id' => $faker->randomElement($professor),
         'workshop_id' => $faker->randomElement($workshop),
-        'experts' => [$faker->name, $faker->name],
+        'experts' => [$faker->name(), $faker->name()],
         'title' => $faker->words($nb = 5, $asText = true),
         'lead' => $faker->sentence($nbWords = 14, $variableNbWords = true),
         'text' => $faker->text($maxNbChars = 800),
@@ -28,8 +28,8 @@ $factory->define(Project::class, function (Faker $faker) {
 });
 
 $factory->define(Student::class, function (Faker $faker) {
-    $first_name = $faker->firstName;
-    $last_name = $faker->lastName;
+    $first_name = $faker->firstName();
+    $last_name = $faker->lastName();
 
     return [
         'uuid' => $last_name.'-'.$first_name,
