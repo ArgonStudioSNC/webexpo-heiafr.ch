@@ -21,7 +21,7 @@ class Filters2021Seeder extends Seeder
         ], ['slug'], ['name']);
 
         DB::table('professors')->upsert([
-            ['slug' => 'gotz-menzel','name' => 'Gotz Menzel',],
+            ['slug' => 'gotz-menzel','name' => 'Götz Menzel',],
             ['slug' => 'frederic-frank','name' => 'Frédéric Frank',],
             ['slug' => 'florinel-radu','name' => 'Florinel Radu',],
             ['slug' => 'hani-buri','name' => 'Hani Buri',],

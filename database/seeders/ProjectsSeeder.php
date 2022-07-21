@@ -9,28 +9,44 @@ use App\Models\Site;
 use App\Models\Professor;
 use App\Models\Workshop;
 
-class BachelorProjects2021Seeder extends Seeder
+class ProjectsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * run with cmd : SEEDER_YEAR=<year> SEEDER_DEGREE=<degree> php artisan db:seed --class=ProjectsSeeder
      *
      * @return void
      */
     public function run()
     {
+        $seederYear = env('SEEDER_YEAR', null);
+        $seederDegree = env('SEEDER_DEGREE', null);
+
+        if(is_null($seederYear)) {
+            die('Error: Please specify SEEDER_YEAR');
+        }
+        if(is_null($seederDegree)) {
+            die('Error: Please specify SEEDER_DEGREE');
+        }
+
         $this->command->line('Started the seeding!');
 
         // Cleaning DB
         $this->command->line('Cleaning the database from old projects...');
-        $projects = Project::where('year', 2021)->where('degree', 'bachelor')->get();
+        $projects = Project::where('year', $seederYear)->where('degree', $seederDegree)->get();
         foreach ($projects as $project) {
+            $student = $project->student()->first();
             $project->delete();
+            if(!is_null($student)) {
+                $student->delete();
+            }
         }
         $this->command->line('Success!');
 
         // Loading .csv
         $this->command->line('Loading the csv file...');
-        $csv_path = storage_path('app/seed/bachelor2021.csv');
+        $csv_path = storage_path('app/seed/'.$seederDegree.$seederYear.'.csv');
 
         // Reading file
         $file = fopen($csv_path,"r");
@@ -65,13 +81,14 @@ class BachelorProjects2021Seeder extends Seeder
                     'last_name' => $entry[0],
                 ]);
             }
+
             $site = Site::firstWhere('slug', $entry[7]);
             $professor = Professor::firstWhere('slug', $entry[8]);
             $workshop = Workshop::firstWhere('slug', $entry[9]);
 
             $project = Project::create([
                 'degree' => $entry[2],
-                'year' => '2021',
+                'year' => $seederYear,
                 'student_id' => $student->id,
                 'site_id' => $site ? $site->id : null,
                 'professor_id' => $professor ? $professor->id : null,
@@ -91,9 +108,9 @@ class BachelorProjects2021Seeder extends Seeder
     {
         $unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
                                     'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
-                                    'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
+                                    'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'ae', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
                                     'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
-                                    'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'U'=>'UE', 'ü'=>'ue' );
+                                    'ö'=>'oe', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ü'=>'ue' );
 
         $formated_lastname = str_replace(array('-', ' ', '.', '_', '’'), '', strtolower(strtr($lastname, $unwanted_array)));
         $formated_firstname = str_replace(array('-', ' ', '.', '_', '’'), '', strtolower(strtr($firstname, $unwanted_array)));

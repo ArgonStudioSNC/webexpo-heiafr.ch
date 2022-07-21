@@ -43,7 +43,7 @@
                         <div><a href="https://www.hes-so.ch/" target="_blank">le site internet de la HES-SO</a></div>
                         <div v-if="$store.getters.getYear != 2020"><a href="/2020" target="_self">exposition 2020</a></div>
                         <div v-if="$store.getters.getYear != 2021"><a href="/2021" target="_self">exposition 2021</a></div>
-                        <!-- <div v-if="$store.getters.getYear != 2021"><a href="/2021" target="_self">exposition 2021</a></div> -->
+                        <div v-if="$store.getters.getYear != 2022"><a href="/2022" target="_self">exposition 2022</a></div>
                     </div>
                 </div>
                 <div class="cell shrink">

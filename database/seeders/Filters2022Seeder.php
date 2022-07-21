@@ -20,7 +20,7 @@ class Filters2022Seeder extends Seeder
         ], ['slug'], ['name']);
 
         DB::table('professors')->upsert([
-            ['slug' => 'gotz-menzel','name' => 'Gotz Menzel',],
+            ['slug' => 'gotz-menzel','name' => 'Götz Menzel',],
             ['slug' => 'frederic-frank','name' => 'Frédéric Frank',],
             ['slug' => 'florinel-radu','name' => 'Florinel Radu',],
             ['slug' => 'jonathan-parrat','name' => 'Jonathan Parrat',],
@@ -30,6 +30,7 @@ class Filters2022Seeder extends Seeder
             ['slug' => 'patricia-guaita','name' => 'Patricia Guaita',],
             ['slug' => 'tania-zein','name' => 'Tania Zein',],
             ['slug' => 'raffael-baur','name' => 'Raffael Baur',],
+            ['slug' => 'serena-vanbutsele','name' => 'Séréna Vanbutsele',],
         ], ['slug'], ['name']);
 
         DB::table('workshops')->upsert([

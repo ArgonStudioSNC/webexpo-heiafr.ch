@@ -35,26 +35,22 @@
         &-images{
             margin-right: auto;
             margin-left: auto;
-            &>div {
-                padding-top: 2rem;
-                padding-bottom: 4rem;
-                @include breakpoint(xlarge) {
-                    padding-top: 8rem;
-                    padding-bottom: 16rem;
-                }
+            padding-top: 2rem;
+            padding-bottom: 4rem;
+            @include breakpoint(xlarge) {
+                padding-top: 8rem;
+                padding-bottom: 16rem;
             }
         }
         &-boards{
             max-width: 700px;
             margin-right: auto;
             margin-left: auto;
-            &>div {
-                padding-top: 2rem;
-                padding-bottom: 2rem;
-                @include breakpoint(xlarge) {
-                    padding-top: 8rem;
-                    padding-bottom: 8rem;
-                }
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            @include breakpoint(xlarge) {
+                padding-top: 8rem;
+                padding-bottom: 8rem;
             }
         }
     }
@@ -108,24 +104,27 @@
                 </div>
             </div>
             <div class="grid-container" :class="{'full': mq === 'small'}">
-                <div class="grid-y align-center">
-
-                    <div class="cell project-images blend">
-                        <div v-for="image in project.images_files">
-                            <picture>
-                                 <source :srcset="projectSrc(project, 'images/'+image, '@1200')" media="(max-width:1200px)">
-                                 <source :srcset="projectSrc(project, 'images/'+image, '@600')" media="(max-width:600px)">
-                                 <img :src="projectSrc(project, 'images/'+image, '@2400')" alt="Image d'illustration" data-open="viewerReveal" @click="imageUrl = projectSrc(project, 'images/'+image)">
-                            </picture>
-                        </div>
+                <div class="grid-y text-center">
+                    <div class="cell project-images blend" v-for="image in project.images_files">
+                        <img :srcset="`${projectSrc(project, 'images/'+image, '@600')} 600w,
+                        ${projectSrc(project, 'images/'+image, '@1200')} 1200w,
+                        ${projectSrc(project, 'images/'+image, '@2400')} 2400w`"
+                        sizes="(max-width: 600px) 600px,
+                        (max-width: 1200px) 1200px,
+                        (max-width: 2400px) 2400px"
+                        :src="projectSrc(project, 'images/'+image)"
+                        alt="Image d'illustration"
+                        data-open="viewerReveal"
+                        @click="imageUrl = projectSrc(project, 'images/'+image)" />
                     </div>
-                    <div class="cell project-boards">
-                        <div v-for="board in project.boards_files">
-                            <picture>
-                                 <source :srcset="projectSrc(project, 'boards/'+board, '@600')" media="(max-width:600px)">
-                                 <img :src="projectSrc(project, 'boards/'+board, '@1200')" alt="Planche de dessin" data-open="viewerReveal" @click="imageUrl = projectSrc(project, 'boards/'+board)">
-                            </picture>
-                        </div>
+                    <div class="cell project-boards" v-for="board in project.boards_files">
+                        <img :srcset="`${projectSrc(project, 'boards/'+board, '@600')} 600w, ${projectSrc(project, 'boards/'+board, '@1200')} 1200w`"
+                        sizes="(max-width: 600px) 600px,
+                        (max-width: 1200px) 1200px"
+                        :src="projectSrc(project, 'boards/'+board)"
+                        alt="Planche de dessin"
+                        data-open="viewerReveal"
+                        @click="imageUrl = projectSrc(project, 'boards/'+board)" />
                     </div>
                 </div>
             </div>
@@ -134,7 +133,7 @@
             <ImageViewerComponent :url="imageUrl"></ImageViewerComponent>
             <div class="fixed-close-button blend">
                 <div class="grid-x align-right">
-                    <div class="cell shrink"
+                    <div class="cell shrink">
                         <button class="my-close-button little" data-close="viewerReveal" aria-label="Fermer le viewer" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.32 61.32">
                                 <g><path class="times" d="M0,4.3,4.3,0,30.66,26.36,57,0l4.3,4.3L35,30.66,61.32,57,57,61.32,30.66,35,4.3,61.32,0,57,26.36,30.66Z"/></g>
