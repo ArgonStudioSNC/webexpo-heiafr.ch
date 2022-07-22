@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::namespace('API')->prefix('v1')->group(function(){
+Route::namespace('API')->prefix('v1')->group(function () {
     /*
     |-------------------------------------------------------------------------------
     | Get All Filters
@@ -28,7 +29,7 @@ Route::namespace('API')->prefix('v1')->group(function(){
     | Method:         GET
     | Description:    Gets all of the projects of the given year
     */
-    Route::get('/projects/{year}', 'ProjectController@index');
+    Route::get('/projects/{year}', [API\ProjectController::class, 'index']);
 
     /*
     |-------------------------------------------------------------------------------
@@ -39,5 +40,5 @@ Route::namespace('API')->prefix('v1')->group(function(){
     | Method:         GET
     | Description:    Gets all of the filters in the application
     */
-    Route::get('/filters', 'FilterController@index');
+    Route::get('/filters', [API\FilterController::class, 'index']);
 });

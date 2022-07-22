@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 use App\Http\Resources\Project as ProjectResource;
 use App\Models\Project;
 
 class ProjectController extends Controller
 {
     /**
-    * Create a new controller instance.
-    *
-    * @return void
-    */
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
     }
@@ -28,7 +26,8 @@ class ProjectController extends Controller
     | Method:         GET
     | Description:    Gets all of the projects of the given year
     */
-    public function index($year){
+    public function index($year)
+    {
         return ProjectResource::collection(Project::where('year', $year)->get()->sortBy('student.last_name'));
     }
     //

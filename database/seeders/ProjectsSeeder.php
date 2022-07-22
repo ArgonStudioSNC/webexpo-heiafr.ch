@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\Project;
-use App\Models\Student;
-use App\Models\Site;
 use App\Models\Professor;
+use App\Models\Project;
+use App\Models\Site;
+use App\Models\Student;
 use App\Models\Workshop;
+use Illuminate\Database\Seeder;
 
 class ProjectsSeeder extends Seeder
 {
@@ -23,11 +23,11 @@ class ProjectsSeeder extends Seeder
         $seederYear = env('SEEDER_YEAR', null);
         $seederDegree = env('SEEDER_DEGREE', null);
 
-        if(is_null($seederYear)) {
-            die('Error: Please specify SEEDER_YEAR');
+        if (is_null($seederYear)) {
+            exit('Error: Please specify SEEDER_YEAR');
         }
-        if(is_null($seederDegree)) {
-            die('Error: Please specify SEEDER_DEGREE');
+        if (is_null($seederDegree)) {
+            exit('Error: Please specify SEEDER_DEGREE');
         }
 
         $this->command->line('Started the seeding!');
@@ -38,7 +38,7 @@ class ProjectsSeeder extends Seeder
         foreach ($projects as $project) {
             $student = $project->student()->first();
             $project->delete();
-            if(!is_null($student)) {
+            if (! is_null($student)) {
                 $student->delete();
             }
         }
@@ -49,19 +49,19 @@ class ProjectsSeeder extends Seeder
         $csv_path = storage_path('app/seed/'.$seederDegree.$seederYear.'.csv');
 
         // Reading file
-        $file = fopen($csv_path,"r");
-        $all_data = array();
+        $file = fopen($csv_path, 'r');
+        $all_data = [];
         $i = 0;
-        while (($filedata = fgetcsv($file, 1000, ";")) !== FALSE) {
-            $num = count($filedata );
+        while (($filedata = fgetcsv($file, 1000, ';')) !== false) {
+            $num = count($filedata);
 
             // Skip first rows
-            if($i == 0){
+            if ($i == 0) {
                 $i++;
                 continue;
             }
-            for ($c=0; $c < $num; $c++) {
-                $all_data[$i][] = $filedata [$c];
+            for ($c = 0; $c < $num; $c++) {
+                $all_data[$i][] = $filedata[$c];
             }
             $i++;
         }
@@ -74,7 +74,7 @@ class ProjectsSeeder extends Seeder
         foreach ($all_data as $entry) {
             $uuid = $this->formatUserUUID($entry[0], $entry[1]);
             $student = Student::where('uuid', $uuid)->first();
-            if (!$student) {
+            if (! $student) {
                 $student = Student::create([
                     'uuid' => $uuid,
                     'first_name' => $entry[1],
@@ -106,15 +106,15 @@ class ProjectsSeeder extends Seeder
 
     public function formatUserUUID($lastname, $firstname)
     {
-        $unwanted_array = array(    'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
-                                    'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
-                                    'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'ae', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
-                                    'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
-                                    'ö'=>'oe', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ü'=>'ue' );
+        $unwanted_array = ['Š' => 'S', 'š' => 's', 'Ž' => 'Z', 'ž' => 'z', 'À' => 'A', 'Á' => 'A', 'Â' => 'A', 'Ã' => 'A', 'Ä' => 'A', 'Å' => 'A', 'Æ' => 'A', 'Ç' => 'C', 'È' => 'E', 'É' => 'E',
+            'Ê' => 'E', 'Ë' => 'E', 'Ì' => 'I', 'Í' => 'I', 'Î' => 'I', 'Ï' => 'I', 'Ñ' => 'N', 'Ò' => 'O', 'Ó' => 'O', 'Ô' => 'O', 'Õ' => 'O', 'Ö' => 'O', 'Ø' => 'O', 'Ù' => 'U',
+            'Ú' => 'U', 'Û' => 'U', 'Ü' => 'U', 'Ý' => 'Y', 'Þ' => 'B', 'ß' => 'Ss', 'à' => 'a', 'á' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'ae', 'å' => 'a', 'æ' => 'a', 'ç' => 'c',
+            'è' => 'e', 'é' => 'e', 'ê' => 'e', 'ë' => 'e', 'ì' => 'i', 'í' => 'i', 'î' => 'i', 'ï' => 'i', 'ð' => 'o', 'ñ' => 'n', 'ò' => 'o', 'ó' => 'o', 'ô' => 'o', 'õ' => 'o',
+            'ö' => 'oe', 'ø' => 'o', 'ù' => 'u', 'ú' => 'u', 'û' => 'u', 'ý' => 'y', 'þ' => 'b', 'ÿ' => 'y', 'ü' => 'ue', ];
 
-        $formated_lastname = str_replace(array('-', ' ', '.', '_', '’'), '', strtolower(strtr($lastname, $unwanted_array)));
-        $formated_firstname = str_replace(array('-', ' ', '.', '_', '’'), '', strtolower(strtr($firstname, $unwanted_array)));
+        $formated_lastname = str_replace(['-', ' ', '.', '_', '’'], '', strtolower(strtr($lastname, $unwanted_array)));
+        $formated_firstname = str_replace(['-', ' ', '.', '_', '’'], '', strtolower(strtr($firstname, $unwanted_array)));
 
-        return $formated_lastname.'-'. $formated_firstname;
+        return $formated_lastname.'-'.$formated_firstname;
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('Web')->group(function () {
-    Route::get('/{vueroute?}', 'ApplicationController@index')->where('vueroute', '^(?!api).*$')->name('app.index');
+    Route::get('/{vueroute?}', [Web\ApplicationController::class, 'index'])->where('vueroute', '^(?!api).*$')->name('app.index');
 });
