@@ -12,12 +12,12 @@
     content="@yield('page-description', __('main.description-home'))">
 
     <!-- Styles -->
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css">
+    @vite('resources/css/app.css')
 
     <!-- Scripts -->
-    <script src="{{ mix('/js/manifest.js') }}"></script>
-    <script src="{{ mix('/js/vendor.js') }}" defer></script>
-    <script src="{{ mix('/js/app.js') }}" defer></script>
+    @vite('resources/js/manifest.js')
+    @vite('resources/js/vendor.js')
+    @vite('resources/js/app.js')
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/storage/media/favicon/apple-touch-icon.png">

@@ -50,11 +50,11 @@
 </template>
 
 <script>
-import HeaderComponent from '@js/components/global/Header';
-import FooterComponent from '@js/components/global/Footer';
-import YoutubePopupComponent from '@js/components/global/YoutubePopup';
-import FilterMenuComponent from '@js/components/filters/Menu';
-import ProjectGalleryComponent from '@js/components/projects/Gallery';
+import HeaderComponent from '@js/components/global/Header.vue';
+import FooterComponent from '@js/components/global/Footer.vue';
+import YoutubePopupComponent from '@js/components/global/YoutubePopup.vue';
+import FilterMenuComponent from '@js/components/filters/Menu.vue';
+import ProjectGalleryComponent from '@js/components/projects/Gallery.vue';
 
 export default {
     components: {

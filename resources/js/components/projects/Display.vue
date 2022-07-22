@@ -147,7 +147,7 @@
 </template>
 
 <script>
-import ImageViewerComponent from '../global/ImageViewer';
+import ImageViewerComponent from '../global/ImageViewer.vue';
 
 export default {
     components: {
