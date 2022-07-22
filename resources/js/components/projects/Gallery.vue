@@ -136,7 +136,7 @@
 </template>
 
 <script>
-import ProjectDisplayComponent from './Display';
+import ProjectDisplayComponent from './Display.vue';
 import { ProjectMixins } from '../../mixins/project';
 
 export default {
