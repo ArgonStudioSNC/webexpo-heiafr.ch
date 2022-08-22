@@ -44,11 +44,6 @@ export default new VueRouter({
             component: Vue.component( 'webexpo2022', require( './pages/Webexpo2022.vue' ) ).default,
         },
         {
-            path: '/preview/:degree',
-            name: 'preview',
-            component: Vue.component( 'webexpo2022', require( './pages/Webexpo2022.vue' ) ).default,
-        },
-        {
             path: '*',
             component: Vue.component( 'not-found', require( './pages/404.vue' ) ).default,
         },
