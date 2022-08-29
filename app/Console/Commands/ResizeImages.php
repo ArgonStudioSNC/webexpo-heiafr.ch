@@ -61,14 +61,14 @@ class ResizeImages extends Command
             if (! Storage::exists($studentDir.DIRECTORY_SEPARATOR.'boards')) {
                 $this->error('no boards directory!');
             } else {
-                $this->resize($studentDir.DIRECTORY_SEPARATOR.'boards', [600, 1200], true);
+                $this->resize($studentDir.DIRECTORY_SEPARATOR.'boards', [600, 1200], false);
             }
             // IMAGES
             $this->info('we now resize IMAGES...');
             if (! Storage::exists($studentDir.DIRECTORY_SEPARATOR.'images')) {
                 $this->error('no images directory!');
             } else {
-                $this->resize($studentDir.DIRECTORY_SEPARATOR.'images', [600, 1200, 2400], true);
+                $this->resize($studentDir.DIRECTORY_SEPARATOR.'images', [600, 1200, 2400], false);
             }
             // VIGNETTE
             $this->info('we now resize VIGNETTE...');
