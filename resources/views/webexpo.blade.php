@@ -7,16 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('page-title', __('main.online-exposition').' - '.__('main.heiafr-fullname'))</title>
+    <title>@yield('page-title', __('webexpo.online-exposition').' - '.__('webexpo.heiafr-fullname'))</title>
     <meta name="description"
-    content="@yield('page-description', __('main.description-home'))">
-
-    <!-- Styles -->
-    @vite('resources/css/app.css')
+    content="@yield('page-description', __('webexpo.description-home'))">
 
     <!-- Scripts -->
-    @vite('resources/js/manifest.js')
-    @vite('resources/js/vendor.js')
     @vite('resources/js/app.js')
 
     <!-- Favicon -->
@@ -26,27 +21,31 @@
     <link rel="manifest" href="/storage/media/favicon/site.webmanifest">
 </head>
 
-<body style="visibility:hidden; overflow-y:hidden;">
-    <main>
-        <div id="app">
-            <router-view></router-view>
-        </div>
-    </main>
+<body class="antialiased" style="visibility:hidden; overflow-y:hidden;">
+    <div id="app"></div>
 
     <script type="text/javascript">
-        var MTUserId='b41c71fc-d9a9-4866-8bb1-02032336c5ef';
-        var MTFontIds = new Array();
 
-        MTFontIds.push("5664103"); // Neue Helvetica® W05 65 Medium
-        MTFontIds.push("5664149"); // Neue Helvetica® W01 75 Bold
-        (function() {
-            var mtTracking = document.createElement('script');
-            mtTracking.type='text/javascript';
-            mtTracking.async='true';
-            mtTracking.src='/storage/fonts/mtiFontTrackingCode.js';
+    var MTUserId='b41c71fc-d9a9-4866-8bb1-02032336c5ef';
+    var MTFontIds = new Array();
 
-            (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(mtTracking);
-        })();
+    MTFontIds.push("5664103"); // Neue Helvetica® W05 65 Medium
+    MTFontIds.push("5664149"); // Neue Helvetica® W01 75 Bold
+    (function() {
+        var mtTracking = document.createElement('script');
+        mtTracking.type='text/javascript';
+        mtTracking.async='true';
+        mtTracking.src='/storage/mtiFontTrackingCode.js';
+
+        (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(mtTracking);
+    })();
+    </script>
+
+    <script>
+    window.locale = "{{ App::getLocale() }}";
+    window.default_locale = "{{ config('app.locale') }}";
+    window.fallback_locale = "{{ config('app.fallback_locale') }}";
+    window.messages = @json($messages);
     </script>
 </body>
 </html>

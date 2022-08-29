@@ -1,35 +1,18 @@
 /*
 |-------------------------------------------------------------------------------
-| VUEX store.js
+| VUEX store/index.js
 |-------------------------------------------------------------------------------
 | Builds the data store from all of the modules for the Rendersurfer app.
 */
-/*
-  Adds the promise polyfill for IE 11
-*/
-require('es6-promise').polyfill();
-
-/*
-    Imports Vue and Vuex
-*/
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-/*
-    Initializes Vuex on Vue.
-*/
-Vue.use( Vuex )
+import { createStore } from 'vuex'
 
 /*
     Imports all of the modules used in the application to build the data store.
 */
-import { filters } from './modules/filters.js'
-import { projects } from './modules/projects.js'
+import { filters } from '@/modules/filters.js'
+import { projects } from '@/modules/projects.js'
 
-/*
-  Exports our data store.
-*/
-export default new Vuex.Store({
+export default createStore({
     modules: {
         filters,
         projects

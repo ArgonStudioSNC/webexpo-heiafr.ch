@@ -1,17 +1,26 @@
 import STATE from "./loadingState";
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export const ProjectMixins = {
-    methods: {
-        getProjects(degree) {
-            if (this.$store.getters.getProjectsLoadStatus != 2) return null;
+    setup () {
+        const store = useStore()
 
-            return this.$store.getters.getProjects.data.filter(p => {
+        const projectsLoadStatus = computed(() => store.getters.getProjectsLoadStatus)
+
+        const projects = computed(() => store.getters.getProjects)
+
+        function getProjects(degree) {
+            if (projectsLoadStatus != 2) return null;
+
+            return projects.data.filter(p => {
                 return p.degree === degree;
             });
-        },
+        }
 
-        filterProjects(projects, filters) {
+        function filterProjects(projects, filters) {
             if (!projects || !filters) return null;
+
             var filtredProjects = projects.slice();
 
             for (var i in filters) {
@@ -22,6 +31,13 @@ export const ProjectMixins = {
                 }
             }
             return filtredProjects;
-        },
+        }
+
+        return {
+            projectsLoadStatus,
+            projects,
+            getProjects,
+            filterProjects
+        }
     },
 }

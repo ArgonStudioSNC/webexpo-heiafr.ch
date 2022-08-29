@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'en-US',
 
     /*
     |--------------------------------------------------------------------------
@@ -212,6 +212,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'Image' => Intervention\Image\Facades\Image::class,
         'Redis' => Illuminate\Support\Facades\Redis::class,
+        'ExportLocalization' => "KgBot\\LaravelLocalization\\Facades\\ExportLocalizations",
     ])->toArray(),
 
 ];

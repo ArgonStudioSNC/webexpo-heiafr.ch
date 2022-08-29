@@ -1,5 +1,4 @@
 <style lang="scss">
-@import '~@sass/_mixins';
 
 .filter-menu {
     position: relative;
@@ -94,14 +93,14 @@
         <div class="overlay-container">
             <div style="position: abolute;">
                 <div data-sticky-container>
-                    <div class="overlay-background sticky" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="0" data-check-every="0">
+                    <div class="overlay-background sticky" v-foundation data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="0" data-check-every="0">
                         <div class="fade-out" :class="{hidden: !tab}" @click="toggleDropdown(false)"></div>
                     </div>
                 </div>
             </div>
             <div class="grid-container text-right">
                 <div data-sticky-container>
-                    <div class="overlay-content sticky blend" ref="headerSection" data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="0" data-check-every="0">
+                    <div class="overlay-content sticky blend" ref="headerSection" v-foundation data-resize data-sticky data-sticky-on="small" data-top-anchor="filter-menu" data-margin-top="0" data-check-every="0">
                         <div style="height: 1.6rem"></div>
                         <h1>Travaux</h1>
                         <div class="grid-x align-right">
@@ -122,7 +121,13 @@
                                 </div>
                                 <div class="filter-dropdown-container fade-out" :class="{hidden: !(degree === 'bachelor')}">
                                     <FilterDropDownComponent degree='bachelor' v-show="tab === Tabs.Filters"></FilterDropDownComponent>
-                                    <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data"><span v-html="$t('filters.data-bachelor-'+$store.getters.getYear)"></span></h3>
+                                    <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data">
+                                        <i18n-t :keypath="'webexpo.filters.data-bachelor-'+$store.getters.getYear" tag="span" scope="global">
+                                            <template #br>
+                                                <br />
+                                            </template>
+                                        </i18n-t>
+                                    </h3>
                                 </div>
                             </div>
                             <div class="cell shrink">
@@ -145,7 +150,13 @@
                                 </div>
                                 <div class="filter-dropdown-container fade-out" :class="{hidden: !(degree === 'master')}">
                                     <FilterDropDownComponent degree='master' v-show="tab === Tabs.Filters"></FilterDropDownComponent>
-                                    <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data"><span v-html="$t('filters.data-master-'+$store.getters.getYear)"></span></h3>
+                                    <h3 class="data-text" :style="{'max-height': `calc(100vh - ${headerSectionHeight}px)`}" v-show="tab === Tabs.Data">
+                                        <i18n-t :keypath="'webexpo.filters.data-master-'+$store.getters.getYear" tag="span" scope="global">
+                                            <template #br>
+                                                <br />
+                                            </template>
+                                        </i18n-t>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +168,8 @@
 </template>
 
 <script>
-import FilterDropDownComponent from './DropDown';
+import { useStore } from 'vuex'
+import FilterDropDownComponent from './DropDown.vue';
 
 const Tabs= Object.freeze({Data: 1, Filters: 2});
 
@@ -175,8 +187,16 @@ export default {
         }
     },
 
+    setup () {
+        const store = useStore()
+
+        return {
+            loadFilters: () => store.dispatch( 'loadFilters' )
+        }
+    },
+
     created () {
-        this.$store.dispatch( 'loadFilters' );
+        this.loadFilters();
     },
 
     mounted() {

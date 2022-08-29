@@ -4,14 +4,15 @@
     margin-top: 1.2em;
     padding-bottom: 0.2em;
 }
+
 </style>
 
 <template>
     <div class="filter-dropdown">
         <h3>
-            <div class="filter-category grid-y" v-for="(cat, key) in filters" v-if="cat" track-by="key">
+            <div class="filter-category grid-y" v-for="(cat, key) in filters" track-by="key">
                 <div class="cell">
-                    <div style="font-weight: bold;">{{ $t('filters.' + key) }}</div>
+                    <div style="font-weight: bold;">{{ $t('webexpo.filters.' + key) }}</div>
                 </div>
                 <div class="cell" v-for="el in cat" :key='el.name' track-by="el.name">
                     <FilterButtonComponent :degree="degree" :category="key" :filter="el"></FilterButtonComponent>
@@ -22,7 +23,7 @@
 </template>
 
 <script>
-import FilterButtonComponent from './Button';
+import FilterButtonComponent from './Button.vue';
 import { ProjectMixins } from '../../mixins/project';
 
 export default {
@@ -42,7 +43,7 @@ export default {
     computed: {
         filters() {
             var filters = {};
-            var projects = this.getProjects(this.degree);
+            var projects = getProjects(this.degree);
 
             if (this.degree === 'bachelor') {
                 filters['workshop'] = this.uniqueFilter(projects, 'workshop');

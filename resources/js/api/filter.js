@@ -3,7 +3,7 @@ import axios from 'axios';
 /*
     Imports the RENDERSURFER API URL from the config.
 */
-import { RENDERSURFER_CONFIG } from '../config.js';
+import { RENDERSURFER_CONFIG } from './config.js';
 
 const client = axios.create({
     baseURL: RENDERSURFER_CONFIG.API_URL,

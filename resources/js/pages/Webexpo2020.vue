@@ -1,5 +1,4 @@
 <style scoped lang="scss">
-@import '~@sass/_mixins';
 
 .webexpo {
     .webexpo-title {
@@ -36,7 +35,7 @@
         <div class="webexpo-title grid-y align-center text-right">
             <h1 class="cell grid-container blend">HEIA-FR<br>architecture</h1>
             <h1 class="cell bg-color">
-                <div class="grid-container blend"><a href="#gallery" data-smooth-scroll data-animation-duration='300' data-animation-easing='swing' data-offset="-25.6">Travaux<br>Bachelor&nbsp;&amp;<br>Master 19I20</a></div>
+                <div class="grid-container blend"><a href="#gallery" v-foundation data-smooth-scroll data-animation-duration='300' data-animation-easing='swing' data-offset="-25.6">Travaux<br>Bachelor&nbsp;&amp;<br>Master 19I20</a></div>
             </h1>
             <h1 class="cell grid-container blend">Exposition<br>en ligne</h1>
         </div>
@@ -50,11 +49,12 @@
 </template>
 
 <script>
-import HeaderComponent from '@js/components/global/Header.vue';
-import FooterComponent from '@js/components/global/Footer.vue';
-import YoutubePopupComponent from '@js/components/global/YoutubePopup.vue';
-import FilterMenuComponent from '@js/components/filters/Menu.vue';
-import ProjectGalleryComponent from '@js/components/projects/Gallery.vue';
+import { useStore } from 'vuex';
+import HeaderComponent from '@/components/global/Header.vue';
+import FooterComponent from '@/components/global/Footer.vue';
+import YoutubePopupComponent from '@/components/global/YoutubePopup.vue';
+import FilterMenuComponent from '@/components/filters/Menu.vue';
+import ProjectGalleryComponent from '@/components/projects/Gallery.vue';
 
 export default {
     components: {
@@ -72,8 +72,10 @@ export default {
         }
     },
 
-    created() {
-        this.$store.dispatch( 'loadProjects', 2020);
+    setup () {
+        const store = useStore();
+
+        store.dispatch( 'loadProjects', 2020);
     },
 
     mounted() {

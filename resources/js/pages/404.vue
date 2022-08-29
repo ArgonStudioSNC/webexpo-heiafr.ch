@@ -2,20 +2,20 @@
 
 .not-found {
     height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .not-found-message {
-            a {
-                text-decoration: underline;
-            }
-            .cell {
-                @include breakpoint(small only) {
-                    margin-top : 0.5625rem;
-                    margin-bottom : 0.5625rem;
-                }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .not-found-message {
+        a {
+            text-decoration: underline;
+        }
+        .cell {
+            @include breakpoint(small only) {
+                margin-top : 0.5625rem;
+                margin-bottom : 0.5625rem;
             }
         }
+    }
 }
 
 </style>

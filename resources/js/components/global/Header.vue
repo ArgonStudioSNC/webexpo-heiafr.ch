@@ -43,21 +43,21 @@
                 <div class="cell shrink">
                     <div class="img-container heia-fr">
                         <a href="https://www.heia-fr.ch/" target="_blank">
-                            <img data-resize data-interchange="[/storage/media/logo/HEIA-FR_icon.svg, small], [/storage/media/logo/HEIA-FR.svg, large]" alt="HEIA-FR">
+                            <img v-foundation data-interchange="[/storage/media/logo/HEIA-FR_icon.svg, small], [/storage/media/logo/HEIA-FR.svg, large]" alt="HEIA-FR">
                         </a>
                     </div>
                 </div>
                 <div class="cell shrink">
                     <div class="img-container jma">
                         <a href="http://www.jointmaster.ch/" target="_blank">
-                            <img data-resize data-interchange="[/storage/media/logo/JMA-2021_icon.svg, small], [/storage/media/logo/JMA-2021.svg, large]" alt="joint master of architecture">
+                            <img v-foundation data-interchange="[/storage/media/logo/JMA-2021_icon.svg, small], [/storage/media/logo/JMA-2021.svg, large]" alt="joint master of architecture">
                         </a>
                     </div>
                 </div>
                 <div class="cell shrink">
                     <div class="img-container hes-so">
                         <a href="https://www.hes-so.ch/" target="_blank">
-                            <img data-resize data-interchange="[/storage/media/logo/HES-SO_icon.svg, small], [/storage/media/logo/HES-SO.svg, large]" alt="HES·so">
+                            <img v-foundation data-interchange="[/storage/media/logo/HES-SO_icon.svg, small], [/storage/media/logo/HES-SO.svg, large]" alt="HES·so">
                         </a>
                     </div>
                 </div>

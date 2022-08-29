@@ -1,5 +1,4 @@
 <style lang="scss">
-@import '~@sass/_mixins';
 
 .player-container {
     $padding: 1.2em;
@@ -83,7 +82,7 @@
             </button>
         </div>
         <div class="player-container" v-show="playerShow && playerReady">
-            <div><youtube :video-id="videoId" :player-vars="playerVars" nocookie ref="youtube" @ready="playerReady = true"></youtube></div>
+            <div><YouTube :video-id="videoId" :player-vars="playerVars" nocookie ref="youtube" @ready="playerReady = true"></YouTube></div>
         </div>
     </div>
 </template>

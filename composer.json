@@ -11,6 +11,7 @@
         "php": "^8.0",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
+        "kg-bot/laravel-localization-to-vue": "^2",
         "laravel/framework": "^9.21",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4"

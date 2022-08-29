@@ -1,5 +1,4 @@
 <style lang="scss">
-@import '~@sass/_mixins';
 
 .project-gallery {
     text-align: right;
@@ -118,7 +117,7 @@
                 </a>
             </div>
         </div>
-        <div class="full reveal" data-close-on-esc="false" data-multiple-opened="true" id="projectReveal" ref="projectReveal" data-reveal data-v-offset="0">
+        <div class="full reveal" data-close-on-esc="false" data-multiple-opened="true" id="projectReveal" ref="projectReveal" v-foundation data-reveal data-v-offset="0">
             <ProjectDisplayComponent :project="selectedProject"></ProjectDisplayComponent>
             <div class="grid-container fixed-close-button blend">
                 <div class="grid-x align-right">
@@ -138,6 +137,8 @@
 <script>
 import ProjectDisplayComponent from './Display.vue';
 import { ProjectMixins } from '../../mixins/project';
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default {
     components: {
@@ -150,6 +151,16 @@ export default {
         return {
             selectedProject: null,
             mq: 'small',
+        }
+    },
+
+    setup () {
+        const store = useStore()
+
+        const activeFilters = computed(() => store.getters.getActiveFilters)
+
+        return {
+            activeFilters
         }
     },
 
@@ -176,20 +187,24 @@ export default {
         projects() {
             var degree = this.$route.params.degree;
             if (degree !== 'bachelor' && degree !== 'master') return null;
-            let filters = this.$store.getters.getActiveFilters[degree];
+            let filters = this.activeFilters[degree];
             return _.isEmpty(filters) ? this.getProjects(degree) : this.filterProjects(this.getProjects(degree), filters);
         },
     },
 
     methods: {
         projectSrc(project, resource, size=null) {
-            var pathNodeJS = require('path');
-            var path = ['/storage/projects', project.year, project.degree, project.student.uuid, resource].join('/');
-            if (size) {
-                var ext = pathNodeJS.extname(path);
-                path = [pathNodeJS.dirname(path), size, pathNodeJS.basename(path, ext) + size + ext].join('/');
-            }
-            return path;
+
+            const pathname = ['/storage/projects', project.year, project.degree, project.student.uuid, resource].join('/');
+            const dirname = pathname.substring(0, pathname.lastIndexOf('/'));
+
+            if (!size) return pathname;
+
+            const file = pathname.split('/').pop();
+            const basename = file.includes('.') ? file.split('.')[0] : file;
+            const ext = file.includes('.') ? file.split('.').pop() : null;
+
+            return [dirname, size, basename + size + '.' + ext].join('/');
         },
 
         normalize(string){

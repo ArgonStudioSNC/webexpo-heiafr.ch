@@ -56,6 +56,10 @@
     }
 }
 
+.viewer-reveal {
+    z-index: calc( $reveal-zindex + 100);
+}
+
 .my-close-button.little {
     width: 40px !important;
     @include breakpoint(medium) {
@@ -82,13 +86,13 @@
                     <div class="cell project-meta blend">
                         <b>{{ project.title }}</b><br>
                         {{ project.lead }}<br><br>
-                        <b>{{ $t('projects.student') }}</b><br>
+                        <b>{{ $t('webexpo.projects.student') }}</b><br>
                         {{ project.student.first_name }}&nbsp;{{ project.student.last_name }}<br><br>
                         <div v-if="project.professor">
-                            <b>{{ $t('projects.professor') }}</b><br>
+                            <b>{{ $t('webexpo.projects.professor') }}</b><br>
                             {{ project.professor.name }}<br><br>
                         </div>
-                        <b>{{ $t('projects.experts') }}</b><br>
+                        <b>{{ $t('webexpo.projects.experts') }}</b><br>
                         <div v-for="expert in project.experts">
                             {{ expert }}
                         </div>
@@ -129,7 +133,7 @@
                 </div>
             </div>
         </div>
-        <div class="full reveal" data-close-on-esc="true" data-multiple-opened="true" id="viewerReveal" ref="viewerReveal" data-reveal data-v-offset="0">
+        <div class="full reveal viewer-reveal" data-close-on-esc="true" data-multiple-opened="true" id="viewerReveal" ref="viewerReveal" v-foundation data-reveal data-v-offset="0">
             <ImageViewerComponent :url="imageUrl"></ImageViewerComponent>
             <div class="fixed-close-button blend">
                 <div class="grid-x align-right">
@@ -188,13 +192,17 @@ export default {
         },
 
         projectSrc(project, resource, size=null) {
-            var pathNodeJS = require('path');
-            var path = ['/storage/projects', project.year, project.degree, project.student.uuid, resource].join('/');
-            if (size) {
-                var ext = pathNodeJS.extname(path);
-                path = [pathNodeJS.dirname(path), size, pathNodeJS.basename(path, ext) + size + ext].join('/');
-            }
-            return path;
+
+            const pathname = ['/storage/projects', project.year, project.degree, project.student.uuid, resource].join('/');
+            const dirname = pathname.substring(0, pathname.lastIndexOf('/'));
+
+            if (!size) return pathname;
+
+            const file = pathname.split('/').pop();
+            const basename = file.includes('.') ? file.split('.')[0] : file;
+            const ext = file.includes('.') ? file.split('.').pop() : null;
+
+            return [dirname, size, basename + size + '.' + ext].join('/');
         },
 
         openBooks(project, resources) {
