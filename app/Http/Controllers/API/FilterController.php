@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources;
 use App\Models;
+use App\Awards;
 
 class FilterController extends Controller
 {
@@ -31,6 +32,7 @@ class FilterController extends Controller
             'sites' => Resources\Site::collection(Models\Site::all()),
             'professors' => Resources\Professor::collection(Models\Professor::all()),
             'workshops' => Resources\Workshop::collection(Models\Workshop::all()),
+            'awards' => Resources\Workshop::collection(Models\Awards::all()),
         ]);
     }
     //

@@ -36,6 +36,7 @@ class Project extends JsonResource
             'site' => new Resources\Site($this->site),
             'professor' => new Resources\Professor($this->professor),
             'workshop' => new Resources\Workshop($this->workshop),
+            'award' => new Resources\Award($this->award),
             'experts' => $this->experts,
             'title' => $this->title,
             'lead' => $this->lead,
