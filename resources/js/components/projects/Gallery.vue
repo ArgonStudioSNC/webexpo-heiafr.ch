@@ -1,5 +1,5 @@
 <style lang="scss">
-@import '~@sass/_mixins';
+@import '@sass/_mixins';
 
 .project-gallery {
     text-align: right;

@@ -25,7 +25,7 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            redirect: '2022/bachelor',
+            redirect: '2023/bachelor',
         },
         {
             path: '/:edition',
@@ -42,6 +42,10 @@ export default new VueRouter({
         {
             path: '/2022/:degree',
             component: Vue.component( 'webexpo2022', require( './pages/Webexpo2022.vue' ) ).default,
+        },
+        {
+            path: '/2023/:degree',
+            component: Vue.component( 'webexpo2023', require( './pages/Webexpo2023.vue' ) ).default,
         },
         {
             path: '*',

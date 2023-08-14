@@ -1,5 +1,5 @@
 <style scoped lang="scss">
-@import '~@sass/_mixins';
+@import '@sass/_mixins';
 
 .webexpo {
     .webexpo-title {

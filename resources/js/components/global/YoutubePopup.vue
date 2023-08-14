@@ -1,5 +1,5 @@
 <style lang="scss">
-@import '~@sass/_mixins';
+@import '@sass/_mixins';
 
 .player-container {
     $padding: 1.2em;

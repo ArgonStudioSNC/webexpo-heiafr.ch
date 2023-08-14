@@ -69,15 +69,17 @@ $global-font-size: 100%;
 $global-width: rem-calc(1920);
 $global-lineheight: 1.4;
 $foundation-palette: (
-  primary: #C51A1B,
-  secondary: #D9C200,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
-  blue21: #2D4F96,
-  red21: #B91A1B,
-  brown22: #85785B,
-  blue22: #3a5b9f,
+    "primary": #C51A1B,
+    "secondary": #D9C200,
+    "success": #3adb76,
+    "warning": #ffae00,
+    "alert": #cc4b37,
+    "blue21": #2D4F96,
+    "red21": #B91A1B,
+    "brown22": #85785B,
+    "blue22": #3a5b9f,
+    "brown23": #85785B,
+    "purple23": #573655,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
@@ -87,6 +89,7 @@ $white: #fefefe;
 $body-background: #DEE0D7;
 $body-font-color: #C51A1B;
 $body-font-family: 'Helvetica Neue LT', 'TeX Gyre Heros', Helvetica, Roboto, Arial, sans-serif;
+$body-safe-padding: false;
 $body-antialiased: true;
 $global-margin: 1rem;
 $global-padding: 1rem;
@@ -110,18 +113,18 @@ $print-hrefs: true;
 // --------------
 
 $breakpoints: (
-  small: 0,
-  medium: 600px,
-  large: 1024px,
-  xlarge: 1200px,
-  xxlarge: 1920px,
+    "small": 0,
+    "medium": 600px,
+    "large": 1024px,
+    "xlarge": 1200px,
+    "xxlarge": 1920px,
 );
 $breakpoints-hidpi: (
-  hidpi-1: 1,
-  hidpi-1-5: 1.5,
-  hidpi-2: 2,
-  retina: 2,
-  hidpi-3: 3
+    "hidpi-1": 1,
+    "hidpi-1-5": 1.5,
+    "hidpi-2": 2,
+    "retina": 2,
+    "hidpi-3": 3
 );
 $print-breakpoint: large;
 $breakpoint-classes: (small medium large xlarge xxlarge);
@@ -132,8 +135,8 @@ $breakpoint-classes: (small medium large xlarge xxlarge);
 $grid-row-width: $global-width;
 $grid-column-count: 12;
 $grid-column-gutter: (
-  small: 20px,
-  medium: 30px,
+    "small": 20px,
+    "medium": 30px,
 );
 $grid-column-align-edge: true;
 $grid-column-alias: 'columns';
@@ -150,36 +153,36 @@ $header-color: inherit;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
-  small: (
-    'h1': ('fs': 30, 'lh': 0.866, 'mt': 0, 'mb': 0),
-    'h3': ('fs': 11, 'lh': 1.2, 'mt': 0, 'mb': 0),
-    'h4': ('fs': 16, 'lh': 1, 'mt': 0, 'mb': 0),
-    'h5': ('fs': 30, 'lh': 1, 'mt': 0, 'mb': 0),
-  ),
-  medium: (
-    'h1': ('fs': 45, 'lh': 0.866, 'mt': 0, 'mb': 0),
-    'h3': ('fs': 15, 'lh': 1.2, 'mt': 0, 'mb': 0),
-    'h4': ('fs': 16, 'lh': 1, 'mt': 0, 'mb': 0),
-    'h5': ('fs': 30, 'lh': 1, 'mt': 0, 'mb': 0),
-  ),
-  large: (
-    'h1': ('fs': 80, 'lh': 0.866, 'mt': 0, 'mb': 0),
-    'h3': ('fs': 22, 'lh': 1.2, 'mt': 0, 'mb': 0),
-    'h4': ('fs': 20, 'lh': 1, 'mt': 0, 'mb': 0),
-    'h5': ('fs': 38, 'lh': 1, 'mt': 0, 'mb': 0),
-  ),
-  xlarge: (
-    'h1': ('fs': 85, 'lh': 0.866, 'mt': 0, 'mb': 0),
-    'h3': ('fs': 23, 'lh': 1.2, 'mt': 0, 'mb': 0),
-    'h4': ('fs': 22, 'lh': 1, 'mt': 0, 'mb': 0),
-    'h5': ('fs': 40, 'lh': 1, 'mt': 0, 'mb': 0),
-  ),
-  xxlarge: (
-    'h1': ('fs': 120, 'lh': 0.866, 'mt': 0, 'mb': 0),
-    'h3': ('fs': 40, 'lh': 1.2, 'mt': 0, 'mb': 0),
-    'h4': ('fs': 25, 'lh': 1, 'mt': 0, 'mb': 0),
-    'h5': ('fs': 60, 'lh': 1, 'mt': 0, 'mb': 0),
-  ),
+    "small": (
+        'h1': ('fs': 30, 'lh': 0.866, 'mt': 0, 'mb': 0),
+        'h3': ('fs': 11, 'lh': 1.2, 'mt': 0, 'mb': 0),
+        'h4': ('fs': 16, 'lh': 1, 'mt': 0, 'mb': 0),
+        'h5': ('fs': 30, 'lh': 1, 'mt': 0, 'mb': 0),
+    ),
+    "medium": (
+        'h1': ('fs': 45, 'lh': 0.866, 'mt': 0, 'mb': 0),
+        'h3': ('fs': 15, 'lh': 1.2, 'mt': 0, 'mb': 0),
+        'h4': ('fs': 16, 'lh': 1, 'mt': 0, 'mb': 0),
+        'h5': ('fs': 30, 'lh': 1, 'mt': 0, 'mb': 0),
+    ),
+    "large": (
+        'h1': ('fs': 80, 'lh': 0.866, 'mt': 0, 'mb': 0),
+        'h3': ('fs': 22, 'lh': 1.2, 'mt': 0, 'mb': 0),
+        'h4': ('fs': 20, 'lh': 1, 'mt': 0, 'mb': 0),
+        'h5': ('fs': 38, 'lh': 1, 'mt': 0, 'mb': 0),
+    ),
+    "xlarge": (
+        'h1': ('fs': 85, 'lh': 0.866, 'mt': 0, 'mb': 0),
+        'h3': ('fs': 23, 'lh': 1.2, 'mt': 0, 'mb': 0),
+        'h4': ('fs': 22, 'lh': 1, 'mt': 0, 'mb': 0),
+        'h5': ('fs': 40, 'lh': 1, 'mt': 0, 'mb': 0),
+    ),
+    "xxlarge": (
+        'h1': ('fs': 120, 'lh': 0.866, 'mt': 0, 'mb': 0),
+        'h3': ('fs': 40, 'lh': 1.2, 'mt': 0, 'mb': 0),
+        'h4': ('fs': 25, 'lh': 1, 'mt': 0, 'mb': 0),
+        'h5': ('fs': 60, 'lh': 1, 'mt': 0, 'mb': 0),
+    ),
 );
 $header-text-rendering: optimizeLegibility;
 $small-font-size: 80%;
@@ -323,10 +326,10 @@ $button-radius: $global-radius;
 $button-border: 1px solid transparent;
 $button-hollow-border-width: 1px;
 $button-sizes: (
-  tiny: 0.6rem,
-  small: 0.75rem,
-  default: 0.9rem,
-  large: 1.25rem,
+    "tiny": 0.6rem,
+    "small": 0.75rem,
+    "default": 0.9rem,
+    "large": 1.25rem,
 );
 $button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
@@ -352,9 +355,9 @@ $callout-background-fade: 85%;
 $callout-border: 1px solid rgba($black, 0.25);
 $callout-margin: 0 0 1rem 0;
 $callout-sizes: (
-  small: 0.5rem,
-  default: 1rem,
-  large: 3rem,
+    "small": 0.5rem,
+    "default": 1rem,
+    "large": 3rem,
 );
 $callout-font-color: $body-font-color;
 $callout-font-color-alt: $body-background;
@@ -380,16 +383,16 @@ $closebutton-position: right top;
 $closebutton-z-index: 10;
 $closebutton-default-size: medium;
 $closebutton-offset-horizontal: (
-  small: 0.66rem,
-  medium: 5rem,
+    "small": 0.66rem,
+    "medium": 5rem,
 );
 $closebutton-offset-vertical: (
-  small: 0.33em,
-  medium: 0.5rem,
+    "small": 0.33em,
+    "medium": 0.5rem,
 );
 $closebutton-size: (
-  small: 1.5em,
-  medium: 2em,
+    "small": 1.5em,
+    "medium": 2em,
 );
 $closebutton-lineheight: 1;
 $closebutton-color: $primary-color;
@@ -418,9 +421,9 @@ $dropdown-font-size: 1rem;
 $dropdown-width: 300px;
 $dropdown-radius: $global-radius;
 $dropdown-sizes: (
-  tiny: 100px,
-  small: 200px,
-  large: 400px,
+    "tiny": 100px,
+    "small": 200px,
+    "large": 400px,
 );
 
 // 18. Dropdown Menu
@@ -479,7 +482,7 @@ $input-background-focus: $white;
 $input-background-disabled: $light-gray;
 $input-border: 1px solid $medium-gray;
 $input-border-focus: 1px solid $dark-gray;
-$input-padding: $form-spacing / 2;
+$input-padding: $form-spacing * 0.5;
 $input-shadow: inset 0 1px 2px rgba($black, 0.1);
 $input-shadow-focus: 0 0 5px $medium-gray;
 $input-cursor-disabled: not-allowed;
@@ -535,10 +538,10 @@ $meter-fill-bad: $alert-color;
 // --------------
 
 $offcanvas-sizes: (
-  small: 250px,
+    "small": 250px,
 );
 $offcanvas-vertical-sizes: (
-  small: 250px,
+    "small": 250px,
 );
 $offcanvas-background: $light-gray;
 $offcanvas-shadow: 0 0 10px rgba($black, 0.7);
@@ -602,10 +605,10 @@ $progress-radius: $global-radius;
 // -------------------
 
 $prototype-arrow-directions: (
-  down,
-  up,
-  right,
-  left
+    down,
+    up,
+    right,
+    left
 );
 $prototype-arrow-size: 0.4375rem;
 $prototype-arrow-color: $black;
@@ -633,11 +636,11 @@ $prototype-border-color: $medium-gray;
 
 $prototype-display-breakpoints: $global-prototype-breakpoints;
 $prototype-display: (
-  inline,
-  inline-block,
-  block,
-  table,
-  table-cell
+    inline,
+    inline-block,
+    block,
+    table,
+    table-cell
 );
 
 // 34. Prototype Font-Styling
@@ -653,18 +656,18 @@ $prototype-font-bold: $global-weight-bold;
 
 $prototype-list-breakpoints: $global-prototype-breakpoints;
 $prototype-style-type-unordered: (
-  disc,
-  circle,
-  square
+    disc,
+    circle,
+    square
 );
 $prototype-style-type-ordered: (
-  decimal,
-  lower-alpha,
-  lower-latin,
-  lower-roman,
-  upper-alpha,
-  upper-latin,
-  upper-roman
+    decimal,
+    lower-alpha,
+    lower-latin,
+    lower-roman,
+    upper-alpha,
+    upper-latin,
+    upper-roman
 );
 
 // 36. Prototype Overflow
@@ -672,9 +675,9 @@ $prototype-style-type-ordered: (
 
 $prototype-overflow-breakpoints: $global-prototype-breakpoints;
 $prototype-overflow: (
-  visible,
-  hidden,
-  scroll
+    visible,
+    hidden,
+    scroll
 );
 
 // 37. Prototype Position
@@ -682,10 +685,10 @@ $prototype-overflow: (
 
 $prototype-position-breakpoints: $global-prototype-breakpoints;
 $prototype-position: (
-  static,
-  relative,
-  absolute,
-  fixed
+    static,
+    relative,
+    absolute,
+    fixed
 );
 $prototype-position-z-index: 975;
 
@@ -709,22 +712,21 @@ $prototype-separator-margin-top: $global-margin;
 // --------------------
 
 $prototype-shadow-breakpoints: $global-prototype-breakpoints;
-$prototype-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),
-                       0 2px 10px 0 rgba(0,0,0,.12);
+$prototype-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
 
 // 41. Prototype Sizing
 // --------------------
 
 $prototype-sizing-breakpoints: $global-prototype-breakpoints;
 $prototype-sizing: (
-  width,
-  height
+    width,
+    height
 );
 $prototype-sizes: (
-  25: 25%,
-  50: 50%,
-  75: 75%,
-  100: 100%
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%
 );
 
 // 42. Prototype Spacing
@@ -738,9 +740,9 @@ $prototype-spacers-count: 3;
 
 $prototype-decoration-breakpoints: $global-prototype-breakpoints;
 $prototype-text-decoration: (
-  overline,
-  underline,
-  line-through,
+    overline,
+    underline,
+    line-through,
 );
 
 // 44. Prototype Text-Transformation
@@ -748,9 +750,9 @@ $prototype-text-decoration: (
 
 $prototype-transformation-breakpoints: $global-prototype-breakpoints;
 $prototype-text-transformation: (
-  lowercase,
-  uppercase,
-  capitalize
+    lowercase,
+    uppercase,
+    capitalize
 );
 
 // 45. Prototype Text-Utilities
@@ -764,8 +766,8 @@ $prototype-text-overflow: ellipsis;
 
 $responsive-embed-margin-bottom: rem-calc(16);
 $responsive-embed-ratios: (
-  default: 4 by 3,
-  widescreen: 16 by 9,
+    default: 4 by 3,
+    widescreen: 16 by 9,
 );
 
 // 47. Reveal
@@ -809,7 +811,7 @@ $switch-paddle-background: $white;
 $switch-paddle-offset: 0.25rem;
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: all 0.25s ease-out;
-$switch-opacity-disabled: .5;
+$switch-opacity-disabled: 0.5;
 $switch-cursor-disabled: not-allowed;
 
 // 50. Table
@@ -825,7 +827,7 @@ $table-row-stripe-hover: darken($table-background, $table-color-scale + $table-h
 $table-is-striped: true;
 $table-striped-background: smart-scale($table-background, $table-color-scale);
 $table-stripe: even;
-$table-head-background: smart-scale($table-background, $table-color-scale / 2);
+$table-head-background: smart-scale($table-background, $table-color-scale * 0.5);
 $table-head-row-hover: darken($table-head-background, $table-hover-scale);
 $table-foot-background: smart-scale($table-background, $table-color-scale);
 $table-foot-row-hover: darken($table-foot-background, $table-hover-scale);
@@ -903,15 +905,15 @@ $xy-grid: true;
 $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (
-  small: 0,
-  medium: 1.125rem
+    "small": 0,
+    "medium": 1.125rem
 );
 $grid-padding-gutters: (
-  small: 1rem,
-  medium: 6rem,
-  large: 6rem,
-  xlarge: 17.5rem,
-  xxlarge: 17.5rem
+    "small": 1rem,
+    "medium": 6rem,
+    "large": 6rem,
+    "xlarge": 17.5rem,
+    "xxlarge": 17.5rem
 );
 $grid-container-padding: $grid-padding-gutters;
 $grid-container-max: $global-width;
