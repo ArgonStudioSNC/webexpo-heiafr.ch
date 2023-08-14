@@ -52,7 +52,7 @@ body {
 }
 // NEW CARD STYLE
 // ----------------
-.theme-2021, .theme-2022 {
+.theme-2021, .theme-2022, theme-2023 {
     .project-gallery .project-card {
         .project-label-under {
             display: none;
@@ -114,25 +114,58 @@ body {
 // ----------------
 .theme-2022 {
     color: get-color(brown22);
+
     a {
         color: get-color(brown22);
     }
+
     .footer {
         background-color: get-color(blue22);
     }
+
     .image-viewer .lds-facebook div {
         background: get-color(brown22);
     }
+
     .my-download-button {
         color: get-color(brown22);
     }
+
     .my-close-button .times {
         fill: get-color(brown22);
     }
+
     .filter-button .filter-button-checkbox .times {
         fill: get-color(brown22);
     }
+
     .webexpo .webexpo-title .bg-color::before {
         background-color: get-color(blue22);
+    }
+}
+// THEME theme-2023
+// ----------------
+.theme-2023 {
+    color: get-color(brown23);
+    a {
+        color: get-color(brown23);
+    }
+    .footer {
+        background-color: get-color(purple23);
+    }
+    .image-viewer .lds-facebook div {
+        background: get-color(brown23);
+    }
+    .my-download-button {
+        color: get-color(brown23);
+    }
+    .my-close-button .times {
+        fill: get-color(brown23);
+    }
+    .filter-button .filter-button-checkbox .times {
+        fill: get-color(brown23);
+    }
+    .webexpo .webexpo-title .bg-color::before {
+        background-color: get-color(purple23);
     }
 }

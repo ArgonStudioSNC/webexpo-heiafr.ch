@@ -9293,25 +9293,25 @@ body {
     }
   }
 }
-.theme-2021 .project-gallery .project-card .project-label-under, .theme-2022 .project-gallery .project-card .project-label-under {
+.theme-2021 .project-gallery .project-card .project-label-under, .theme-2022 .project-gallery .project-card .project-label-under, theme-2023 .project-gallery .project-card .project-label-under {
   display: none;
 }
-.theme-2021 .project-gallery .project-card .project-vignette, .theme-2022 .project-gallery .project-card .project-vignette {
+.theme-2021 .project-gallery .project-card .project-vignette, .theme-2022 .project-gallery .project-card .project-vignette, theme-2023 .project-gallery .project-card .project-vignette {
   padding-bottom: 69.25%;
 }
 @media print, screen and (max-width: 37.49875em) {
-  .theme-2021 .project-gallery .project-card.mobile-hover .project-vignette, .theme-2022 .project-gallery .project-card.mobile-hover .project-vignette {
+  .theme-2021 .project-gallery .project-card.mobile-hover .project-vignette, .theme-2022 .project-gallery .project-card.mobile-hover .project-vignette, theme-2023 .project-gallery .project-card.mobile-hover .project-vignette {
     opacity: 0.08;
   }
-  .theme-2021 .project-gallery .project-card.mobile-hover .project-label-over, .theme-2022 .project-gallery .project-card.mobile-hover .project-label-over {
+  .theme-2021 .project-gallery .project-card.mobile-hover .project-label-over, .theme-2022 .project-gallery .project-card.mobile-hover .project-label-over, theme-2023 .project-gallery .project-card.mobile-hover .project-label-over {
     opacity: 1;
   }
 }
 @media print, screen and (min-width: 37.5em) {
-  .theme-2021 .project-gallery .project-card:hover .project-vignette, .theme-2022 .project-gallery .project-card:hover .project-vignette {
+  .theme-2021 .project-gallery .project-card:hover .project-vignette, .theme-2022 .project-gallery .project-card:hover .project-vignette, theme-2023 .project-gallery .project-card:hover .project-vignette {
     opacity: 0.08;
   }
-  .theme-2021 .project-gallery .project-card:hover .project-label-over, .theme-2022 .project-gallery .project-card:hover .project-label-over {
+  .theme-2021 .project-gallery .project-card:hover .project-label-over, .theme-2022 .project-gallery .project-card:hover .project-label-over, theme-2023 .project-gallery .project-card:hover .project-label-over {
     opacity: 1;
   }
 }
@@ -9364,6 +9364,31 @@ body {
 }
 .theme-2022 .webexpo .webexpo-title .bg-color::before {
   background-color: #3a5b9f;
+}
+
+.theme-2023 {
+  color: #85785B;
+}
+.theme-2023 a {
+  color: #85785B;
+}
+.theme-2023 .footer {
+  background-color: #573655;
+}
+.theme-2023 .image-viewer .lds-facebook div {
+  background: #85785B;
+}
+.theme-2023 .my-download-button {
+  color: #85785B;
+}
+.theme-2023 .my-close-button .times {
+  fill: #85785B;
+}
+.theme-2023 .filter-button .filter-button-checkbox .times {
+  fill: #85785B;
+}
+.theme-2023 .webexpo .webexpo-title .bg-color::before {
+  background-color: #573655;
 }
 .webexpo-header {
   background-color: #DEE0D7;
