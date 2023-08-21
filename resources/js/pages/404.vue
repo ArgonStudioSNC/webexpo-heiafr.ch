@@ -6,7 +6,9 @@
         justify-content: center;
         align-items: center;
         .not-found-message {
+            color: get-color(purple23);
             a {
+                color: get-color(purple23);
                 text-decoration: underline;
             }
             .cell {

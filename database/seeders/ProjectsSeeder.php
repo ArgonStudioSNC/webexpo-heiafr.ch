@@ -81,6 +81,7 @@ class ProjectsSeeder extends Seeder
                     'last_name' => $entry[0],
                 ]);
             }
+            $this->command->line($student->uuid);
 
             $site = Site::firstWhere('slug', $entry[7]);
             $professor = Professor::firstWhere('slug', $entry[8]);

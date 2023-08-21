@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Filters2022Seeder extends Seeder
 {
     /**
-     * Seeds the database with the filters of the 2020 works.
+     * Seeds the database with the filters of the 2022 works.
      *
      * @return void
      */
@@ -28,7 +28,7 @@ class Filters2022Seeder extends Seeder
             ['slug' => 'francois-esquivie', 'name' => 'François Esquivié'],
             ['slug' => 'stephanie-bender', 'name' => 'Stephanie Bender'],
             ['slug' => 'patricia-guaita', 'name' => 'Patricia Guaita'],
-            ['slug' => 'tania-zein', 'name' => 'Tania Zein'],
+            ['slug' => 'tania-zein', 'name' => 'Tanya Zein'],
             ['slug' => 'raffael-baur', 'name' => 'Raffael Baur'],
             ['slug' => 'serena-vanbutsele', 'name' => 'Séréna Vanbutsele'],
         ], ['slug'], ['name']);
