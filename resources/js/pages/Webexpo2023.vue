@@ -83,7 +83,7 @@ export default {
             $('body').css('overflow-y', 'auto');
         },
         isOnline() {
-            const onlineDate = new Date('2021-09-01T06:00:00');
+            const onlineDate = new Date('2023-09-01T06:00:00');
             return new Date() > onlineDate;
         }
     },
