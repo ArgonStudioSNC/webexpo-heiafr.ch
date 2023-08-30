@@ -39,7 +39,7 @@
             </h1>
             <h1 class="cell grid-container blend">Exposition<br>en ligne</h1>
         </div>
-        <div id="gallery" v-if="$route.name == 'preview'">
+        <div id="gallery" v-if="isOnline()">
             <FilterMenuComponent></FilterMenuComponent>
             <ProjectGalleryComponent></ProjectGalleryComponent>
         </div>
@@ -82,6 +82,10 @@ export default {
             $('body').css('visibility', 'visible');
             $('body').css('overflow-y', 'auto');
         },
+        isOnline() {
+            const onlineDate = new Date('2021-09-01T06:00:00');
+            return new Date() > onlineDate;
+        }
     },
 }
 </script>
