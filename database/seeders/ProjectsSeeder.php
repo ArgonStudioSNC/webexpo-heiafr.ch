@@ -94,7 +94,7 @@ class ProjectsSeeder extends Seeder
                 'site_id' => $site ? $site->id : null,
                 'professor_id' => $professor ? $professor->id : null,
                 'workshop_id' => $workshop ? $workshop->id : null,
-                'experts' => explode(';', $entry[3]),
+                'experts' => $entry[3] ? explode(';', $entry[3]) : null,
                 'title' => $entry[4],
                 'lead' => $entry[5],
                 'text' => $entry[6],

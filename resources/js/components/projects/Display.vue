@@ -31,6 +31,7 @@
             margin-top: 2em;
             max-width: 535px;
             align-self: center;
+            white-space: normal;
         }
         &-images{
             margin-right: auto;
@@ -88,9 +89,11 @@
                             <b>{{ $t('projects.professor') }}</b><br>
                             {{ project.professor.name }}<br><br>
                         </div>
-                        <b>{{ $t('projects.experts') }}</b><br>
-                        <div v-for="expert in project.experts">
-                            {{ expert }}
+                        <div v-if="project.experts">
+                            <b>{{ $t('projects.experts') }}</b><br>
+                            <div v-for="expert in project.experts">
+                                {{ expert }}
+                            </div>
                         </div>
                     </div>
                     <div class="cell project-pdf blend">
