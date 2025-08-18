@@ -46,6 +46,7 @@
                         <div v-if="$store.getters.getYear != 2022"><a href="/2022" target="_self">exposition 2022</a></div>
                         <div v-if="$store.getters.getYear != 2023"><a href="/2023" target="_self">exposition 2023</a></div>
                         <div v-if="$store.getters.getYear != 2024"><a href="/2024" target="_self">exposition 2024</a></div>
+                        <div v-if="$store.getters.getYear != 2025"><a href="/2025" target="_self">exposition 2025</a></div>
                     </div>
                 </div>
                 <div class="cell shrink">

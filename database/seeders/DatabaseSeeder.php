@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Filters2022Seeder::class);
         $this->call(Filters2023Seeder::class);
         $this->call(Filters2024Seeder::class);
+        $this->call(Filters2025Seeder::class);
     }
 }
