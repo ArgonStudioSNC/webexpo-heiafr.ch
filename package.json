@@ -17,6 +17,7 @@
         "axios": "^1.11.0",
         "browser-sync": "^3.0.4",
         "browser-sync-webpack-plugin": "^2.3.0",
+        "compose-function": "^3.0.3",
         "cross-env": "^7.0.3",
         "es6-promise": "^4.2.8",
         "foundation-sites": "6.8.1",
