@@ -112,7 +112,7 @@
                             <div class="blend">{{ normalize(project.student.last_name) }}<br>{{ normalize(project.student.first_name) }}</div>
                         </h4>
                         <h5 style="font-weight:bold;" class="project-label-over blend">
-                            {{ normalize(project.student.last_name) }}<br>{{ normalize(project.student.first_name) }}
+                            {{ project.student.last_name }}<br>{{ project.student.first_name }}
                         </h5>
                     </div>
                 </a>

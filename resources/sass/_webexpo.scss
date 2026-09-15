@@ -250,3 +250,29 @@ body {
         }
     }
 }
+// THEME theme-2026
+// ----------------
+.theme-2026 {
+    color: get-color(fuschia26);
+    a {
+        color: get-color(fuschia26);
+    }
+    .footer {
+        background-color: get-color(ocre26);
+    }
+    .image-viewer .lds-facebook div {
+        background: get-color(fuschia26);
+    }
+    .my-download-button {
+        color: get-color(fuschia26);
+    }
+    .my-close-button .times {
+        fill: get-color(fuschia26);
+    }
+    .filter-button .filter-button-checkbox .times {
+        fill: get-color(fuschia26);
+    }
+    .webexpo .webexpo-title .bg-color::before {
+        background-color: get-color(ocre26);
+    }
+}

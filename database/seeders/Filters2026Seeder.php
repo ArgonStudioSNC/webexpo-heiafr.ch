@@ -15,19 +15,20 @@ class Filters2026Seeder extends Seeder
     public function run()
     {
         DB::table('sites')->upsert([
-            ['slug' => 'rte-de-la-fonderie', 'name' => "Rte de la Fonderie"],
-            ['slug' => 'pisciculture-3', 'name' => "Pisciculture 3"],
-            ['slug' => 'planche-inferieure', 'name' => "Planche Inférieure"],
+            ['slug' => 'quartier-des-grottes', 'name' => 'Quartier des Grottes'],
+            ['slug' => 'place-des-nations', 'name' => 'Place des Nations'],
         ], ['slug'], ['name']);
 
         DB::table('professors')->upsert([
-            ['slug' => 'gotz-menzel', 'name' => 'Götz Menzel'],
-            ['slug' => 'florinel-radu', 'name' => 'Florinel Radu'],
-            ['slug' => 'hani-buri', 'name' => 'Hani Buri'],
-            ['slug' => 'stephanie-bender', 'name' => 'Stephanie Bender'],
+            ['slug' => 'celine-guibat', 'name' => 'Céline Guibat'],
             ['slug' => 'christian-dupraz', 'name' => 'Christian Dupraz'],
-            ['slug' => 'sonia-curnier', 'name' => 'Sonia Curnier'],
-            ['slug' => 'serena-vanbutsele', 'name' => 'Séréna Vanbutsele'],
+            ['slug' => 'florinel-radu', 'name' => 'Florinel Radu'],
+            ['slug' => 'gotz-menzel', 'name' => 'Götz Menzel'],
+            ['slug' => 'hani-buri', 'name' => 'Hani Buri'],
+            ['slug' => 'isabel-concheiro', 'name' => 'Isabel Concheiro'],
+            ['slug' => 'katrien-vertenten', 'name' => 'Katrien Vertenten'],
+            ['slug' => 'stephanie-bender', 'name' => 'Stephanie Bender'],
+            ['slug' => 'veronique-favre', 'name' => 'Véronique Favre'],
         ], ['slug'], ['name']);
 
         DB::table('workshops')->upsert([

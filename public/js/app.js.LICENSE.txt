@@ -12,13 +12,6 @@
  */
 
 /*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <http://feross.org>
- * @license  MIT
- */
-
-/*!
  * vue-i18n v8.28.2 
  * (c) 2022 kazuya kawaguchi
  * Released under the MIT License.
@@ -36,9 +29,7 @@
  * @license MIT
  */
 
-/*! Axios v1.11.0 Copyright (c) 2025 Matt Zabriskie and contributors */
-
-/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+/*! Axios v1.20.0 Copyright (c) 2026 Matt Zabriskie and contributors */
 
 /**
 * @link https://github.com/gajus/sister for the canonical source repository
