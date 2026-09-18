@@ -96,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cell project-pdf blend">
+                    <div class="cell project-pdf blend" v-if="showPdfButton">
                         <button class="my-download-button" v-on:click="openBooks(project, project.books_files)">
                             <font-awesome-icon :icon="['far', 'file-pdf']" size="3x"/>
                         </button>
@@ -169,6 +169,13 @@ export default {
             imageUrl: null,
             mq: 'small',
         }
+    },
+
+    computed: {
+        // Requested by the client on 17.09.2026: remove the PDF download button.
+        showPdfButton() {
+            return Number(this.project.year) < 2026;
+        },
     },
 
     mounted() {
