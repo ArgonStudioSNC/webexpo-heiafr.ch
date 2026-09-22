@@ -38,7 +38,7 @@
         "vue-template-compiler": "^0.1.0",
         "vue-youtube": "^1.4.0",
         "vuex": "^3.6.2",
-        "webpack": "5.74.0",
+        "webpack": "5.111.1",
         "webpack-cli": "4.10.0",
         "what-input": "^5.2.12"
     }
