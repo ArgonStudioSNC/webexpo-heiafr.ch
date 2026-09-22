@@ -120,21 +120,21 @@ class FormatAndResizeImages extends Command
                 if ($image === null) {
                     continue;
                 }
+                $image->orientate();
 
                 if ($image->width() > 600) {
                     $image->resize(600, null, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     });
-                    $this->writeJpg($image, $file, $targetFile, self::JPG_QUALITY);
                     $this->line('resized to 600px');
                 } elseif ($file !== $targetFile) {
-                    $this->writeJpg($image, $file, $targetFile, self::JPG_QUALITY);
                     $this->line($this->isJpgFile($file) ? 'renamed to .jpg' : 'converted to jpg');
                 } else {
-                    $this->line('file is allready ok!');
+                    $this->line('orientation normalized');
                 }
 
+                $this->writeJpg($image, $file, $targetFile, self::JPG_QUALITY);
                 $image->destroy();
             }
         }
@@ -164,20 +164,21 @@ class FormatAndResizeImages extends Command
             if ($image === null) {
                 continue;
             }
+            $image->orientate();
 
             if ($originalSize > self::BIG_FILE_SIZE) {
                 $image->resize(4000, 4000, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 });
-                $this->writeJpg($image, $file, $targetFile, self::JPG_QUALITY);
                 $this->line('resized to 4000px');
             } elseif ($file !== $targetFile) {
-                $this->writeJpg($image, $file, $targetFile, self::JPG_QUALITY);
                 $this->line($this->isJpgFile($file) ? 'renamed to .jpg' : 'converted to jpg');
             } else {
-                $this->line('original file is allready ok!');
+                $this->line('orientation normalized');
             }
+
+            $this->writeJpg($image, $file, $targetFile, self::JPG_QUALITY);
 
             foreach ($sizes as $size) {
                 $variantPath = $path . '/@' . $size . '/' . $filename . '@' . $size . '.jpg';

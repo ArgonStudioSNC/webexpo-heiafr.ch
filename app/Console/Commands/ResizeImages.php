@@ -100,6 +100,7 @@ class ResizeImages extends Command
 
                     // resizing
                     $image_resize = Image::make($image);
+                    $image_resize->orientate();
                     if ($image_resize->width() > 600) {
                         $image_resize->resize(600, null, function ($constraint) {
                             $constraint->aspectRatio();
@@ -108,7 +109,12 @@ class ResizeImages extends Command
                         ->save(storage_path('app'.DIRECTORY_SEPARATOR.$dirPath.DIRECTORY_SEPARATOR.$filename.'.jpg'), 100, 'jpg');
                         $this->line('resized to 600px');
                     } else {
-                        $this->line('file is allready ok!');
+                        if (in_array(strtolower(pathinfo($file, PATHINFO_EXTENSION)), ['jpg', 'jpeg'], true)) {
+                            $image_resize->save(storage_path('app'.DIRECTORY_SEPARATOR.$file), 100, 'jpg');
+                            $this->line('orientation normalized');
+                        } else {
+                            $this->line('file is allready ok!');
+                        }
                     }
                     $image_resize->destroy();
                 }
@@ -136,6 +142,7 @@ class ResizeImages extends Command
             }
             // resizing
             $image_resize = Image::make($image);
+            $image_resize->orientate();
             $image_resize->backup();
             arsort($sizes);
             foreach ($sizes as $size) {
@@ -162,6 +169,9 @@ class ResizeImages extends Command
                 })
                 ->save(storage_path('app'.DIRECTORY_SEPARATOR.$path.DIRECTORY_SEPARATOR.$filename.'.jpg'), 100, 'jpg');
                 $this->line('resized to 4000px');
+            } elseif (in_array(strtolower(pathinfo($file, PATHINFO_EXTENSION)), ['jpg', 'jpeg'], true)) {
+                $image_resize->save(storage_path('app'.DIRECTORY_SEPARATOR.$file), 100, 'jpg');
+                $this->line('orientation normalized');
             }
             $image_resize->destroy();
         }
