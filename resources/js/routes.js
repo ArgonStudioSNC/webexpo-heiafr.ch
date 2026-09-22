@@ -25,7 +25,7 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            redirect: '2025/bachelor',
+            redirect: '2026/bachelor',
         },
         {
             path: '/:edition',
