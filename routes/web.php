@@ -15,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('Web')->group(function () {
+    Route::redirect('/', '/2026/bachelor', 301);
+
+    Route::get('/{year}', function ($year) {
+        return redirect("/{$year}/bachelor", 301);
+    })->where('year', '20[0-9]{2}');
+
     Route::get('/{vueroute?}', [Web\ApplicationController::class, 'index'])->where('vueroute', '^(?!api).*$')->name('app.index');
 });
