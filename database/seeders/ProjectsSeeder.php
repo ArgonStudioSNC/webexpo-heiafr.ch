@@ -8,7 +8,9 @@ use App\Models\Site;
 use App\Models\Student;
 use App\Models\Workshop;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use RuntimeException;
 
 class ProjectsSeeder extends Seeder
 {
@@ -33,24 +35,19 @@ class ProjectsSeeder extends Seeder
 
         $this->command->line('Started the seeding!');
 
-        // Cleaning DB
-        $this->command->line('Cleaning the database from old projects...');
-        $projects = Project::where('year', $seederYear)->where('degree', $seederDegree)->get();
-        foreach ($projects as $project) {
-            $student = $project->student()->first();
-            $project->delete();
-            if (!is_null($student)) {
-                $student->delete();
-            }
-        }
-        $this->command->line('Success!');
-
         // Loading .csv
         $this->command->line('Loading the csv file...');
         $csv_path = storage_path('app/seed/' . $seederDegree . $seederYear . '.csv');
+        if (!is_readable($csv_path)) {
+            throw new RuntimeException('Unable to read CSV file: ' . $csv_path);
+        }
 
         // Reading file
         $file = fopen($csv_path, 'r');
+        if ($file === false) {
+            throw new RuntimeException('Unable to open CSV file: ' . $csv_path);
+        }
+
         $all_data = [];
         $i = 0;
         while (($filedata = fgetcsv($file, 0, ';')) !== false) {
@@ -69,39 +66,51 @@ class ProjectsSeeder extends Seeder
         fclose($file);
         $this->command->line('Success!');
 
-        // Filling DB with data
-        $this->command->line('Filling the database with data...');
+        DB::transaction(function () use ($seederYear, $seederDegree, $all_data) {
+            // Cleaning DB
+            $this->command->line('Cleaning the database from old projects...');
+            $projects = Project::where('year', $seederYear)
+                ->where('degree', $seederDegree)
+                ->get();
 
-        foreach ($all_data as $entry) {
-            $uuid = $this->formatUserUUID($entry[0], $entry[1]);
-            $student = Student::where('uuid', $uuid)->first();
-            if (!$student) {
-                $student = Student::create([
-                    'uuid' => $uuid,
-                    'first_name' => $entry[1],
-                    'last_name' => $entry[0],
+            foreach ($projects as $project) {
+                $project->delete();
+            }
+            $this->command->line('Success!');
+
+            // Filling DB with data
+            $this->command->line('Filling the database with data...');
+
+            foreach ($all_data as $entry) {
+                $uuid = $this->formatUserUUID($entry[0], $entry[1]);
+                $student = Student::updateOrCreate(
+                    ['uuid' => $uuid],
+                    [
+                        'first_name' => $entry[1],
+                        'last_name' => $entry[0],
+                    ]
+                );
+                $this->command->line($student->uuid);
+
+                $site = Site::firstWhere('slug', $entry[7]);
+                $professor = Professor::firstWhere('slug', $entry[8]);
+                $workshop = Workshop::firstWhere('slug', $entry[9]);
+
+                Project::create([
+                    'degree' => $entry[2],
+                    'year' => $seederYear,
+                    'student_id' => $student->id,
+                    'site_id' => $site ? $site->id : null,
+                    'professor_id' => $professor ? $professor->id : null,
+                    'workshop_id' => $workshop ? $workshop->id : null,
+                    'experts' => $entry[3] ? explode(';', $entry[3]) : null,
+                    'title' => $entry[4],
+                    'lead' => $entry[5],
+                    'text' => $entry[6],
                 ]);
             }
-            $this->command->line($student->uuid);
-
-            $site = Site::firstWhere('slug', $entry[7]);
-            $professor = Professor::firstWhere('slug', $entry[8]);
-            $workshop = Workshop::firstWhere('slug', $entry[9]);
-
-            $project = Project::create([
-                'degree' => $entry[2],
-                'year' => $seederYear,
-                'student_id' => $student->id,
-                'site_id' => $site ? $site->id : null,
-                'professor_id' => $professor ? $professor->id : null,
-                'workshop_id' => $workshop ? $workshop->id : null,
-                'experts' => $entry[3] ? explode(';', $entry[3]) : null,
-                'title' => $entry[4],
-                'lead' => $entry[5],
-                'text' => $entry[6],
-            ]);
-        }
-        $this->command->line('Success!');
+            $this->command->line('Success!');
+        });
 
         $this->command->line('Seeding completed!');
     }
